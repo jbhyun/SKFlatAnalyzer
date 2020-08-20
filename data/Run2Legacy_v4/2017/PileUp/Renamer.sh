@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rootmv Pileup_reweight_69p2_mb.root:WZTo3LNu_central Pileup_reweight_69p2_mb.root:WZTo3LNu_powheg_central
+rootmv Pileup_reweight_69p2_mb.root:WZTo3LNu_sig_down Pileup_reweight_69p2_mb.root:WZTo3LNu_powheg_sig_down
+rootmv Pileup_reweight_69p2_mb.root:WZTo3LNu_sig_up Pileup_reweight_69p2_mb.root:WZTo3LNu_powheg_sig_up

@@ -246,7 +246,7 @@ double MCCorrection::MuonID_SF(TString ID, double eta, double pt, int sys){
     eta = fabs(eta);
   }
 
-  if(ID=="NUM_TightID_DEN_genTracks" || ID=="NUM_HighPtID_DEN_genTracks"){
+  if(ID=="NUM_TightID_DEN_genTracks" || ID=="NUM_HighPtID_DEN_genTracks" || ID=="POGTID_genTrk"){
     //==== boundaries
     if(pt<20.) pt = 20.;
     if(pt>=120.) pt = 119.;
@@ -265,7 +265,7 @@ double MCCorrection::MuonID_SF(TString ID, double eta, double pt, int sys){
 
   int this_bin(-999);
 
-  if(DataYear==2016){
+  if(DataYear==2016 or DataYear==2017){
     this_bin = this_hist->FindBin(eta,pt);
   }
   else{
@@ -294,7 +294,7 @@ double MCCorrection::MuonISO_SF(TString ID, double eta, double pt, int sys){
     eta = fabs(eta);
   }
 
-  if(ID=="NUM_TightRelIso_DEN_TightIDandIPCut" || ID=="NUM_LooseRelTkIso_DEN_HighPtIDandIPCut"){
+  if(ID=="NUM_TightRelIso_DEN_TightIDandIPCut" || ID=="NUM_LooseRelTkIso_DEN_HighPtIDandIPCut" || ID=="POGTIso_POGTID"){
     //==== boundaries
     if(pt<20.) pt = 20.;
     if(pt>=120.) pt = 119.;
@@ -744,6 +744,13 @@ double MCCorrection::GetPileUpWeightBySampleName(int N_pileup, int syst){
   if(N_pileup >= 100) this_bin=100;
 
   TString this_histname = MCSample;
+
+//  if     (MCSample=="SingleTop_sch_Lep"              ){ this_histname="SingleTop_sch"; }
+//  else if(MCSample=="SingleTop_tW_antitop_NoFullyHad"){ this_histname="SingleTop_tW_antitop"; }
+//  else if(MCSample=="SingleTop_tW_top_NoFullyHad"    ){ this_histname="SingleTop_tW_top"; }
+//  else if(MCSample=="SingleTop_tch_antitop_Incl"     ){ this_histname="SingleTop_tch_antitop"; }
+//  else if(MCSample=="SingleTop_tch_top_Incl"         ){ this_histname="SingleTop_tch_top"; }
+
   if(syst == 0){
     this_histname += "_central_pileup";
   }
@@ -773,15 +780,15 @@ double MCCorrection::GetPileUpWeight(int N_pileup, int syst){
   int this_bin = N_pileup+1;
   if(N_pileup >= 100) this_bin=100;
 
-  TString this_histname = "MC_" + TString::Itoa(DataYear,10);
+  TString this_histname = "PUReweight_" + TString::Itoa(DataYear,10);
   if(syst == 0){
     this_histname += "_central_pileup";
   }
   else if(syst == -1){
-    this_histname += "_sig_down_pileup";
+    this_histname += "_Down_pileup";
   }
   else if(syst == 1){
-    this_histname += "_sig_up_pileup";
+    this_histname += "_Up_pileup";
   }
   else{
     cerr << "[MCCorrection::GetPileUpWeightBySampleName] syst should be 0, -1, or +1" << endl;
@@ -1007,6 +1014,11 @@ double MCCorrection::GetJetTaggingSF(JetTagging::Parameters jtp, int JetFlavor, 
 double MCCorrection::GetJetTaggingCutValue(JetTagging::Tagger tagger, JetTagging::WP wp){
 
   if(DataYear==2016){
+    if(tagger==JetTagging::CSVv2){
+      if(wp==JetTagging::Loose)  return 0.5426;
+      if(wp==JetTagging::Medium) return 0.8484;
+      if(wp==JetTagging::Tight)  return 0.9535;
+    }
     if(tagger==JetTagging::DeepCSV){
       if(wp==JetTagging::Loose)  return 0.2217;
       if(wp==JetTagging::Medium) return 0.6321;

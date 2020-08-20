@@ -253,6 +253,38 @@ public:
   TFile *outfile;
   void SetOutfilePath(TString outname);
 
+
+  //Jihwan Bhyun Modification/////////////////////////
+  std::vector<Jet> SelBJets    (std::vector<Jet>& jetColl, JetTagging::Parameters jtp);
+  std::vector<Jet> SelLightJets(std::vector<Jet>& jetColl, JetTagging::Parameters jtp);
+  std::vector<int> GetSFBJetIdx(std::vector<Jet>& jetColl, JetTagging::Parameters jtp);
+  std::vector<int> GetSFLJetIdx(std::vector<Jet>& jetColl, JetTagging::Parameters jtp);
+  float GetMuonSF(std::vector<Muon>& muonColl, TString SFKey, TString Option="");
+  float GetElectronSF(std::vector<Electron>& electronColl, TString SFKey, TString Option="");
+  float GetKFactor();
+  float GetGenFilterEffCorr();
+  bool  IsHEMIssueRun();
+  bool  IsHEMIssueReg(Particle& Particle);
+  bool  IsHEMCRReg(Particle& Particle, TString Option);
+  int   SumCharge(vector<Muon>& MuColl, vector<Electron>& ElColl);
+  int   SumCharge(vector<Muon>& MuColl);
+  int   SumCharge(vector<Electron>& ElColl);
+  int   TriMuChargeIndex(vector<Muon>& MuonColl, TString charge);
+  TString GetDataPeriod();
+
+  int  GenMatchedIdx(Lepton& Lep, std::vector<Gen>& truthColl);
+  int  GetNearPhotonIdx(Lepton& Lep, std::vector<Gen>& TruthColl);
+  int  FirstNonSelfMotherIdx(int TruthIdx, std::vector<Gen>& TruthColl);
+  int  LastSelfMotherIdx(int TruthIdx,std::vector<Gen>& TruthColl);
+  bool HasHadronicAncestor(int TruthIdx, std::vector<Gen>& TruthColl);
+  bool IsFinalPhotonSt23(std::vector<Gen>& TruthColl);
+  int  GetPrElType_InSameSCRange(int TruthIdx, std::vector<Gen>& TruthColl, TString Option="");
+  int  GetPartonType_JH(int TruthIdx, std::vector<Gen>& TruthColl);
+  int  GetLeptonType_JH(int TruthIdx, std::vector<Gen>& TruthColl);
+  int  GetLeptonType_JH(Lepton& Lep, std::vector<Gen>& TruthColl);
+  int  GetPhotonType_JH(int PhotonIdx, std::vector<Gen>& TruthColl);
+
+
 };
 
 

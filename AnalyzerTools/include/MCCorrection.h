@@ -110,6 +110,11 @@ public:
   //==== 2a) Jet-by-jet updating of the b-tagging status
   bool IsBTagged_2a(JetTagging::Parameters jtp, const Jet& jet, string Syst="central");
 
+
+  //Jihwan Bhyun's private functions
+  float GetTriggerSF(vector<Electron>& EleColl, vector<Muon>& MuColl, TString SFKey, TString Option);
+  float TriggerEfficiency(vector<Electron>& EleColl, vector<Muon>& MuColl, TString SFKey, bool ReturnDataEff, TString Option);
+
 };
 
 #endif

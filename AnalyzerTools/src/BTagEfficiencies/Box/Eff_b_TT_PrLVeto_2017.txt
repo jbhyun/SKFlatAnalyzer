@@ -1,0 +1,54 @@
+          if     (JetPt >= 20.0 && JetPt < 30.0){
+            if     (fabs(JetEta) >= 0.0 && fabs(JetEta) < 0.6) return 0.63174;
+            else if(fabs(JetEta) >= 0.6 && fabs(JetEta) < 1.2) return 0.63988;
+            else if(fabs(JetEta) >= 1.2 && fabs(JetEta) < 1.8) return 0.58798;
+            else if(fabs(JetEta) >= 1.8 && fabs(JetEta) < 2.4) return 0.54119;
+          }
+          else if(JetPt >= 30.0 && JetPt < 50.0){
+            if     (fabs(JetEta) >= 0.0 && fabs(JetEta) < 0.6) return 0.72616;
+            else if(fabs(JetEta) >= 0.6 && fabs(JetEta) < 1.2) return 0.73173;
+            else if(fabs(JetEta) >= 1.2 && fabs(JetEta) < 1.8) return 0.68462;
+            else if(fabs(JetEta) >= 1.8 && fabs(JetEta) < 2.4) return 0.64362;
+          }
+          else if(JetPt >= 50.0 && JetPt < 70.0){
+            if     (fabs(JetEta) >= 0.0 && fabs(JetEta) < 0.6) return 0.76780;
+            else if(fabs(JetEta) >= 0.6 && fabs(JetEta) < 1.2) return 0.77125;
+            else if(fabs(JetEta) >= 1.2 && fabs(JetEta) < 1.8) return 0.72422;
+            else if(fabs(JetEta) >= 1.8 && fabs(JetEta) < 2.4) return 0.68082;
+          }
+          else if(JetPt >= 70.0 && JetPt < 100.0){
+            if     (fabs(JetEta) >= 0.0 && fabs(JetEta) < 0.6) return 0.78609;
+            else if(fabs(JetEta) >= 0.6 && fabs(JetEta) < 1.2) return 0.78807;
+            else if(fabs(JetEta) >= 1.2 && fabs(JetEta) < 1.8) return 0.73886;
+            else if(fabs(JetEta) >= 1.8 && fabs(JetEta) < 2.4) return 0.68762;
+          }
+          else if(JetPt >= 100.0 && JetPt < 140.0){
+            if     (fabs(JetEta) >= 0.0 && fabs(JetEta) < 0.6) return 0.79294;
+            else if(fabs(JetEta) >= 0.6 && fabs(JetEta) < 1.2) return 0.79120;
+            else if(fabs(JetEta) >= 1.2 && fabs(JetEta) < 1.8) return 0.73561;
+            else if(fabs(JetEta) >= 1.8 && fabs(JetEta) < 2.4) return 0.67507;
+          }
+          else if(JetPt >= 140.0 && JetPt < 200.0){
+            if     (fabs(JetEta) >= 0.0 && fabs(JetEta) < 0.6) return 0.78595;
+            else if(fabs(JetEta) >= 0.6 && fabs(JetEta) < 1.2) return 0.77643;
+            else if(fabs(JetEta) >= 1.2 && fabs(JetEta) < 1.8) return 0.71118;
+            else if(fabs(JetEta) >= 1.8 && fabs(JetEta) < 2.4) return 0.63543;
+          }
+          else if(JetPt >= 200.0 && JetPt < 300.0){
+            if     (fabs(JetEta) >= 0.0 && fabs(JetEta) < 0.6) return 0.74538;
+            else if(fabs(JetEta) >= 0.6 && fabs(JetEta) < 1.2) return 0.72446;
+            else if(fabs(JetEta) >= 1.2 && fabs(JetEta) < 1.8) return 0.64411;
+            else if(fabs(JetEta) >= 1.8 && fabs(JetEta) < 2.4) return 0.55434;
+          }
+          else if(JetPt >= 300.0 && JetPt < 600.0){
+            if     (fabs(JetEta) >= 0.0 && fabs(JetEta) < 0.6) return 0.64563;
+            else if(fabs(JetEta) >= 0.6 && fabs(JetEta) < 1.2) return 0.60967;
+            else if(fabs(JetEta) >= 1.2 && fabs(JetEta) < 1.8) return 0.51861;
+            else if(fabs(JetEta) >= 1.8 && fabs(JetEta) < 2.4) return 0.42757;
+          }
+          else if(JetPt >= 600.0 && JetPt < 1000.0){
+            if     (fabs(JetEta) >= 0.0 && fabs(JetEta) < 0.6) return 0.43397;
+            else if(fabs(JetEta) >= 0.6 && fabs(JetEta) < 1.2) return 0.40560;
+            else if(fabs(JetEta) >= 1.2 && fabs(JetEta) < 1.8) return 0.29142;
+            else if(fabs(JetEta) >= 1.8 && fabs(JetEta) < 2.4) return 0.32510;
+          }

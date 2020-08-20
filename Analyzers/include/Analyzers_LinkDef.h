@@ -14,5 +14,18 @@
 #pragma link C++ class SkimTree_Dilepton+;
 #pragma link C++ class SkimTree_HNFake+;
 #pragma link C++ class MeasureJetTaggingEfficiency+;
+//my codes begin
+#pragma link C++ class NewAnalyzer+;
+#pragma link C++ class DiLepValid+;
+#pragma link C++ class BTagEff_MC+;
+#pragma link C++ class TestRun+;
+#pragma link C++ class HNTopFeas+;
+#pragma link C++ class MCPUDist17+;
+#pragma link C++ class SyncYield+;
+#pragma link C++ class SkimTree_SS2lOR3l+;
+#pragma link C++ class SkimRateCheck+;
+#pragma link C++ class TrigCheck+;
+#pragma link C++ class GenMatchingValid+;
+//my codes end
 
 #endif

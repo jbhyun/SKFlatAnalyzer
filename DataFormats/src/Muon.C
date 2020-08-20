@@ -97,6 +97,8 @@ void Muon::SetMVA(double MVA){
 }
 
 bool Muon::PassID(TString ID) const {
+
+
   //==== POG
   if(ID=="POGTight") return isPOGTight();
   if(ID=="POGHighPt") return isPOGHighPt();
@@ -105,10 +107,31 @@ bool Muon::PassID(TString ID) const {
   if(ID=="POGTightWithTightIso") return Pass_POGTightWithTightIso();
   if(ID=="POGHighPtWithLooseTrkIso") return Pass_POGHighPtWithLooseTrkIso();
   //==== Customized
-  if(ID=="TEST") return Pass_TESTID();
+  if(ID=="TESTT") return Pass_TESTID();
+  if(ID=="TESTL") return Pass_TESTIDL();
+  if(ID=="TEST2T") return Pass_TESTID2();
+  if(ID=="TEST2L") return Pass_TESTID2L();
+  if(ID=="HctoWA16T"){
+    if(!isPOGTight()) return false;
+    if(!(RelIso()<0.2)) return false;
+    if(!(fabs(dXY())<0.01 && fabs(dZ())<0.05)) return false;
+    if(!(fabs(Chi2())<4)) return false;
+    if(!(dXYerr()!=0. && fabs(dXY()/dXYerr())<4.) ) return false;
+    return true;
+  }
+  if(ID=="HctoWA16L"){
+    if(!isPOGTight()) return false;
+    if(!(RelIso()<0.6)) return false;
+    if(!(fabs(dXY())<0.2 && fabs(dZ())<0.1)) return false;
+    if(!(dXYerr()!=0. && fabs(dXY()/dXYerr())<4.) ) return false;
+    return true;
+  }
 
   //==== No cut
   if(ID=="NOCUT") return true;
+  if(ID=="POGIDMIsoM") return isPOGMedium() && RelIso()<0.2;
+  if(ID=="POGIDTIsoM") return isPOGTight() && RelIso()<0.2;
+  if(ID=="POGIDTIsoVVL") return isPOGTight() && RelIso()<0.4;
 
   cout << "[Electron::PassID] No id : " << ID << endl;
   exit(EXIT_FAILURE);
@@ -130,8 +153,46 @@ bool Muon::Pass_POGHighPtWithLooseTrkIso() const {
 //==== TEST ID
 
 bool Muon::Pass_TESTID() const {
+  if(! isPOGMedium() ) return false;
+  if(! (RelIso()<0.2) ) return false;
+  if(! (fabs(dXY())<0.01 && fabs(dZ())<0.1) ) return false;
+  if(! (dXYerr()!=0. && fabs(dXY()/dXYerr())<4.) ) return false;
+  if(! (IP3Derr()!=0. && fabs(IP3D()/IP3Derr())<4.) ) return false;
+
   return true;
 }
+
+bool Muon::Pass_TESTIDL() const {
+  if(! isPOGMedium() ) return false;
+  if(! (RelIso()<0.4) ) return false;
+  if(! (fabs(dXY())<0.01 && fabs(dZ())<0.1) ) return false;
+  if(! (dXYerr()!=0. && fabs(dXY()/dXYerr())<4.) ) return false;
+  if(! (IP3Derr()!=0. && fabs(IP3D()/IP3Derr())<4.) ) return false;
+
+  return true;
+}
+
+bool Muon::Pass_TESTID2() const {
+  if(! isPOGTight() ) return false;
+  if(! (MiniRelIso()<0.1) ) return false;
+  if(! (fabs(dXY())<0.01 && fabs(dZ())<0.1) ) return false;
+  if(! (dXYerr()>0. && fabs(dXY()/dXYerr())<4.) ) return false;
+  if(! (IP3Derr()>0. && fabs(IP3D()/IP3Derr())<4.) ) return false;
+
+  return true;
+}
+
+bool Muon::Pass_TESTID2L() const {
+  if(! isPOGTight() ) return false;
+  if(! (MiniRelIso()<0.4) ) return false;
+  if(! (fabs(dXY())<0.01 && fabs(dZ())<0.1) ) return false;
+  if(! (dXYerr()>0. && fabs(dXY()/dXYerr())<4.) ) return false;
+  if(! (IP3Derr()>0. && fabs(IP3D()/IP3Derr())<4.) ) return false;
+
+  return true;
+}
+
+
 
 void Muon::SetTrackerLayers(int n){
   j_trackerLayers = n;
