@@ -27,6 +27,9 @@
 #pragma link C++ class SkimRateCheck+;
 #pragma link C++ class TrigCheck+;
 #pragma link C++ class GenMatchingValid+;
+#pragma link C++ class IDOptimization+;
+#pragma link C++ class SkimTree_TrigInfo+;
+#pragma link C++ class MeasTrigEff+;
 //my codes end
 
 #endif

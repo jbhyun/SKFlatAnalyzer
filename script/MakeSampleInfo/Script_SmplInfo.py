@@ -6,17 +6,24 @@ if not "SKFlat_WD" in os.environ:
   print("Set up SKFlat environment."); exit(); 
 
 #[PD(Or PrivateMC dir name), alias, xsec(fb)]
-Arr_Sample = [["preliminary_TTbarTypeIHeavyN-Mu_SS2L_LO_MN20" ,"TT_TTobNMu_SS2L_LO_MN20" , 1],
-              ["preliminary_TTbarTypeIHeavyN-Mu_SS2L_LO_MN50" ,"TT_TTobNMu_SS2L_LO_MN50" , 1],
-              ["preliminary_TTbarTypeIHeavyN-Mu_SS2L_LO_MN100","TT_TTobNMu_SS2L_LO_MN100", 1]]
+Arr_Sample = [["preliminary_TTbarTypeIHeavyN-Mu_LepTop3L_LO_MN20" , "TT_TTobNMu_LepTop3L_LO_MN20" , 1.],
+              ["preliminary_TTbarTypeIHeavyN-Mu_LepTop3L_LO_MN50" , "TT_TTobNMu_LepTop3L_LO_MN50" , 1.],
+              ["preliminary_TTbarTypeIHeavyN-Mu_LepTop3L_LO_MN100", "TT_TTobNMu_LepTop3L_LO_MN100", 1.],
+              ["preliminary_TTbarTypeIHeavyN-Mu_HadTop3L_LO_MN20" , "TT_TTobNMu_HadTop3L_LO_MN20" , 1.],
+              ["preliminary_TTbarTypeIHeavyN-Mu_HadTop3L_LO_MN50" , "TT_TTobNMu_HadTop3L_LO_MN50" , 1.],
+              ["preliminary_TTbarTypeIHeavyN-Mu_HadTop3L_LO_MN100", "TT_TTobNMu_HadTop3L_LO_MN100", 1.],
+              ["preliminary_TTbarTypeIHeavyN-Mu_4L_LO_MN20" , "TT_TTobNMu_4L_LO_MN20" , 1.],
+              ["preliminary_TTbarTypeIHeavyN-Mu_4L_LO_MN50" , "TT_TTobNMu_4L_LO_MN50" , 1.],
+              ["preliminary_TTbarTypeIHeavyN-Mu_4L_LO_MN100", "TT_TTobNMu_4L_LO_MN100", 1.]]
 
 
 VerProc="Run2Legacy_v4"
 Year="2017"
 DataType="PrivateMC"
 Category="preliminary_TTbarTypeIHeavuN-Mu" #"HctoWA"
-#SamplePath="/data9/Users/jbhyun/SKFlat/"+VerProc+"/"+Year+"/"+DataType+"/"+Category+"/"
-SamplePath="/gv0/DATA/SKFlat/"+VerProc+"/"+Year+"/"+DataType+"/"+Category+"/"
+#SamplePath="/data9/Users/jbhyun/SKFlat/"+VerProc+"/"+Year+"/"+DataType+"/"+Category+"/" #HctoWA Test
+#SamplePath="/gv0/Users/jbhyun/SKFlat/TrigStudy/"+Year+"/" #TrigStudy
+SamplePath="/gv0/DATA/SKFlat/"+VerProc+"/"+Year+"/"+DataType+"/"+Category+"/" #Normal samples
 OverWrite = True
 Verbose = True
 
@@ -46,7 +53,6 @@ for it_proc in Arr_Sample:
 
   os.system("touch "+Path_SmplPath)
   os.system("find "+SamplePath+InputDirName+" -name *root >> "+Path_SmplPath)
-
   os.system("touch "+Path_Smplinfo)
   os.system("echo \"# alias PD xsec nmc sumw\" >> "+Path_Smplinfo)
   CountInfo = subprocess.check_output("root -l -b -q \""+CalcCodePath+"LumiWCalc.C(\\\""+Path_SmplPath+"\\\")\"", shell=True);

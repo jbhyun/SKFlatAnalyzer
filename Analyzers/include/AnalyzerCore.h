@@ -259,6 +259,7 @@ public:
   std::vector<Jet> SelLightJets(std::vector<Jet>& jetColl, JetTagging::Parameters jtp);
   std::vector<int> GetSFBJetIdx(std::vector<Jet>& jetColl, JetTagging::Parameters jtp);
   std::vector<int> GetSFLJetIdx(std::vector<Jet>& jetColl, JetTagging::Parameters jtp);
+  float GetvPz(Lepton& Lep, Particle& vMET, TString Option="");
   float GetMuonSF(std::vector<Muon>& muonColl, TString SFKey, TString Option="");
   float GetElectronSF(std::vector<Electron>& electronColl, TString SFKey, TString Option="");
   float GetKFactor();
@@ -270,6 +271,7 @@ public:
   int   SumCharge(vector<Muon>& MuColl);
   int   SumCharge(vector<Electron>& ElColl);
   int   TriMuChargeIndex(vector<Muon>& MuonColl, TString charge);
+  int   TriElChargeIndex(vector<Electron>& ElectronColl, TString charge);
   TString GetDataPeriod();
 
   int  GenMatchedIdx(Lepton& Lep, std::vector<Gen>& truthColl);

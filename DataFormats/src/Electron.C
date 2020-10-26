@@ -156,8 +156,10 @@ bool Electron::PassID(TString ID) const{
   if(ID=="passHEEPID2018Prompt") return passHEEP2018Prompt();
   if(ID=="passMVAID_noIso_WP80") return passMVAID_noIso_WP80();
   if(ID=="passMVAID_noIso_WP90") return passMVAID_noIso_WP90();
+  if(ID=="passMVAID_noIso_WPLoose") return passMVAID_noIso_WPLoose();
   if(ID=="passMVAID_iso_WP80") return passMVAID_iso_WP80();
   if(ID=="passMVAID_iso_WP90") return passMVAID_iso_WP90();
+  if(ID=="passMVAID_iso_WPLoose") return passMVAID_iso_WPLoose();
   //==== Customized
   if(ID=="SUSYTight") return Pass_SUSYTight();
   if(ID=="SUSYLoose") return Pass_SUSYLoose();
@@ -187,6 +189,80 @@ bool Electron::PassID(TString ID) const{
     if(!PassConversionVeto()) return false;
     if(!Pass_CaloIdL_TrackIdL_IsoVL16()) return false;
     if(!(fabs(Eta())<2.5)) return false;
+    return true;
+  }
+  if(ID=="POGMVAni90HLT172lCv"){
+    if(!passMVAID_noIso_WP90()) return false;
+    if(!Pass_CaloIdL_TrackIdL_IsoVL17()) return false;
+    if(!PassConversionVeto()) return false;
+    if(!(fabs(Eta())<2.5)) return false;
+    return true;
+  }
+  if(ID=="TopHN17T"){
+    if(! passMVAID_noIso_WP90()          ) return false;
+    if(! (MiniRelIso()<0.1)              ) return false;
+    if(! (IP3Derr()!=0. && fabs(IP3D()/IP3Derr())<4.) ) return false;
+    if(! (fabs(dZ())<0.1)                ) return false;
+    if(! Pass_CaloIdL_TrackIdL_IsoVL17() ) return false;
+    if(! PassConversionVeto()            ) return false;
+    if(! (NMissingHits()<2)              ) return false;
+    if(! (fabs(Eta())<2.5)               ) return false;
+    return true;
+  }
+  if(ID=="TopHN17L"){
+    if(! passMVAID_noIso_WPLoose()       ) return false;
+    if(! (MiniRelIso()<0.4)              ) return false;
+    if(! (IP3Derr()!=0. && fabs(IP3D()/IP3Derr())<4.) ) return false;
+    if(! (fabs(dZ())<0.1)                ) return false;
+    if(! Pass_CaloIdL_TrackIdL_IsoVL17() ) return false;
+    if(! PassConversionVeto()            ) return false;
+    if(! (NMissingHits()<2)              ) return false;
+    if(! (fabs(Eta())<2.5)               ) return false;
+    return true;
+  }
+  if(ID=="TopHN17SST"){
+    if(! passMVAID_noIso_WP90()          ) return false;
+    if(! (MiniRelIso()<0.1)              ) return false;
+    if(! (IP3Derr()!=0. && fabs(IP3D()/IP3Derr())<4.) ) return false;
+    if(! (fabs(dZ())<0.1)                ) return false;
+    if(! Pass_CaloIdL_TrackIdL_IsoVL17() ) return false;
+    if(! PassConversionVeto()            ) return false;
+    if(! (NMissingHits()<2)              ) return false;
+    if(! (fabs(Eta())<2.5)               ) return false;
+    if(! IsGsfCtfScPixChargeConsistent() ) return false;
+    return true;
+  }
+  if(ID=="TopHN17SSL"){
+    if(! passMVAID_noIso_WPLoose()       ) return false;
+    if(! (MiniRelIso()<0.4)              ) return false;
+    if(! (IP3Derr()!=0. && fabs(IP3D()/IP3Derr())<4.) ) return false;
+    if(! (fabs(dZ())<0.1)                ) return false;
+    if(! Pass_CaloIdL_TrackIdL_IsoVL17() ) return false;
+    if(! PassConversionVeto()            ) return false;
+    if(! (NMissingHits()<2)              ) return false;
+    if(! (fabs(Eta())<2.5)               ) return false;
+    if(! IsGsfCtfScPixChargeConsistent() ) return false;
+    return true;
+  }
+
+  if(ID=="TopHN17T_NoHLT"){
+    if(! passMVAID_noIso_WP90()          ) return false;
+    if(! (MiniRelIso()<0.1)              ) return false;
+    if(! (IP3Derr()!=0. && fabs(IP3D()/IP3Derr())<4.) ) return false;
+    if(! (fabs(dZ())<0.1)                ) return false;
+    if(! PassConversionVeto()            ) return false;
+    if(! (NMissingHits()<2)              ) return false;
+    if(! (fabs(Eta())<2.5)               ) return false;
+    return true;
+  }
+  if(ID=="TopHN17L_NoHLT"){
+    if(! passMVAID_noIso_WPLoose()       ) return false;
+    if(! (MiniRelIso()<0.4)              ) return false;
+    if(! (IP3Derr()!=0. && fabs(IP3D()/IP3Derr())<4.) ) return false;
+    if(! (fabs(dZ())<0.1)                ) return false;
+    if(! PassConversionVeto()            ) return false;
+    if(! (NMissingHits()<2)              ) return false;
+    if(! (fabs(Eta())<2.5)               ) return false;
     return true;
   }
 
@@ -278,7 +354,7 @@ bool Electron::Pass_SUSYLoose() const{
 
 bool Electron::Pass_TESTID() const{
   if(! passMVAID_noIso_WP90() ) return false;
-  if(! (RelIso()<0.1)         ) return false;
+  if(! (MiniRelIso()<0.1)     ) return false;
   if(! (fabs(dXY())<0.025 && fabs(dZ())<0.1) ) return false;
   if(! (dXYerr()>0. && fabs(dXY()/dXYerr())<4.) ) return false;
   if(! (IP3Derr()>0. && fabs(IP3D()/IP3Derr())<4.) ) return false;
@@ -290,7 +366,7 @@ bool Electron::Pass_TESTID() const{
 
 
 bool Electron::Pass_TESTIDL() const{
-  if(! (RelIso()<0.4)         ) return false;
+  if(! (MiniRelIso()<0.4)  ) return false;
   if(! (fabs(dXY())<0.025 && fabs(dZ())<0.1) ) return false;
   if(! (dXYerr()>0. && fabs(dXY()/dXYerr())<4.) ) return false;
   if(! (IP3Derr()>0. && fabs(IP3D()/IP3Derr())<4.) ) return false;
@@ -304,27 +380,54 @@ bool Electron::Pass_TESTIDL() const{
 
 bool Electron::Pass_CaloIdL_TrackIdL_IsoVL16() const{
   
-  if(Pt()<15) return true;
 
   if( fabs(scEta()) <=1.479 ){
     if(! (Full5x5_sigmaIetaIeta() < 0.012) ) return false;
-    if(! (fabs(dEtaSeed()) < 0.0095) ) return false;
-    if(! (fabs(dPhiIn()) < 0.065) ) return false;
+    if(! (fabs(dEtaSeed()) < 0.01) ) return false;
+    if(! (fabs(dPhiIn()) < 0.07) ) return false;
     if(! (HoverE() < 0.09) ) return false;
     if(! (ecalPFClusterIso() < 0.37*Pt()) ) return false;
     if(! (hcalPFClusterIso() < 0.25*Pt()) ) return false;
-    if(! (TrkIso() < 0.18*Pt()) ) return false; 
+    if(! (dr03TkSumPt() < 0.2*Pt()) ) return false; 
   }
   else{
     if(! (Full5x5_sigmaIetaIeta() < 0.033) ) return false;
+    if(! (fabs(dEtaSeed()) < 0.015) ) return false;
+    if(! (fabs(dPhiIn()) < 0.1) ) return false;
     if(! (HoverE() < 0.09) ) return false;
     if(! (ecalPFClusterIso() < 0.45*Pt()) ) return false;
     if(! (hcalPFClusterIso() < 0.28*Pt()) ) return false;
-    if(! (TrkIso() < 0.18*Pt()) ) return false; 
+    if(! (dr03TkSumPt() < 0.2*Pt()) ) return false; 
   }
 
   return true;
 }
+
+
+bool Electron::Pass_CaloIdL_TrackIdL_IsoVL17() const{
+  
+  if( fabs(scEta()) <=1.479 ){
+    if(! (Full5x5_sigmaIetaIeta() < 0.012) ) return false;
+    if(! (fabs(dEtaSeed()) < 0.01) ) return false;
+    if(! (fabs(dPhiIn()) < 0.07) ) return false;
+    if(! (HoverE() < 0.09) ) return false;
+    if(! (ecalPFClusterIso() < 0.37*Pt()) ) return false;
+    if(! (hcalPFClusterIso() < 0.25*Pt()) ) return false;
+    if(! (dr03TkSumPt() < 0.2*Pt()) ) return false; 
+  }
+  else{
+    if(! (Full5x5_sigmaIetaIeta() < 0.033) ) return false;
+    if(! (fabs(dEtaSeed()) < 0.015) ) return false;
+    if(! (fabs(dPhiIn()) < 0.1) ) return false;
+    if(! (HoverE() < 0.09) ) return false;
+    if(! (ecalPFClusterIso() < 0.45*Pt()) ) return false;
+    if(! (hcalPFClusterIso() < 0.28*Pt()) ) return false;
+    if(! (dr03TkSumPt() < 0.2*Pt()) ) return false; 
+  }
+
+  return true;
+}
+
 
 
 

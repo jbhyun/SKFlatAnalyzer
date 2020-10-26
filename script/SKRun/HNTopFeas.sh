@@ -1,7 +1,8 @@
 #!/bin/bash
 
 ########################################################################
-declare -a List_runModes=("runBkdMC")
+#declare -a List_runModes=("runBkdMC")
+declare -a List_runModes=("runBkdMC" "runSigMC")
 #declare -a List_runModes=("runData")
 #declare -a List_runModes=("runBkdMC" "runData")
 
@@ -9,14 +10,14 @@ declare -a List_runModes=("runBkdMC")
 ## RUN PARAMETERS
 
 AnalysisCode="HNTopFeas" 
-FinalState="DiMuon" #ElDiMu / TriMu / TetraLepton / DiMuon
-Skim=""
-Year="2018"
-RunningMode="SS2l" #MuMuMu / ElMuMu / TetraLep / SS2l
+FinalState="DiMuon" #"DiMuon" #ElDiMu / TriMu / TetraLepton / DiMuon
+Skim="SkimTree_SS2lOR3l"
+Year="2017"
+RunningMode="SS2l" #"SS2l,SSMuMu" #MuMuMu / ElMuMu / TetraLep / SS2l
 
 NJobs=""
 Memory=""
-NJobMax=""
+NJobMax="200"
 NEvtMax="100000"
 NSkipEvt=""
 ReductionFactor="" #"10"

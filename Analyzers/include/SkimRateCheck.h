@@ -7,6 +7,11 @@ class SkimRateCheck : public AnalyzerCore {
 
 public:
 
+
+  bool SS2lOR3lRate, TrigInfoRate; 
+  void CheckSSOR3lSkim();
+  void CheckTrigInfoSkim();
+
   void initializeAnalyzer();
   void executeEventFromParameter(AnalyzerParameter param);
   void executeEvent();

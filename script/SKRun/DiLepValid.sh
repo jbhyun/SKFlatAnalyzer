@@ -1,26 +1,26 @@
 #!/bin/bash
 
 ########################################################################
-#declare -a List_runModes=("runBkdMC")
-declare -a List_runModes=("runData")
+declare -a List_runModes=("runBkdMC")
+#declare -a List_runModes=("runData")
 #declare -a List_runModes=("runBkdMC" "runData")
 
 ########################################################################
 ## RUN PARAMETERS
 
 AnalysisCode="DiLepValid" 
-FinalState="ElectronMuon" #DiMuon / DiElectron / ElectronMuon
+FinalState="DiElectron" #DiMuon / DiElectron / ElectronMuon
 Skim=""
-Year="2018"
-RunningMode="ElMu,HEMCheck" #MuMu / ElEl / ElMu / TrigEffMeas
+Year="2017"
+RunningMode="ElEl" #"ElMu,HEMCheck" #MuMu / ElEl / ElMu / TrigEffMeas
 
 NJobs=""
 Memory=""
-NJobMax=""
+NJobMax="100"
 NEvtMax="100000"
 NSkipEvt=""
 ReductionFactor="" #"10"
-runDebug="True"
+runDebug="False"
 
 # Options:
 # List_runModes   - run on RD, BkdMC, SigMC, 
@@ -108,7 +108,7 @@ do
     echo "SKFlat.py ${Option}" >> CommandHist.txt
 
     if [[ ${runDebug} == "True" ]]; then 
-      sleep 1s
+      sleep 3s
       DirName=$( ls -rt ${SKFlatRunlogDir} | tail -1 ) 
       if [[ ${DirName} == "www"* ]]; then DirName= $( ls -rt ${SKFlatRunlogDir} | tail -2 | head -1 ); fi
       PeriodLabel=""

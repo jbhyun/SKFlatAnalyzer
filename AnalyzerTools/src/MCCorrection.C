@@ -246,13 +246,14 @@ double MCCorrection::MuonID_SF(TString ID, double eta, double pt, int sys){
     eta = fabs(eta);
   }
 
-  if(ID=="NUM_TightID_DEN_genTracks" || ID=="NUM_HighPtID_DEN_genTracks" || ID=="POGTID_genTrk"){
-    //==== boundaries
-    if(pt<20.) pt = 20.;
-    if(pt>=120.) pt = 119.;
-    if(eta>=2.4) eta = 2.39;
-    if(eta<-2.4) eta = -2.4;
+  //==== boundaries
+  double ptmin=10.1, ptmax=199., etamin=-2.39, etamax=2.39;
+  if(ID=="NUM_TightID_DEN_genTracks" || ID=="NUM_HighPtID_DEN_genTracks" || ID=="POGTID_genTrk" || ID=="POGMID_genTrk"){
+    ptmin = 20.1, ptmax = 119., etamin = -2.39, etamax = 2.39;
   }
+  else if(ID.Contains("HNTop")){ ptmin=10.1, ptmax=199., etamin=-2.39, etamax=2.39; }
+  pt = min(max(pt,ptmin),ptmax); eta = min(max(eta,etamin),etamax);
+
 
   TH2F *this_hist = map_hist_Muon["ID_SF_"+ID];
   if(!this_hist){
@@ -294,7 +295,7 @@ double MCCorrection::MuonISO_SF(TString ID, double eta, double pt, int sys){
     eta = fabs(eta);
   }
 
-  if(ID=="NUM_TightRelIso_DEN_TightIDandIPCut" || ID=="NUM_LooseRelTkIso_DEN_HighPtIDandIPCut" || ID=="POGTIso_POGTID"){
+  if(ID=="NUM_TightRelIso_DEN_TightIDandIPCut" || ID=="NUM_LooseRelTkIso_DEN_HighPtIDandIPCut" || ID=="POGTIso_POGTID" || ID=="POGTIso_POGMID"){
     //==== boundaries
     if(pt<20.) pt = 20.;
     if(pt>=120.) pt = 119.;

@@ -1,5 +1,5 @@
 #!/bin/bash
 
-rootmv Pileup_reweight_69p2_mb.root:WZTo3LNu_central Pileup_reweight_69p2_mb.root:WZTo3LNu_powheg_central
-rootmv Pileup_reweight_69p2_mb.root:WZTo3LNu_sig_down Pileup_reweight_69p2_mb.root:WZTo3LNu_powheg_sig_down
-rootmv Pileup_reweight_69p2_mb.root:WZTo3LNu_sig_up Pileup_reweight_69p2_mb.root:WZTo3LNu_powheg_sig_up
+rootmv Pileup_reweight_69p2_mb.root:DYJets_central Pileup_reweight_69p2_mb.root:DYJets_Old_central
+rootmv Pileup_reweight_69p2_mb.root:DYJets_sig_down Pileup_reweight_69p2_mb.root:DYJets_Old_sig_down
+rootmv Pileup_reweight_69p2_mb.root:DYJets_sig_up Pileup_reweight_69p2_mb.root:DYJets_Old_sig_up

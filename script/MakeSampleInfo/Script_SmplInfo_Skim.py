@@ -6,12 +6,12 @@ if not "SKFlat_WD" in os.environ:
   print("Set up SKFlat environment."); exit(); 
 
 #[PD(Or PrivateMC dir name), alias, xsec(fb)]
-Arr_MCSample = [#16
-  "DYJets", "TTLL_powheg", "ZZTo4L_powheg", "ggHToZZTo4L", "VBF_HToZZTo4L", "ttHToNonbb", "ttZToLLNuNu", "WWZ", "WZZ", "ZZZ",
-  "WZTo3LNu_powheg", "ttWToLNu", "WWW",  #Only Trilep  
-  "WJets_MG", "TTLJ_powheg", #Only SS2l
-  "WGToLNuG", "ZGTo2LG", "TTG", "TG", "VHToNonbb", "WpWp_EWK", "WpWp_QCD", 
-]
+#Arr_MCSample = [#16
+#  "DYJets", "TTLL_powheg", "ZZTo4L_powheg", "ggHToZZTo4L", "VBF_HToZZTo4L", "ttHToNonbb", "ttZToLLNuNu", "WWZ", "WZZ", "ZZZ",
+#  "WZTo3LNu_powheg", "ttWToLNu", "WWW",  #Only Trilep  
+#  "WJets_MG", "TTLJ_powheg", #Only SS2l
+#  "WGToLNuG", "ZGTo2LG", "TTG", "TG", "VHToNonbb", "WpWp_EWK", "WpWp_QCD", 
+#]
 #Arr_MCSample = [#17
 #  "DYJets", "TTLL_powheg", 
 #  "ZZTo4L_powheg", "ggHToZZTo4L", "VBF_HToZZTo4L", "ttHToNonbb", "ttZToLLNuNu", "WWZ", "WZZ", "ZZZ", 
@@ -19,6 +19,11 @@ Arr_MCSample = [#16
 #  "WJets_MG", "TTLJ_powheg", #Only SS2l
 #  "WGToLNuG_01J", "ZGToLLG_01J", "TTG", "TG", "VHToNonbb", "WpWp_EWK", "WpWp_QCD",
 #]
+Arr_MCSample =["TT_TTobNMu_SS2L_LO_MN20", "TT_TTobNMu_SS2L_LO_MN50", "TT_TTobNMu_SS2L_LO_MN100",
+               "TT_TTobNMu_LepTop3L_LO_MN20", "TT_TTobNMu_LepTop3L_LO_MN50", "TT_TTobNMu_LepTop3L_LO_MN100",
+               "TT_TTobNMu_HadTop3L_LO_MN20", "TT_TTobNMu_HadTop3L_LO_MN50", "TT_TTobNMu_HadTop3L_LO_MN100",
+               "TT_TTobNMu_4L_LO_MN20", "TT_TTobNMu_4L_LO_MN50", "TT_TTobNMu_4L_LO_MN100"]
+
 #Arr_MCSample = [#18
 #  "DYJets", "TTLL_powheg", 
 #  "ZZTo4L_powheg", "ggHToZZTo4L", "VBF_HToZZTo4L", "ttHToNonbb", "ttZToLLNuNu", "WWZ", "WZZ", "ZZZ", 
@@ -45,8 +50,8 @@ Arr_DataSample = [#16
 
 
 VerProc="Run2Legacy_v4"
-Year="2016"
-DataType="DATA" #MC/DATA
+Year="2017"
+DataType="MC" #MC/DATA
 #DataType="DATA" #MC/DATA
 SkimName="SS2lOR3l"
 SamplePath="/gv0/DATA/SKFlat/"+VerProc+"/"+Year+"/"+DataType+"_SkimTree_"+SkimName+"/"

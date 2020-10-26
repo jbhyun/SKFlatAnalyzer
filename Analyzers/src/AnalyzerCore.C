@@ -2403,6 +2403,31 @@ int AnalyzerCore::TriMuChargeIndex(vector<Muon>& MuonColl, TString charge){
 
 
 
+int AnalyzerCore::TriElChargeIndex(vector<Electron>& ElectronColl, TString charge){
+    //First Choose 2SS, 1OS muons(++- or --+) SS means 2 of them having same sign, OS means 1 of them having different sign from others.
+    // charge="OS" will return the index of muon that having different charge from other 2,
+    // charge="SS1" will return the index of first muon that having same sign
+    // charge="SS2" will return the index of second muon that having same sign
+
+    if(ElectronColl.size()!=3) return -1;
+    if(fabs(SumCharge(ElectronColl))>1) return -1;
+
+    int IdxOS=-1, IdxSS1=-1, IdxSS2=-1;
+    if     (ElectronColl.at(0).Charge()==ElectronColl.at(1).Charge()){ IdxSS1=0, IdxSS2=1, IdxOS=2; }
+    else if(ElectronColl.at(0).Charge()==ElectronColl.at(2).Charge()){ IdxSS1=0, IdxSS2=2, IdxOS=1; }
+    else if(ElectronColl.at(1).Charge()==ElectronColl.at(2).Charge()){ IdxSS1=1, IdxSS2=2, IdxOS=0; }
+
+    int ReturnIdx=-1;
+    if     (charge.Contains("OS") ) ReturnIdx=IdxOS;
+    else if(charge.Contains("SS1")) ReturnIdx=IdxSS1;
+    else if(charge.Contains("SS2")) ReturnIdx=IdxSS2;
+
+    return ReturnIdx;
+}
+
+
+
+
 TString AnalyzerCore::GetDataPeriod(){
 
   TString Period = "";
@@ -2838,3 +2863,18 @@ int AnalyzerCore::GetPhotonType_JH(int PhotonIdx, std::vector<Gen>& TruthColl){
 
 //------------------------------------------------------------------------------------------//
 
+
+float AnalyzerCore::GetvPz(Lepton& Lep, Particle& vMET, TString Option){
+  float RecoPzv1=0, RecoPzv2=0, RecoPz=0;
+  float X=80.4*80.4/2+Lep.Px()*vMET.Px()+Lep.Py()*vMET.Py();
+  float D=Lep.E()*Lep.E()*(X*X-vMET.Pt()*vMET.Pt()*Lep.Pt()*Lep.Pt());
+  if(D<0) D=0;
+  RecoPzv1 = (Lep.Pz()*X+sqrt(D))/(Lep.Pt()*Lep.Pt());
+  RecoPzv2 = (Lep.Pz()*X-sqrt(D))/(Lep.Pt()*Lep.Pt());
+  
+  if     (Option.Contains("+")) RecoPz=RecoPzv1;
+  else if(Option.Contains("-")) RecoPz=RecoPzv2;
+  else RecoPz = abs(RecoPzv1)<abs(RecoPzv2)? RecoPzv1:RecoPzv2;
+
+  return RecoPz;
+}

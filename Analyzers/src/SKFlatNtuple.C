@@ -101,6 +101,13 @@ void SKFlatNtuple::Init()
 
    // Set object pointer
    HLT_TriggerName = 0;
+   if(MCSample.Contains("Trig") or DataStream.Contains("Trig")){
+     HLTObject_pt = 0; //TrigStudy
+     HLTObject_eta = 0; //TrigStudy
+     HLTObject_phi = 0;  //TrigStudy
+     HLTObject_FiredPaths = 0; //TrigStudy
+     HLTObject_FiredFilters = 0; //TrigStudy
+   }
    jet_pt = 0;
    jet_eta = 0;
    jet_phi = 0;
@@ -445,6 +452,13 @@ void SKFlatNtuple::Init()
    fChain->SetBranchAddress("vertex_Y", &vertex_Y, &b_PVy);
    fChain->SetBranchAddress("vertex_Z", &vertex_Z, &b_PVz);
    fChain->SetBranchAddress("HLT_TriggerName", &HLT_TriggerName, &b_HLT_TriggerName);
+   if(MCSample.Contains("Trig") or DataStream.Contains("Trig")){
+     fChain->SetBranchAddress("HLTObject_pt", &HLTObject_pt, &b_HLTObject_pt); //TrigStudy
+     fChain->SetBranchAddress("HLTObject_eta", &HLTObject_eta, &b_HLTObject_eta); //TrigStudy
+     fChain->SetBranchAddress("HLTObject_phi", &HLTObject_phi, &b_HLTObject_phi); //TrigStudy
+     fChain->SetBranchAddress("HLTObject_FiredFilters", &HLTObject_FiredFilters, &b_HLTObject_FiredFilters); //TrigStudy
+     fChain->SetBranchAddress("HLTObject_FiredPaths", &HLTObject_FiredPaths, &b_HLTObject_FiredPaths); //TrigStudy
+   }
    fChain->SetBranchAddress("jet_pt", &jet_pt, &b_jet_pt);
    fChain->SetBranchAddress("jet_eta", &jet_eta, &b_jet_eta);
    fChain->SetBranchAddress("jet_phi", &jet_phi, &b_jet_phi);

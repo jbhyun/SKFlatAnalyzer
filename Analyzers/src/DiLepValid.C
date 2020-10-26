@@ -14,19 +14,27 @@ void DiLepValid::initializeAnalyzer(){
   }
 
   if(MuMu){
-    if(DataYear==2016){ TrigList.push_back("HLT_IsoMu24_v"); TrigList.push_back("HLT_IsoTkMu24_v"); SFKey_Trig="IsoORTkIsoMu24_POGTight";}
-    if(DataYear==2017){ TrigList.push_back("HLT_IsoMu27_v"); SFKey_Trig="IsoMu27_POGTight";}
-    if(DataYear==2018){ TrigList.push_back("HLT_IsoMu24_v"); SFKey_Trig="IsoMu24_POGTight";}
+    //if(DataYear==2016){ TrigList.push_back("HLT_IsoMu24_v"); TrigList.push_back("HLT_IsoTkMu24_v"); SFKey_Trig="IsoORTkIsoMu24_POGTight";}
+    //if(DataYear==2017){ TrigList.push_back("HLT_IsoMu27_v"); SFKey_Trig="IsoMu27_POGTight";}
+    //if(DataYear==2018){ TrigList.push_back("HLT_IsoMu24_v"); SFKey_Trig="IsoMu24_POGTight";}
+    if(DataYear==2017){ TrigList.push_back("HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v");
+                        TrigList.push_back("HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v");
+                        TrigList.push_back("HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8_v"); SFKey_Trig="DiMuIso_HNTopID";}
   }
   if(ElEl){
-    if(DataYear==2016){ TrigList.push_back("HLT_Ele27_WPTight_Gsf_v"); SFKey_Trig="Ele27WPTight_POGMVAIsoWP90";}
-    if(DataYear==2017){ TrigList.push_back("HLT_Ele32_WPTight_Gsf_v"); TrigList.push_back("HLT_Ele32_WPTight_Gsf_L1DoubleEG_v"); SFKey_Trig="Ele32WPTight1OR2_POGMVAIsoWP90";}
-    if(DataYear==2018){ TrigList.push_back("HLT_Ele32_WPTight_Gsf_v"); SFKey_Trig="Ele32WPTight_POGMVAIsoWP90";}
+//    if(DataYear==2016){ TrigList.push_back("HLT_Ele27_WPTight_Gsf_v"); SFKey_Trig="Ele27WPTight_POGMVAIsoWP90";}
+//    if(DataYear==2017){ TrigList.push_back("HLT_Ele32_WPTight_Gsf_v"); TrigList.push_back("HLT_Ele32_WPTight_Gsf_L1DoubleEG_v"); SFKey_Trig="Ele32WPTight1OR2_POGMVAIsoWP90";}
+//    if(DataYear==2018){ TrigList.push_back("HLT_Ele32_WPTight_Gsf_v"); SFKey_Trig="Ele32WPTight_POGMVAIsoWP90";}
+    if(DataYear>=2017){ TrigList.push_back("HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_v"); SFKey_Trig="DiElIso_HNTopIDSS"; }
   }
   if(ElMu){
-    if(DataYear==2016){ TrigList.push_back("HLT_IsoMu24_v"); TrigList.push_back("HLT_IsoTkMu24_v"); SFKey_Trig="IsoORTkIsoMu24_POGTight";}
-    if(DataYear==2017){ TrigList.push_back("HLT_IsoMu27_v"); SFKey_Trig="IsoMu27_POGTight";}
-    if(DataYear==2018){ TrigList.push_back("HLT_IsoMu24_v"); SFKey_Trig="IsoMu24_POGTight";}
+//    if(DataYear==2016){ TrigList.push_back("HLT_IsoMu24_v"); TrigList.push_back("HLT_IsoTkMu24_v"); SFKey_Trig="IsoORTkIsoMu24_POGTight";}
+//    if(DataYear==2017){ TrigList.push_back("HLT_IsoMu27_v"); SFKey_Trig="IsoMu27_POGTight";}
+//    if(DataYear==2018){ TrigList.push_back("HLT_IsoMu24_v"); SFKey_Trig="IsoMu24_POGTight";}
+    if(DataYear>=2017){
+      TrigList.push_back("HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v");
+      TrigList.push_back("HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v");
+      SFKey_Trig="EMuIso_HNTopIDSS"; }
   }
 
   //Set up the tagger map only for the param settings to be used.
@@ -50,20 +58,23 @@ void DiLepValid::executeEvent(){
   bool PreCutPass=false;
   std::vector<Muon>     muonPreColl     = GetMuons("NOCUT", 5., 2.4);
   std::vector<Electron> electronPreColl = GetElectrons("NOCUT", 5., 2.5);
+  std::sort(muonPreColl.begin(), muonPreColl.end(), PtComparing);
+  std::sort(electronPreColl.begin(), electronPreColl.end(), PtComparing);
   if(ElEl and electronPreColl.size()>1) PreCutPass=true;
   if(MuMu and muonPreColl.size()>1    ) PreCutPass=true;
   if(ElMu and electronPreColl.size()>0 && muonPreColl.size()>0) PreCutPass=true;
   if(!PreCutPass) return;
 
 
-  std::vector<Muon>     muonTightColl     = SelectMuons(muonPreColl, "POGTightWithTightIso", 20., 2.4);
-  std::vector<Electron> electronTightColl = SelectElectrons(electronPreColl, "passMVAID_iso_WP90", 20., 2.5);
-  std::vector<Muon>     muonLooseColl     = SelectMuons(muonPreColl, "POGIDTIsoVVL", 10., 2.4);
-  std::vector<Electron> electronLooseColl = SelectElectrons(electronPreColl, "passMVAID_iso_WP90", 10., 2.5);
+  std::vector<Muon>     muonTightColl     = SelectMuons(muonPreColl, "TopHN17T", 10., 2.4);
+  std::vector<Electron> electronTightColl = SelectElectrons(electronPreColl, "TopHN17SST", 10., 2.5);
+  std::vector<Muon>     muonLooseColl     = SelectMuons(muonPreColl, "TopHN17L", 10., 2.4);
+  std::vector<Electron> electronLooseColl = SelectElectrons(electronPreColl, "TopHN17SSL", 10., 2.5);
 
 
   JetTagging::Parameters param_jets = JetTagging::Parameters(JetTagging::DeepCSV, JetTagging::Medium, JetTagging::incl, JetTagging::mujets);
   std::vector<Jet> jetNoVetoColl  = GetJets("tight", 25., 2.4);
+  std::sort(jetNoVetoColl.begin(), jetNoVetoColl.end(), PtComparing);
   std::vector<Jet> bjetNoVetoColl = SelBJets(jetNoVetoColl, param_jets);
   std::vector<Jet> jetColl  = JetsVetoLeptonInside(jetNoVetoColl, electronLooseColl, muonLooseColl, 0.4);
   std::vector<Jet> bjetColl = SelBJets(jetColl, param_jets);
@@ -83,18 +94,20 @@ void DiLepValid::executeEvent(){
 
   float w_gen = 1., w_filter = 1., w_topptrw = 1., w_lumi = 1., w_PU = 1., w_prefire = 1., sf_trig = 1.;
   float sf_mutk = 1., sf_muid = 1., sf_muiso = 1., sf_elreco = 1., sf_elid = 1., sf_btag = 1.;
+  float pogsf=1., pogsf2=1.;
   if((!IsDATA) and EventCand){
     if(MCSample.Contains("TT") and MCSample.Contains("powheg")) truthColl = GetGens();
     w_gen     = ev.MCweight();
-//    w_filter  = GetGenFilterEffCorr();
+    //w_filter  = GetGenFilterEffCorr();
     w_topptrw = mcCorr->GetTopPtReweight(truthColl);
     w_lumi    = weight_norm_1invpb*GetKFactor()*ev.GetTriggerLumi("Full");
     w_PU      = GetPileUpWeight(nPileUp, 0);
     w_prefire = GetPrefireWeight(0);
-    sf_muid   = GetMuonSF(muonTightColl, "POGTID_genTrk", "ID");
-    sf_muiso  = GetMuonSF(muonTightColl, "POGTIso_POGTID", "Iso");
+    sf_muid   = GetMuonSF(muonTightColl, "TopHNID_TkMu", "ID");
+    //pogsf     = GetMuonSF(muonTightColl, "POGMID_genTrk", "ID")*GetMuonSF(muonTightColl, "POGTIso_POGMID", "Iso");
+    //pogsf2    = GetMuonSF(muonTightColl, "POGTID_genTrk", "ID")*GetMuonSF(muonTightColl, "POGTIso_POGTID", "Iso");
     sf_elreco = GetElectronSF(electronTightColl, "", "Reco");
-    sf_elid   = GetElectronSF(electronTightColl, "POGMVAIsoWP90", "ID");
+    sf_elid   = GetElectronSF(electronTightColl, "TopHNIDSS", "ID");
     sf_btag   = mcCorr->GetBTaggingReweight_1a(jetColl, param_jets);
     sf_trig   = mcCorr->GetTriggerSF(electronTightColl, muonTightColl, SFKey_Trig, "");
     //cout<<"w_gen:"<<w_gen<<" w_lumi:"<<w_lumi<<" w_PU:"<<w_PU<<" w_prefire:"<<w_prefire<<" sf_trig:"<<sf_trig<<endl;
@@ -115,6 +128,9 @@ void DiLepValid::executeEvent(){
       AnalyzeDiMuon(muonTightColl, muonLooseColl, electronTightColl, electronLooseColl, jetColl, bjetColl, vMET, w_gen*w_lumi*w_prefire*w_PU, "_PrefPU");
       AnalyzeDiMuon(muonTightColl, muonLooseColl, electronTightColl, electronLooseColl, jetColl, bjetColl, vMET, w_gen*w_lumi*w_prefire*w_PU*sf_muid*sf_muiso, "_PrefPUID");
       AnalyzeDiMuon(muonTightColl, muonLooseColl, electronTightColl, electronLooseColl, jetColl, bjetColl, vMET, w_gen*w_lumi*w_prefire*w_PU*sf_muid*sf_muiso*sf_trig, "_PrefPUIDTrig");
+      AnalyzeDiMuon(muonTightColl, muonLooseColl, electronTightColl, electronLooseColl, jetColl, bjetColl, vMET, w_gen*w_lumi*w_prefire*w_PU*pogsf*sf_trig, "_PrefPUIDTrig_POG");
+      AnalyzeDiMuon(muonTightColl, muonLooseColl, electronTightColl, electronLooseColl, jetColl, bjetColl, vMET, w_gen*w_lumi*w_prefire*w_PU*pogsf2*sf_trig, "_PrefPUIDTrig_POG2");
+      AnalyzeDiMuon(muonTightColl, muonLooseColl, electronTightColl, electronLooseColl, jetColl, bjetColl, vMET, w_gen*w_lumi*w_prefire*w_PU*sf_trig, "_PrefPUTrig");
     }
   }
   if(ElEl){
@@ -167,8 +183,9 @@ void DiLepValid::AnalyzeDiMuon(std::vector<Muon>& MuTColl, std::vector<Muon>& Mu
 {
   if( !(MuTColl.size()==2 && MuLColl.size()==2) ) return;
   if( ElLColl.size()!=0 ) return;
-  if( DataYear==2016 or DataYear==2018 ){ if(MuTColl.at(0).Pt()<26) return; }
-  else{                                   if(MuTColl.at(0).Pt()<29) return; }
+  //if( DataYear==2016 or DataYear==2018 ){ if(MuTColl.at(0).Pt()<26) return; }
+  //else{                                   if(MuTColl.at(0).Pt()<29) return; }
+  if( !(MuTColl.at(0).Pt()>20 && MuTColl.at(1).Pt()>10) ) return;
   if( MuTColl.at(0).Charge() == MuTColl.at(1).Charge() ) return;
   
   float Mmumu = (MuTColl.at(0)+MuTColl.at(1)).M();
@@ -193,10 +210,10 @@ void DiLepValid::AnalyzeDiElectron(std::vector<Muon>& MuTColl, std::vector<Muon>
 {
   if( !(ElTColl.size()==2 && ElLColl.size()==2) ) return;
   if( MuLColl.size()!=0 ) return;
+  if( !(ElTColl.at(0).Pt()>25 && ElTColl.at(1).Pt()>15) ) return; 
   if( ElTColl.at(0).Charge() == ElTColl.at(1).Charge() ) return;
-  if( DataYear==2016 ){ if(ElTColl.at(0).Pt()<30) return; }
-  else                { if(ElTColl.at(0).Pt()<35) return; }
-  if( !(fabs(ElTColl.at(0).Eta())<2.5 && fabs(ElTColl.at(1).Eta())<2.5) ) return;
+  //if( DataYear==2016 ){ if(ElTColl.at(0).Pt()<30) return; }
+  //else                { if(ElTColl.at(0).Pt()<35) return; }
 
   float Melel = (ElTColl.at(0)+ElTColl.at(1)).M();
   if(Melel<50) return;
@@ -223,10 +240,14 @@ void DiLepValid::AnalyzeElectronMuon(std::vector<Muon>& MuTColl, std::vector<Muo
   if( !(MuTColl.size()==1 && MuLColl.size()==1) ) return;
   if( !(JetColl.size()>1 && BJetColl.size()>0) ) return;
   if( MuTColl.at(0).Charge() == ElTColl.at(0).Charge() ) return;
-  if( fabs(ElTColl.at(0).Eta())>2.5 ) return;
   if( MuTColl.at(0).DeltaR(ElTColl.at(0))<0.4 ) return;
-  if( DataYear==2016 or DataYear==2018 ){ if(MuTColl.at(0).Pt()<26) return; }
-  else{                                   if(MuTColl.at(0).Pt()<29) return; }
+  //if( DataYear==2016 or DataYear==2018 ){ if(MuTColl.at(0).Pt()<26) return; }
+  //else{                                   if(MuTColl.at(0).Pt()<29) return; }
+  if(!(MuTColl.at(0).Pt()>10 && ElTColl.at(0).Pt()>15)) return; 
+  if(!(MuTColl.at(0).Pt()>25 || ElTColl.at(0).Pt()>25)) return; 
+  //if(!(MuTColl.at(0).Pt()>25 && ElTColl.at(0).Pt()>15)) return; 
+  //if(!(MuTColl.at(0).Pt()>10 && ElTColl.at(0).Pt()>25)) return; 
+
 
   FillHist("NCount"+Label, 0., weight, 1, 0., 1.);
   FillHist("NPV"+Label, nPV, weight, 80, 0., 80.);

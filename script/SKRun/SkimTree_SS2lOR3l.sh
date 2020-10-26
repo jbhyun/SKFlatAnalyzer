@@ -1,22 +1,22 @@
 #!/bin/bash
 
 ########################################################################
-#declare -a List_runModes=("runBkdMC")
-declare -a List_runModes=("runData")
+declare -a List_runModes=("runSigMC")
+#declare -a List_runModes=("runData")
 #declare -a List_runModes=("runBkdMC" "runData")
 
 ########################################################################
 ## RUN PARAMETERS
 
 AnalysisCode="SkimTree_SS2lOR3l" #SkimTree_SS2lOR3l / SkimRateCheck 
-FinalState="SS2lOR3l" #ElDiMu / TriMu / TetraLepton / DiMuon
+FinalState="SS2lOR3l" #"TrigInfo" #"SS2lOR3l" / "TrigInfo"
 Skim="" #"SkimTree_SS2lOR3l"
-Year="2018"
+Year="2017"
 RunningMode="" #MuMuMu / ElMuMu / TetraLep / SS2l
 
 NJobs=""
 Memory=""
-NJobMax="50"
+NJobMax="70"
 NEvtMax="100000"
 NSkipEvt=""
 ReductionFactor="" #"10"

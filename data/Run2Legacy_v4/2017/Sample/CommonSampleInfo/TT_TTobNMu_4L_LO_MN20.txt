@@ -1,0 +1,2 @@
+# alias PD xsec nmc sumw
+TT_TTobNMu_4L_LO_MN20	preliminary_TTbarTypeIHeavyN-Mu_4L_LO_MN20	1.0	186000	186000

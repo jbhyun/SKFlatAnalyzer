@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ########################################################################
-declare -a List_runModes=("runSigMC")
+declare -a List_runModes=("runBkdMC")
 #declare -a List_runModes=("runData")
 #declare -a List_runModes=("runBkdMC" "runData")
 
@@ -20,7 +20,7 @@ NJobMax="100"
 NEvtMax="100000"
 NSkipEvt=""
 ReductionFactor="" #"10"
-runDebug="False"
+runDebug="True"
 
 # Options:
 # List_runModes   - run on RD, BkdMC, SigMC, 

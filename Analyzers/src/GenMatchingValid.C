@@ -103,16 +103,16 @@ void GenMatchingValid::executeEvent(){
     truthColl = GetGens();
     CheckPhotonMatching(muonTightColl, muonLooseColl, electronTightColl, electronLooseColl,
                         jetColl, bjetColl, vMET_xyCorr, ev, truthColl, weight, "_TESTID");
-    CheckPhotonMatching(muonTightColl, muonLooseColl, electronPreColl, electronPreColl,
-                        jetColl, bjetColl, vMET_xyCorr, ev, truthColl, weight, "_TESTIDNoConv");
-    CheckPhotonMatching(muonTightColl, muonLooseColl, electronPreColl, electronPreColl,
-                        jetColl, bjetColl, vMET_xyCorr, ev, truthColl, weight, "_TESTIDNoIP");
-    CheckPhotonMatching(muonTightColl, muonLooseColl, electronPreColl, electronPreColl,
-                        jetColl, bjetColl, vMET_xyCorr, ev, truthColl, weight, "_CBPOGT");
-    CheckPhotonMatching(muonTightColl, muonLooseColl, electronPreColl, electronPreColl,
-                        jetColl, bjetColl, vMET_xyCorr, ev, truthColl, weight, "_CBPOGM");
-    CheckPhotonMatching(muonTightColl, muonLooseColl, electronPreColl, electronPreColl,
-                        jetColl, bjetColl, vMET_xyCorr, ev, truthColl, weight, "_NoID");
+//    CheckPhotonMatching(muonTightColl, muonLooseColl, electronPreColl, electronPreColl,
+//                        jetColl, bjetColl, vMET_xyCorr, ev, truthColl, weight, "_TESTIDNoConv");
+//    CheckPhotonMatching(muonTightColl, muonLooseColl, electronPreColl, electronPreColl,
+//                        jetColl, bjetColl, vMET_xyCorr, ev, truthColl, weight, "_TESTIDNoIP");
+//    CheckPhotonMatching(muonTightColl, muonLooseColl, electronPreColl, electronPreColl,
+//                        jetColl, bjetColl, vMET_xyCorr, ev, truthColl, weight, "_CBPOGT");
+//    CheckPhotonMatching(muonTightColl, muonLooseColl, electronPreColl, electronPreColl,
+//                        jetColl, bjetColl, vMET_xyCorr, ev, truthColl, weight, "_CBPOGM");
+//    CheckPhotonMatching(muonTightColl, muonLooseColl, electronPreColl, electronPreColl,
+//                        jetColl, bjetColl, vMET_xyCorr, ev, truthColl, weight, "_NoID");
   }
   if(LepTypeValid){
     truthColl = GetGens();
@@ -326,7 +326,7 @@ void GenMatchingValid::CheckPhotonMatching(
 vector<Muon>& MuTColl, vector<Muon>& MuLColl, vector<Electron>& ElTColl, vector<Electron>& ElLColl,
 vector<Jet>& JetColl, vector<Jet>& BJetColl, Particle& vMET, Event& ev, vector<Gen>& TruthColl, float weight, TString Label)
 {
-  bool CheckIsFinalPhotonSt23=false, CheckdRGmEl=true, CheckPhotonStatus=false;
+  bool CheckIsFinalPhotonSt23=true, CheckdRGmEl=false, CheckPhotonStatus=false;
 
   if(CheckPhotonStatus){
 
@@ -479,7 +479,7 @@ vector<Jet>& JetColl, vector<Jet>& BJetColl, Particle& vMET, Event& ev, vector<G
         FillHist("NEl_R04"+Label, NEl_R04, 1, 10, 0., 10.);
       }
         
-      bool PrintLog=false;
+      bool PrintLog=true;
       if(PrintLog){ PrintGen(TruthColl); printf("St23PhotonIdx: %d\n", St23GmIdx);}
     }
   }

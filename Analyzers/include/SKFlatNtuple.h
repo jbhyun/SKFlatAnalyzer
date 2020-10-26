@@ -98,6 +98,11 @@ public :
    Double_t        vertex_Y;
    Double_t        vertex_Z;
    vector<string>  *HLT_TriggerName;
+   vector<double>  *HLTObject_pt; //TrigStudy
+   vector<double>  *HLTObject_eta; //TrigStudy
+   vector<double>  *HLTObject_phi; //TrigStudy
+   vector<string>  *HLTObject_FiredFilters; //TrigStudy
+   vector<string>  *HLTObject_FiredPaths; //TrigStudy
    vector<double>  *jet_pt;
    vector<double>  *jet_eta;
    vector<double>  *jet_phi;
@@ -459,6 +464,11 @@ public :
    TBranch        *b_PVy;   //!
    TBranch        *b_PVz;   //!
    TBranch        *b_HLT_TriggerName;   //!
+   TBranch        *b_HLTObject_pt; //TrigStudy             //!
+   TBranch        *b_HLTObject_eta; //TrigStudy            //!
+   TBranch        *b_HLTObject_phi; //TrigStudy            //!
+   TBranch        *b_HLTObject_FiredFilters; //TrigStudy   //!
+   TBranch        *b_HLTObject_FiredPaths; //TrigStudy     //!
    TBranch        *b_jet_pt;   //!
    TBranch        *b_jet_eta;   //!
    TBranch        *b_jet_phi;   //!
