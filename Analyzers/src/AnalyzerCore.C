@@ -2279,35 +2279,55 @@ float AnalyzerCore::GetGenFilterEffCorr(){
   if(IsDATA) return 1.;
 
   TString MassStr = MCSample;
-  MassStr.ReplaceAll("TTToHcToWA_AToMuMu_","");
-  if(!MassStr.BeginsWith("MHc")) return 1.;
-
   float filtereff=1.;
-  if(MassStr=="MHc100_MA15"){       filtereff = 5.816e-01; }
-  else if(MassStr=="MHc100_MA25"){  filtereff = 6.661e-01; }
-  else if(MassStr=="MHc100_MA60"){  filtereff = 6.927e-01; }
-  else if(MassStr=="MHc100_MA95"){  filtereff = 5.612e-01; }
-  else if(MassStr=="MHc130_MA125"){ filtereff = 5.477e-01; }
-  else if(MassStr=="MHc130_MA15"){  filtereff = 6.207e-01; }
-  else if(MassStr=="MHc130_MA45"){  filtereff = 7.041e-01; }
-  else if(MassStr=="MHc130_MA55"){  filtereff = 7.028e-01; }
-  else if(MassStr=="MHc130_MA90"){  filtereff = 6.993e-01; }
-  else if(MassStr=="MHc160_MA120"){ filtereff = 6.859e-01; }
-  else if(MassStr=="MHc160_MA15"){  filtereff = 6.381e-01; }
-  else if(MassStr=="MHc160_MA155"){ filtereff = 5.127e-01; }
-  else if(MassStr=="MHc160_MA45"){  filtereff = 6.912e-01; }
-  else if(MassStr=="MHc160_MA75"){  filtereff = 7.039e-01; }
-  else if(MassStr=="MHc160_MA85"){  filtereff = 6.952e-01; }
-  else if(MassStr=="MHc70_MA15"){   filtereff = 6.275e-01; }
-  else if(MassStr=="MHc70_MA40"){   filtereff = 6.734e-01; }
-  else if(MassStr=="MHc70_MA65"){   filtereff = 5.851e-01; }
-  else if(MassStr=="MHc80_MA15"){   filtereff = 6.262e-01; }
-  else if(MassStr=="MHc80_MA45"){   filtereff = 6.854e-01; }
-  else if(MassStr=="MHc80_MA75"){   filtereff = 5.772e-01; }
 
-  if(filtereff==0.) return 0.;
+  if(MCSample.Contains("TTobNMu")){
+    MassStr.ReplaceAll("TT_TTobNMu_","");
+    if(MassStr.Contains("SS2L_LO_MN20")     ){ filtereff = 0.251*0.67; }
+    else if(MassStr.Contains("SS2L_LO_MN50")     ){ filtereff = 0.257*0.67; }
+    else if(MassStr.Contains("SS2L_LO_MN100")    ){ filtereff = 0.295*0.67; }
+    else if(MassStr.Contains("LepTop3L_LO_MN20") ){ filtereff = 0.502*0.22; }
+    else if(MassStr.Contains("LepTop3L_LO_MN50") ){ filtereff = 0.513*0.22; }
+    else if(MassStr.Contains("LepTop3L_LO_MN100")){ filtereff = 0.591*0.22; }
+    else if(MassStr.Contains("HadTop3L_LO_MN20") ){ filtereff = 0.133*0.67; }
+    else if(MassStr.Contains("HadTop3L_LO_MN50") ){ filtereff = 0.137*0.67; }
+    else if(MassStr.Contains("HadTop3L_LO_MN100")){ filtereff = 0.198*0.67; }
+    else if(MassStr.Contains("4L_LO_MN20")       ){ filtereff = 0.133*0.22; }
+    else if(MassStr.Contains("4L_LO_MN50")       ){ filtereff = 0.137*0.22; }
+    else if(MassStr.Contains("4L_LO_MN100")      ){ filtereff = 0.198*0.22; }
+
+    return filtereff;
+  }
+  else if(MCSample.Contains("TTToHcToWA_AToMuMu")){
+    MassStr.ReplaceAll("TTToHcToWA_AToMuMu_","");
+    if(MassStr=="MHc100_MA15"){       filtereff = 5.816e-01; }
+    else if(MassStr=="MHc100_MA25"){  filtereff = 6.661e-01; }
+    else if(MassStr=="MHc100_MA60"){  filtereff = 6.927e-01; }
+    else if(MassStr=="MHc100_MA95"){  filtereff = 5.612e-01; }
+    else if(MassStr=="MHc130_MA125"){ filtereff = 5.477e-01; }
+    else if(MassStr=="MHc130_MA15"){  filtereff = 6.207e-01; }
+    else if(MassStr=="MHc130_MA45"){  filtereff = 7.041e-01; }
+    else if(MassStr=="MHc130_MA55"){  filtereff = 7.028e-01; }
+    else if(MassStr=="MHc130_MA90"){  filtereff = 6.993e-01; }
+    else if(MassStr=="MHc160_MA120"){ filtereff = 6.859e-01; }
+    else if(MassStr=="MHc160_MA15"){  filtereff = 6.381e-01; }
+    else if(MassStr=="MHc160_MA155"){ filtereff = 5.127e-01; }
+    else if(MassStr=="MHc160_MA45"){  filtereff = 6.912e-01; }
+    else if(MassStr=="MHc160_MA75"){  filtereff = 7.039e-01; }
+    else if(MassStr=="MHc160_MA85"){  filtereff = 6.952e-01; }
+    else if(MassStr=="MHc70_MA15"){   filtereff = 6.275e-01; }
+    else if(MassStr=="MHc70_MA40"){   filtereff = 6.734e-01; }
+    else if(MassStr=="MHc70_MA65"){   filtereff = 5.851e-01; }
+    else if(MassStr=="MHc80_MA15"){   filtereff = 6.262e-01; }
+    else if(MassStr=="MHc80_MA45"){   filtereff = 6.854e-01; }
+    else if(MassStr=="MHc80_MA75"){   filtereff = 5.772e-01; }
+
+    if(filtereff==0.) return 0.;
+    return 1./filtereff;
+  }
+  else return 1.;
  
-  return 1./filtereff;
+  return 1.;
 
 }
 

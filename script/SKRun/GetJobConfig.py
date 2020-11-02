@@ -58,11 +58,12 @@ List_HNTopFeas_BkdMC_2016 = [
   ["WGToLNuG", 5], ["ZGTo2LG", 5], ["TTG", 5], ["TG", 1], ["VHToNonbb", 1], ["WpWp_EWK", 1], ["WpWp_QCD", 1],
 ]
 List_HNTopFeas_BkdMC_2017 = [
-  ["DYJets", 25], ["TTLL_powheg", 13],
-  ["ZZTo4L_powheg", 3], ["ggHToZZTo4L", 2], ["VBF_HToZZTo4L", 1], ["ttHToNonbb", 2], ["ttZToLLNuNu", 4], ["WWZ", 1], ["WZZ", 1], ["ZZZ", 1],
-  ["WZTo3LNu_powheg", 1], ["ttWToLNu", 2], ["WWW", 1], #Only Trilep  
-  ["WJets_MG", 7], ["TTLJ_powheg", 7], #Only SS2l
-  ["WGToLNuG_01J", 5], ["ZGToLLG_01J", 5], ["TTG", 2], ["TG", 1], ["VHToNonbb", 1], ["WpWp_EWK", 1], ["WpWp_QCD", 1],
+#  ["DYJets", 25], ["TTLL_powheg", 13],
+#  ["ZZTo4L_powheg", 3], ["ggHToZZTo4L", 2], ["VBF_HToZZTo4L", 1], ["ttHToNonbb", 2], ["ttZToLLNuNu", 4], ["WWZ", 1], ["WZZ", 1], ["ZZZ", 1],
+#  ["WZTo3LNu_powheg", 1], ["ttWToLNu", 2], ["WWW", 1], #Only Trilep  
+#  ["WJets_MG", 7], ["TTLJ_powheg", 7], #Only SS2l
+#  ["WGToLNuG_01J", 5], ["ZGToLLG_01J", 5], ["TTG", 2], ["TG", 1], ["VHToNonbb", 1], ["WpWp_EWK", 1], ["WpWp_QCD", 1],
+  ["QCD_Pt-1000toInf_MuEnrichedPt5",1], ["QCD_Pt-120to170_EMEnriched",1], ["QCD_Pt-120to170_MuEnrichedPt5",1], ["QCD_Pt-15to20_EMEnriched",1], ["QCD_Pt-15to20_MuEnrichedPt5",1], ["QCD_Pt-170to300_MuEnrichedPt5",1], ["QCD_Pt-20to30_EMEnriched",1], ["QCD_Pt-20to30_MuEnrichedPt5",1], ["QCD_Pt-300to470_MuEnrichedPt5",1], ["QCD_Pt-300toInf_EMEnriched",1], ["QCD_Pt-30to40_DoubleEMEnriched_MGG-80toInf",1], ["QCD_Pt-30to50_EMEnriched",1], ["QCD_Pt-30to50_MuEnrichedPt5",1], ["QCD_Pt-40toInf_DoubleEMEnriched_MGG-80toInf",1], ["QCD_Pt-470to600_MuEnrichedPt5",1], ["QCD_Pt-50to80_EMEnriched",1], ["QCD_Pt-50to80_MuEnrichedPt5",1], ["QCD_Pt-600to800_MuEnrichedPt5",1], ["QCD_Pt-800to1000_MuEnrichedPt5",1], ["QCD_Pt-80to120_EMEnriched",1], ["QCD_Pt-80to120_MuEnrichedPt5",1], ["QCD_Pt_170to250_bcToE",1], ["QCD_Pt_20to30_bcToE",1], ["QCD_Pt_250toInf_bcToE",1], ["QCD_Pt_30to80_bcToE",1], ["QCD_Pt_80to170_bcToE",1]
 ]
 List_HNTopFeas_BkdMC_2018 = [
   ["DYJets", 25], ["TTLL_powheg", 13],
@@ -74,9 +75,9 @@ List_HNTopFeas_BkdMC_2018 = [
 
 List_HNTopFeas_SigMC_2017 = [
   ["TT_TTobNMu_SS2L_LO_MN20", 1], ["TT_TTobNMu_SS2L_LO_MN50", 1], ["TT_TTobNMu_SS2L_LO_MN100", 1],
-#  ["TT_TTobNMu_LepTop3L_LO_MN20", 1], ["TT_TTobNMu_LepTop3L_LO_MN50", 1], ["TT_TTobNMu_LepTop3L_LO_MN100", 1],
-#  ["TT_TTobNMu_HadTop3L_LO_MN20", 1], ["TT_TTobNMu_HadTop3L_LO_MN50", 1], ["TT_TTobNMu_HadTop3L_LO_MN100", 1],
-#  ["TT_TTobNMu_4L_LO_MN20", 1], ["TT_TTobNMu_4L_LO_MN50", 1], ["TT_TTobNMu_4L_LO_MN100", 1],
+  ["TT_TTobNMu_LepTop3L_LO_MN20", 1], ["TT_TTobNMu_LepTop3L_LO_MN50", 1], ["TT_TTobNMu_LepTop3L_LO_MN100", 1],
+  ["TT_TTobNMu_HadTop3L_LO_MN20", 1], ["TT_TTobNMu_HadTop3L_LO_MN50", 1], ["TT_TTobNMu_HadTop3L_LO_MN100", 1],
+  ["TT_TTobNMu_4L_LO_MN20", 1], ["TT_TTobNMu_4L_LO_MN50", 1], ["TT_TTobNMu_4L_LO_MN100", 1],
 ]
 
 
@@ -118,7 +119,8 @@ List_TrigCheck_BkdMC_2017 = [
 ]
 
 List_MCPUDist17_BkdMC_2017 = [
-  ["DYJets", 25], 
+  ["QCD_Pt-1000toInf_MuEnrichedPt5",10], ["QCD_Pt-120to170_EMEnriched",10], ["QCD_Pt-120to170_MuEnrichedPt5",10], ["QCD_Pt-15to20_EMEnriched",10], ["QCD_Pt-15to20_MuEnrichedPt5",10], ["QCD_Pt-170to300_MuEnrichedPt5",10], ["QCD_Pt-20to30_EMEnriched",10], ["QCD_Pt-20to30_MuEnrichedPt5",10], ["QCD_Pt-300to470_MuEnrichedPt5",10], ["QCD_Pt-300toInf_EMEnriched",10], ["QCD_Pt-30to40_DoubleEMEnriched_MGG-80toInf",10], ["QCD_Pt-30to50_EMEnriched",10], ["QCD_Pt-30to50_MuEnrichedPt5",10], ["QCD_Pt-40toInf_DoubleEMEnriched_MGG-80toInf",10], ["QCD_Pt-470to600_MuEnrichedPt5",10], ["QCD_Pt-50to80_EMEnriched",10], ["QCD_Pt-50to80_MuEnrichedPt5",10], ["QCD_Pt-600to800_MuEnrichedPt5",10], ["QCD_Pt-800to1000_MuEnrichedPt5",10], ["QCD_Pt-80to120_EMEnriched",10], ["QCD_Pt-80to120_MuEnrichedPt5",10], ["QCD_Pt_170to250_bcToE",10], ["QCD_Pt_20to30_bcToE",10], ["QCD_Pt_250toInf_bcToE",10], ["QCD_Pt_30to80_bcToE",10], ["QCD_Pt_80to170_bcToE",10]
+#["DYJets", 25], 
 #  ["WGToLNuG_01J", 5], ["VHToNonbb", 1], ["WpWp_EWK", 1], ["WpWp_QCD", 1],
 #  ["TT_TTobNMu_LepTop3L_LO_MN20", 1], ["TT_TTobNMu_LepTop3L_LO_MN50", 1], ["TT_TTobNMu_LepTop3L_LO_MN100", 1], 
 #  ["TT_TTobNMu_HadTop3L_LO_MN20", 1], ["TT_TTobNMu_HadTop3L_LO_MN50", 1], ["TT_TTobNMu_HadTop3L_LO_MN100", 1], 
@@ -183,7 +185,11 @@ List_Debug_BkdMC_2016 = [
   #["ZGTo2LG", 1]
 ]
 List_Debug_Data_2016 = [["MuonEG", 1, "B_ver2"]]
-List_Debug_SigMC_2017 = [["TT_TTobNMu_SS2L_LO_MN50", 1]]
+List_Debug_SigMC_2017 = [
+  #["TT_TTobNMu_SS2L_LO_MN50", 1]
+  #["TT_TTobNMu_LepTop3L_LO_MN20", 1]
+  ["TT_TTobNMu_4L_LO_MN20", 1]
+]
 List_Debug_BkdMC_2017 = [["TTLJ_powheg", 1]]
 List_Debug_Data_2017 = [["SingleMuonTrigInfo", 1, "B"]]
 List_Debug_SigMC_2018 = [["TestFiltered_TTToHcToWA_AToMuMu_MHc160_MA75", 1]]

@@ -14,7 +14,7 @@ RunningMode="" #MuMu / ElEl / ElMu / TrigEffMeas
 
 NJobs=""
 Memory=""
-NJobMax=""
+NJobMax="100"
 NEvtMax="100000"
 NSkipEvt=""
 ReductionFactor="" #"10"

@@ -2,7 +2,8 @@
 
 ########################################################################
 #declare -a List_runModes=("runBkdMC")
-declare -a List_runModes=("runBkdMC" "runSigMC")
+declare -a List_runModes=("runSigMC")
+#declare -a List_runModes=("runBkdMC" "runSigMC")
 #declare -a List_runModes=("runData")
 #declare -a List_runModes=("runBkdMC" "runData")
 
@@ -10,14 +11,18 @@ declare -a List_runModes=("runBkdMC" "runSigMC")
 ## RUN PARAMETERS
 
 AnalysisCode="HNTopFeas" 
-FinalState="DiMuon" #"DiMuon" #ElDiMu / TriMu / TetraLepton / DiMuon
+#FinalState="DiMuon" #"DiMuon" #ElDiMu / TriMu / TriLep / TetraLep / DiMuon
+#FinalState="TriLep" #"DiMuon" #ElDiMu / TriMu / TriLep / TetraLep / DiMuon
+FinalState="TetraLep" #"DiMuon" #ElDiMu / TriMu / TriLep / TetraLep / DiMuon
 Skim="SkimTree_SS2lOR3l"
 Year="2017"
-RunningMode="SS2l" #"SS2l,SSMuMu" #MuMuMu / ElMuMu / TetraLep / SS2l
+#RunningMode="SS2l" #"SS2l,SSMuMu" #MuMuMu / ElMuMu / TriLep / TetraLep / SS2l
+#RunningMode="TriLep" #"SS2l,SSMuMu" #MuMuMu / ElMuMu / TriLep / TetraLep / SS2l
+RunningMode="TetraLep" #"SS2l,SSMuMu" #MuMuMu / ElMuMu / TriLep / TetraLep / SS2l
 
 NJobs=""
 Memory=""
-NJobMax="200"
+NJobMax="100"
 NEvtMax="100000"
 NSkipEvt=""
 ReductionFactor="" #"10"

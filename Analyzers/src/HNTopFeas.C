@@ -69,7 +69,7 @@ void HNTopFeas::executeEvent(){
   float weight = 1.;
   if(!IsDATA){
     weight*=ev.MCweight()*weight_norm_1invpb*GetKFactor()*ev.GetTriggerLumi("Full");
-    //weight *= GetGenFilterEffCorr();
+    weight *= GetGenFilterEffCorr();
     weight*=GetPileUpWeight(nPileUp, 0);
   }
   FillHist("CutFlow", 0., weight, 20, 0., 20.);
@@ -192,7 +192,6 @@ void HNTopFeas::executeEvent(){
                        jetColl, bjetColl, vMET_xyCorr, weight, "");
   }
 
-
 }
 
 
@@ -249,7 +248,7 @@ void HNTopFeas::AnalyzeSSDiLepton(std::vector<Muon>& MuTColl, std::vector<Muon>&
     FillHist("Mllq3"+Label, (MuTColl.at(0)+MuTColl.at(1)+JetColl.at(2)).M(), weight, 50, 0., 500.);
 
 
-    FillHist("NPresel", 0., weight, 11, 0., 11.);
+    FillHist("NPresel", 0., weight, 12, 0., 12.);
     FillHist("NPresel_Tot", 0., weight, 3, 0., 3.);
 
     if(vMET.Pt()>100) return;
@@ -317,7 +316,7 @@ void HNTopFeas::AnalyzeSSDiLepton(std::vector<Muon>& MuTColl, std::vector<Muon>&
     FillHist("Mllq3"+Label, (ElTColl.at(0)+ElTColl.at(1)+JetColl.at(2)).M(), weight, 50, 0., 500.);
 
 
-    FillHist("NPresel", 1., weight, 11, 0., 11.);
+    FillHist("NPresel", 1., weight, 12, 0., 12.);
 
     if(vMET.Pt()>100) return;
     FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
@@ -426,12 +425,15 @@ void HNTopFeas::AnalyzeTriLepton(vector<Muon>& MuTColl, vector<Muon>& MuLColl, v
   if( !(NLepT==3 && NLepL==3) ) return;
   if( !(NMuT==NMuL && NElT==NElL) ) return;
 
+
+
   bool PassTrigAccept=false;
   if( NMuT>=2 && MuTColl.at(0).Pt()>20 && MuTColl.at(1).Pt()>10 ) PassTrigAccept=true;
   else if( NElT>=2 && ElTColl.at(0).Pt()>25 && ElTColl.at(1).Pt()>15 ) PassTrigAccept=true;
   else if( NElT>0 && NMuT>0 && ElTColl.at(0).Pt()>25 && MuTColl.at(0).Pt()>10 ) PassTrigAccept=true;
   else if( NElT>0 && NMuT>0 && ElTColl.at(0).Pt()>15 && MuTColl.at(0).Pt()>25 ) PassTrigAccept=true;
   if(!PassTrigAccept) return;
+  FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
 
   int SumQ_M = SumCharge(MuTColl);
   int SumQ_E = SumCharge(ElTColl);
@@ -468,13 +470,13 @@ void HNTopFeas::AnalyzeTriLepton(vector<Muon>& MuTColl, vector<Muon>& MuLColl, v
   }
 
   float IsQCDLike = (MOSSF1>0 && MOSSF1<12) or (MOSSF2>0 && MOSSF2<12) or (NMuT>1 && MSSSF>0 && MSSSF<4);
-  if(!IsQCDLike) return;
+  if(IsQCDLike) return;
   FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
 
   float IsZLike = (MOSSF1>0 && fabs(MOSSF1-91.2)<10) or (MOSSF2>0 && fabs(MOSSF2-91.2)<10);
   if(MOSSF1>0) FillHist("MOSSF1", MOSSF1, weight, 30, 0., 300.);
   if(MOSSF2>0) FillHist("MOSSF2", MOSSF1, weight, 30, 0., 300.);
-  if(!IsZLike) return;
+  if(IsZLike) return;
   FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
   FillHist("NBJet"+Label, BJetColl.size(), weight, 10, 0., 10.);
 
@@ -489,10 +491,10 @@ void HNTopFeas::AnalyzeTriLepton(vector<Muon>& MuTColl, vector<Muon>& MuLColl, v
   if(MOSSF2>0) FillHist("MOSSF2_PreSel", MOSSF1, weight, 30, 0., 300.);
 
 
-  if     (IsMu3El0) FillHist("NPresel", 2., weight, 11, 0., 11.);
-  else if(IsMu2El1) FillHist("NPresel", 3., weight, 11, 0., 11.);
-  else if(IsMu1El2) FillHist("NPresel", 4., weight, 11, 0., 11.);
-  else if(IsMu0El3) FillHist("NPresel", 5., weight, 11, 0., 11.);
+  if     (IsMu3El0) FillHist("NPresel", 2., weight, 12, 0., 12.);
+  else if(IsMu2El1) FillHist("NPresel", 3., weight, 12, 0., 12.);
+  else if(IsMu1El2) FillHist("NPresel", 4., weight, 12, 0., 12.);
+  else if(IsMu0El3) FillHist("NPresel", 5., weight, 12, 0., 12.);
 
   if(IsMu3El0 or IsMu2El1) FillHist("NPresel_Tot", 1., weight, 3, 0., 3.);
 
@@ -623,15 +625,16 @@ void HNTopFeas::AnalyzeTetraLepton(vector<Muon>& MuTColl, vector<Muon>& MuLColl,
   if(IsQCDlike) return;
   FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
 
-  TLorentzVector V4l(0,0,0,0);
-  float px4l, py4l, pz4l, E4l;
+  float px4l=0, py4l=0, pz4l=0, E4l=0;
   for(unsigned int it_e=0; it_e<ElTColl.size(); it_e++){
     px4l+=ElTColl.at(it_e).Px(); py4l+=ElTColl.at(it_e).Py(); pz4l+=ElTColl.at(it_e).Pz(); E4l+=ElTColl.at(it_e).E();
   }
   for(unsigned int it_m=0; it_m<MuTColl.size(); it_m++){
     px4l+=MuTColl.at(it_m).Px(); py4l+=MuTColl.at(it_m).Py(); pz4l+=MuTColl.at(it_m).Pz(); E4l+=MuTColl.at(it_m).E();
   }
+  TLorentzVector V4l(px4l,py4l,pz4l,E4l);
   float M4l = V4l.M();
+  cout<<M4l<<endl;
 
   SSSF = (IdxMupColl.size()==2 and IdxElmColl.size()==2) or (IdxMumColl.size()==2 and IdxElpColl.size()==2);
   OSSF = (IdxMupColl.size()==IdxMumColl.size()) and (IdxElpColl.size()==IdxElmColl.size());
@@ -644,18 +647,21 @@ void HNTopFeas::AnalyzeTetraLepton(vector<Muon>& MuTColl, vector<Muon>& MuLColl,
   else if(OSSF and NElT==0) FillHist("Composition_4l"+Label, 2., weight, 10, 0., 10.);
   else if(SSSF and NElT==2) FillHist("Composition_4l"+Label, 3., weight, 10, 0., 10.);
   else if(OddF and NElT==1) FillHist("Composition_4l"+Label, 4., weight, 10, 0., 10.);
+  else if(OddF and NElT==3) FillHist("Composition_4l"+Label, 5., weight, 10, 0., 10.);
   if(!IsZlike){
     if     (OSSF and NElT==4) FillHist("Composition_4lNoZ2l"+Label, 0., weight, 10, 0., 10.);
     else if(OSSF and NElT==2) FillHist("Composition_4lNoZ2l"+Label, 1., weight, 10, 0., 10.);
     else if(OSSF and NElT==0) FillHist("Composition_4lNoZ2l"+Label, 2., weight, 10, 0., 10.);
     else if(SSSF and NElT==2) FillHist("Composition_4lNoZ2l"+Label, 3., weight, 10, 0., 10.);
     else if(OddF and NElT==1) FillHist("Composition_4lNoZ2l"+Label, 4., weight, 10, 0., 10.);
+    else if(OddF and NElT==3) FillHist("Composition_4lNoZ2l"+Label, 5., weight, 10, 0., 10.);
     if(!IsZTo4l){
       if     (OSSF and NElT==4) FillHist("Composition_4lNoZ2l4l"+Label, 0., weight, 10, 0., 10.);
       else if(OSSF and NElT==2) FillHist("Composition_4lNoZ2l4l"+Label, 1., weight, 10, 0., 10.);
       else if(OSSF and NElT==0) FillHist("Composition_4lNoZ2l4l"+Label, 2., weight, 10, 0., 10.);
       else if(SSSF and NElT==2) FillHist("Composition_4lNoZ2l4l"+Label, 3., weight, 10, 0., 10.);
       else if(OddF and NElT==1) FillHist("Composition_4lNoZ2l4l"+Label, 4., weight, 10, 0., 10.);
+      else if(OddF and NElT==3) FillHist("Composition_4lNoZ2l4l"+Label, 5., weight, 10, 0., 10.);
     }
   }
   
@@ -667,18 +673,21 @@ void HNTopFeas::AnalyzeTetraLepton(vector<Muon>& MuTColl, vector<Muon>& MuLColl,
   else if(OSSF and NElT==0) FillHist("Composition_4l1b"+Label, 2., weight, 10, 0., 10.);
   else if(SSSF and NElT==2) FillHist("Composition_4l1b"+Label, 3., weight, 10, 0., 10.);
   else if(OddF and NElT==1) FillHist("Composition_4l1b"+Label, 4., weight, 10, 0., 10.);
+  else if(OddF and NElT==3) FillHist("Composition_4l1b"+Label, 5., weight, 10, 0., 10.);
   if(!IsZlike){
     if     (OSSF and NElT==4) FillHist("Composition_4l1bNoZ2l"+Label, 0., weight, 10, 0., 10.);
     else if(OSSF and NElT==2) FillHist("Composition_4l1bNoZ2l"+Label, 1., weight, 10, 0., 10.);
     else if(OSSF and NElT==0) FillHist("Composition_4l1bNoZ2l"+Label, 2., weight, 10, 0., 10.);
     else if(SSSF and NElT==2) FillHist("Composition_4l1bNoZ2l"+Label, 3., weight, 10, 0., 10.);
     else if(OddF and NElT==1) FillHist("Composition_4l1bNoZ2l"+Label, 4., weight, 10, 0., 10.);
+    else if(OddF and NElT==3) FillHist("Composition_4l1bNoZ2l"+Label, 5., weight, 10, 0., 10.);
     if(!IsZTo4l){
       if     (OSSF and NElT==4) FillHist("Composition_4l1bNoZ2l4l"+Label, 0., weight, 10, 0., 10.);
       else if(OSSF and NElT==2) FillHist("Composition_4l1bNoZ2l4l"+Label, 1., weight, 10, 0., 10.);
       else if(OSSF and NElT==0) FillHist("Composition_4l1bNoZ2l4l"+Label, 2., weight, 10, 0., 10.);
       else if(SSSF and NElT==2) FillHist("Composition_4l1bNoZ2l4l"+Label, 3., weight, 10, 0., 10.);
       else if(OddF and NElT==1) FillHist("Composition_4l1bNoZ2l4l"+Label, 4., weight, 10, 0., 10.);
+      else if(OddF and NElT==3) FillHist("Composition_4l1bNoZ2l4l"+Label, 5., weight, 10, 0., 10.);
     }
   }
 
@@ -690,12 +699,14 @@ void HNTopFeas::AnalyzeTetraLepton(vector<Muon>& MuTColl, vector<Muon>& MuLColl,
   else if(OSSF and NElT==0) FillHist("Composition_4l1b2j"+Label, 2., weight, 10, 0., 10.);
   else if(SSSF and NElT==2) FillHist("Composition_4l1b2j"+Label, 3., weight, 10, 0., 10.);
   else if(OddF and NElT==1) FillHist("Composition_4l1b2j"+Label, 4., weight, 10, 0., 10.);
+  else if(OddF and NElT==3) FillHist("Composition_4l1b2j"+Label, 5., weight, 10, 0., 10.);
   if(!IsZlike){
-    if     (OSSF and NElT==4) FillHist("NPresel"+Label, 6., weight, 11, 0., 11.);
-    else if(OSSF and NElT==2) FillHist("NPresel"+Label, 7., weight, 11, 0., 11.);
-    else if(OSSF and NElT==0) FillHist("NPresel"+Label, 8., weight, 11, 0., 11.);
-    else if(SSSF and NElT==2) FillHist("NPresel"+Label, 9., weight, 11, 0., 11.);
-    else if(OddF and NElT==1) FillHist("NPresel"+Label, 10., weight, 11, 0., 11.);
+    if     (OSSF and NElT==4) FillHist("NPresel"+Label, 6., weight, 12, 0., 12.);
+    else if(OSSF and NElT==2) FillHist("NPresel"+Label, 7., weight, 12, 0., 12.);
+    else if(OSSF and NElT==0) FillHist("NPresel"+Label, 8., weight, 12, 0., 12.);
+    else if(SSSF and NElT==2) FillHist("NPresel"+Label, 9., weight, 12, 0., 12.);
+    else if(OddF and NElT==1) FillHist("NPresel"+Label, 10., weight, 12, 0., 12.);
+    else if(OddF and NElT==3) FillHist("NPresel"+Label, 11., weight, 12, 0., 12.);
     if(NElT<3) FillHist("NPresel_Tot", 2., weight, 3, 0., 3.);
 
     if     (OSSF and NElT==4) FillHist("Composition_4l1b2jNoZ2l"+Label, 0., weight, 10, 0., 10.);
@@ -703,12 +714,14 @@ void HNTopFeas::AnalyzeTetraLepton(vector<Muon>& MuTColl, vector<Muon>& MuLColl,
     else if(OSSF and NElT==0) FillHist("Composition_4l1b2jNoZ2l"+Label, 2., weight, 10, 0., 10.);
     else if(SSSF and NElT==2) FillHist("Composition_4l1b2jNoZ2l"+Label, 3., weight, 10, 0., 10.);
     else if(OddF and NElT==1) FillHist("Composition_4l1b2jNoZ2l"+Label, 4., weight, 10, 0., 10.);
+    else if(OddF and NElT==3) FillHist("Composition_4l1b2jNoZ2l"+Label, 5., weight, 10, 0., 10.);
     if(!IsZTo4l){
       if     (OSSF and NElT==4) FillHist("Composition_4l1b2jNoZ2l4l"+Label, 0., weight, 10, 0., 10.);
       else if(OSSF and NElT==2) FillHist("Composition_4l1b2jNoZ2l4l"+Label, 1., weight, 10, 0., 10.);
       else if(OSSF and NElT==0) FillHist("Composition_4l1b2jNoZ2l4l"+Label, 2., weight, 10, 0., 10.);
       else if(SSSF and NElT==2) FillHist("Composition_4l1b2jNoZ2l4l"+Label, 3., weight, 10, 0., 10.);
       else if(OddF and NElT==1) FillHist("Composition_4l1b2jNoZ2l4l"+Label, 4., weight, 10, 0., 10.);
+      else if(OddF and NElT==3) FillHist("Composition_4l1b2jNoZ2l4l"+Label, 5., weight, 10, 0., 10.);
     }
   }
 

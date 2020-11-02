@@ -14,3 +14,8 @@ alias skmuid_2018="cd ${SKFlat_WD}/data/${SKFlatV}/2018/ID/Muon"
 alias sktools="cd ${SKFlat_WD}/AnalyzerTools"
 alias skformat="cd ${SKFlat_WD}/DataFormats" 
 alias skscript="cd ${SKFlat_WD}/script"
+
+alias skrun="cd ${SKFlat_WD}/script/SKRun"
+alias skout="cd /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput/${SKFlatV}"
+alias sklog="cd /data6/Users/jbhyun/SKFlatRunlog"
+alias skanalysis="cd ${SKFlat_WD}/Analyzers/src"

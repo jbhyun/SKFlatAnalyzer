@@ -3983,3 +3983,527 @@ SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN20 -n 2 -y 2017 -p ALL --skim Sk
 SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data8/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
 SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data8/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
 
+Mon Oct 26 20:20:47 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN20 -n 1 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 --no_exec -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+
+Mon Oct 26 20:23:53 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+
+Mon Oct 26 20:27:14 KST 2020
+SKFlat.py  -a HNTopFeas -i DYJets -n 50 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TTLL_powheg -n 26 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ZZTo4L_powheg -n 6 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ggHToZZTo4L -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i VBF_HToZZTo4L -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ttHToNonbb -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ttZToLLNuNu -n 8 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WWZ -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WZZ -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ZZZ -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WZTo3LNu_powheg -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ttWToLNu -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WWW -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WJets_MG -n 14 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TTLJ_powheg -n 14 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WGToLNuG_01J -n 10 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ZGToLLG_01J -n 10 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TTG -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TG -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i VHToNonbb -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WpWp_EWK -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WpWp_QCD -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+
+Mon Oct 26 20:35:55 KST 2020
+SKFlat.py  -a HNTopFeas -i DYJets -n 50 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i TTLL_powheg -n 26 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+
+Mon Oct 26 21:04:20 KST 2020
+SKFlat.py  -a HNTopFeas -i DYJets -n 50 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TTLL_powheg -n 26 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+
+Mon Oct 26 21:04:49 KST 2020
+SKFlat.py  -a HNTopFeas -i ZZTo4L_powheg -n 6 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ggHToZZTo4L -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i VBF_HToZZTo4L -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ttHToNonbb -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ttZToLLNuNu -n 8 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WWZ -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WZZ -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ZZZ -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WZTo3LNu_powheg -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ttWToLNu -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WWW -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WJets_MG -n 14 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TTLJ_powheg -n 14 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WGToLNuG_01J -n 10 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ZGToLLG_01J -n 10 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TTG -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TG -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i VHToNonbb -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WpWp_EWK -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WpWp_QCD -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+
+Mon Oct 26 21:11:14 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN20 -n 1 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 --no_exec -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+
+Mon Oct 26 21:22:35 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+
+Mon Oct 26 21:23:39 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+
+Mon Oct 26 21:23:49 KST 2020
+SKFlat.py  -a HNTopFeas -i DYJets -n 50 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TTLL_powheg -n 26 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ZZTo4L_powheg -n 6 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ggHToZZTo4L -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i VBF_HToZZTo4L -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ttHToNonbb -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ttZToLLNuNu -n 8 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WWZ -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WZZ -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ZZZ -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WZTo3LNu_powheg -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ttWToLNu -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WWW -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WJets_MG -n 14 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TTLJ_powheg -n 14 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WGToLNuG_01J -n 10 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ZGToLLG_01J -n 10 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TTG -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TG -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i VHToNonbb -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WpWp_EWK -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WpWp_QCD -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+
+Mon Oct 26 22:08:47 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+
+Mon Oct 26 22:10:13 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+
+Mon Oct 26 22:12:33 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+
+Tue Oct 27 01:36:46 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+
+Tue Oct 27 01:39:06 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+
+Tue Oct 27 01:39:31 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+
+Tue Oct 27 02:03:29 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+
+Tue Oct 27 02:03:48 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+
+Tue Oct 27 02:04:02 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+
+Tue Oct 27 02:14:31 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+
+Tue Oct 27 03:08:18 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+
+Tue Oct 27 03:08:32 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 200 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+
+Tue Oct 27 03:09:19 KST 2020
+SKFlat.py  -a HNTopFeas -i DYJets -n 50 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i TTLL_powheg -n 26 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i ZZTo4L_powheg -n 6 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i ggHToZZTo4L -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i VBF_HToZZTo4L -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i ttHToNonbb -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i ttZToLLNuNu -n 8 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i WWZ -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i WZZ -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i ZZZ -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i WZTo3LNu_powheg -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i ttWToLNu -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i WWW -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i WJets_MG -n 14 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i TTLJ_powheg -n 14 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i WGToLNuG_01J -n 10 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i ZGToLLG_01J -n 10 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i TTG -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i TG -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i VHToNonbb -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i WpWp_EWK -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i WpWp_QCD -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+
+Tue Oct 27 03:09:49 KST 2020
+SKFlat.py  -a HNTopFeas -i DYJets -n 50 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TTLL_powheg -n 26 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ZZTo4L_powheg -n 6 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ggHToZZTo4L -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i VBF_HToZZTo4L -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ttHToNonbb -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ttZToLLNuNu -n 8 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WWZ -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WZZ -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ZZZ -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WZTo3LNu_powheg -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ttWToLNu -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WWW -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WJets_MG -n 14 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TTLJ_powheg -n 14 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WGToLNuG_01J -n 10 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ZGToLLG_01J -n 10 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TTG -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TG -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i VHToNonbb -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WpWp_EWK -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WpWp_QCD -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/BkdMC
+
+Tue Oct 27 03:10:23 KST 2020
+SKFlat.py  -a HNTopFeas -i DYJets -n 50 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TTLL_powheg -n 26 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ZZTo4L_powheg -n 6 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ggHToZZTo4L -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i VBF_HToZZTo4L -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ttHToNonbb -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ttZToLLNuNu -n 8 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WWZ -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WZZ -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ZZZ -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WZTo3LNu_powheg -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ttWToLNu -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WWW -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WJets_MG -n 14 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TTLJ_powheg -n 14 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WGToLNuG_01J -n 10 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i ZGToLLG_01J -n 10 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TTG -n 4 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i TG -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i VHToNonbb -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WpWp_EWK -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+SKFlat.py  -a HNTopFeas -i WpWp_QCD -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/BkdMC
+
+Tue Oct 27 16:08:21 KST 2020
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-1000toInf_MuEnrichedPt5 -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-120to170_EMEnriched -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-120to170_MuEnrichedPt5 -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-15to20_EMEnriched -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-15to20_MuEnrichedPt5 -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-170to300_MuEnrichedPt5 -n 10 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-20to30_EMEnriched -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-20to30_MuEnrichedPt5 -n 4 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-300to470_MuEnrichedPt5 -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-300toInf_EMEnriched -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-30to40_DoubleEMEnriched_MGG-80toInf -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-30to50_EMEnriched -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-30to50_MuEnrichedPt5 -n 4 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-40toInf_DoubleEMEnriched_MGG-80toInf -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-470to600_MuEnrichedPt5 -n 4 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-50to80_EMEnriched -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-50to80_MuEnrichedPt5 -n 4 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-600to800_MuEnrichedPt5 -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-800to1000_MuEnrichedPt5 -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-80to120_EMEnriched -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-80to120_MuEnrichedPt5 -n 4 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt_170to250_bcToE -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt_20to30_bcToE -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt_250toInf_bcToE -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt_30to80_bcToE -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt_80to170_bcToE -n 2 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+
+Tue Oct 27 16:29:19 KST 2020
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-1000toInf_MuEnrichedPt5 -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-120to170_EMEnriched -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-120to170_MuEnrichedPt5 -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-15to20_EMEnriched -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-15to20_MuEnrichedPt5 -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-170to300_MuEnrichedPt5 -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-20to30_EMEnriched -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-20to30_MuEnrichedPt5 -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-300to470_MuEnrichedPt5 -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-300toInf_EMEnriched -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-30to40_DoubleEMEnriched_MGG-80toInf -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-30to50_EMEnriched -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-30to50_MuEnrichedPt5 -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-40toInf_DoubleEMEnriched_MGG-80toInf -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-470to600_MuEnrichedPt5 -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-50to80_EMEnriched -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-50to80_MuEnrichedPt5 -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-600to800_MuEnrichedPt5 -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-800to1000_MuEnrichedPt5 -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-80to120_EMEnriched -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-80to120_MuEnrichedPt5 -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt_170to250_bcToE -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt_20to30_bcToE -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt_250toInf_bcToE -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt_30to80_bcToE -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt_80to170_bcToE -n 20 -y 2017 -p ALL -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+
+Tue Oct 27 16:30:32 KST 2020
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-1000toInf_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-120to170_EMEnriched -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-120to170_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-15to20_EMEnriched -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-15to20_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-170to300_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-20to30_EMEnriched -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-20to30_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-300to470_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-300toInf_EMEnriched -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-30to40_DoubleEMEnriched_MGG-80toInf -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-30to50_EMEnriched -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-30to50_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-40toInf_DoubleEMEnriched_MGG-80toInf -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-470to600_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-50to80_EMEnriched -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-50to80_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-600to800_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-800to1000_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-80to120_EMEnriched -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt-80to120_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt_170to250_bcToE -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt_20to30_bcToE -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt_250toInf_bcToE -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt_30to80_bcToE -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+SKFlat.py  -a MCPUDist17 -i QCD_Pt_80to170_bcToE -n 20 -y 2017 -p ALL --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/MCPUDist17/2017/All/BkdMC
+
+Tue Oct 27 17:47:26 KST 2020
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-1000toInf_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-120to170_EMEnriched -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-120to170_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-15to20_EMEnriched -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-15to20_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-170to300_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-20to30_EMEnriched -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-20to30_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-300to470_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-300toInf_EMEnriched -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-30to40_DoubleEMEnriched_MGG-80toInf -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-30to50_EMEnriched -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-30to50_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-40toInf_DoubleEMEnriched_MGG-80toInf -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-470to600_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-50to80_EMEnriched -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-50to80_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-600to800_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-800to1000_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-80to120_EMEnriched -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt-80to120_MuEnrichedPt5 -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt_170to250_bcToE -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt_20to30_bcToE -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt_250toInf_bcToE -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt_30to80_bcToE -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+SKFlat.py  -a SkimTree_SS2lOR3l -i QCD_Pt_80to170_bcToE -n 20 -y 2017 -p ALL --nmax 70 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/SkimTree_SS2lOR3l/2017/SS2lOR3l/BkdMC
+
+Tue Oct 27 19:22:28 KST 2020
+SKFlat.py  -a HNTopFeas -i QCD_Pt-1000toInf_MuEnrichedPt5 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-120to170_EMEnriched -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-120to170_MuEnrichedPt5 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-15to20_EMEnriched -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-15to20_MuEnrichedPt5 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-170to300_MuEnrichedPt5 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-20to30_EMEnriched -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-20to30_MuEnrichedPt5 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-300to470_MuEnrichedPt5 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-300toInf_EMEnriched -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-30to40_DoubleEMEnriched_MGG-80toInf -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-30to50_EMEnriched -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-30to50_MuEnrichedPt5 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-40toInf_DoubleEMEnriched_MGG-80toInf -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-470to600_MuEnrichedPt5 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-50to80_EMEnriched -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-50to80_MuEnrichedPt5 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-600to800_MuEnrichedPt5 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-800to1000_MuEnrichedPt5 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-80to120_EMEnriched -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt-80to120_MuEnrichedPt5 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt_170to250_bcToE -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt_20to30_bcToE -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt_250toInf_bcToE -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt_30to80_bcToE -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+SKFlat.py  -a HNTopFeas -i QCD_Pt_80to170_bcToE -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/BkdMC
+
+Tue Oct 27 21:58:49 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags SS2l --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/DiMuon/SigMC
+
+Tue Oct 27 21:59:21 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TriLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TriLep/SigMC
+
+Tue Oct 27 21:59:48 KST 2020
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_SS2L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_LepTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_HadTop3L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN20 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN50 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+SKFlat.py  -a HNTopFeas -i TT_TTobNMu_4L_LO_MN100 -n 2 -y 2017 -p ALL --skim SkimTree_SS2lOR3l --userflags TetraLep --nmax 100 -o /data6/Users/jbhyun/cmssw/SKFlatAnalyzer/SKFlatOutput//Run2Legacy_v4/HNTopFeas/2017/TetraLep/SigMC
+

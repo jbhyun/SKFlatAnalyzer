@@ -10,7 +10,7 @@ void run_0(){
   m.SetTreeName("recoTree/SKFlat");
 
   m.LogEvery = 10000;
-  m.MaxEvent = 100000;
+  m.MaxEvent = 10000;
   m.MCSample = "TT_TTobNMu_SS2L_LO_MN50";
   m.IsDATA = false;
   m.xsec = 1;
