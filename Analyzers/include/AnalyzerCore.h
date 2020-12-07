@@ -263,6 +263,7 @@ public:
   float GetMuonSF(std::vector<Muon>& muonColl, TString SFKey, TString Option="");
   float GetElectronSF(std::vector<Electron>& electronColl, TString SFKey, TString Option="");
   float GetKFactor();
+  float GetBRWeight();
   float GetGenFilterEffCorr();
   bool  IsHEMIssueRun();
   bool  IsHEMIssueReg(Particle& Particle);

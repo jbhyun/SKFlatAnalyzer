@@ -18,7 +18,8 @@ void MeasTrigEff::initializeAnalyzer(){
 
   if(MuMu){
     if(DiMuTrig_MuLeg){ TrigList.push_back(DataYear==2017? "HLT_IsoMu27_v":"HLT_IsoMu24_v"); }
-    if(DiMuTrig_DZ){ TrigList.push_back("HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_v"); }
+    //if(DiMuTrig_DZ){ TrigList.push_back("HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v");}
+    if(DiMuTrig_DZ){ TrigList.push_back("HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_v"); TrigList.push_back("HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_v");}
   }
   if(ElEl){
     if(DataYear==2016){ TrigList.push_back("HLT_Ele27_WPTight_Gsf_v"); SFKey_Trig="Ele27WPTight_POGMVAIsoWP90";}
@@ -124,6 +125,9 @@ void MeasTrigEff::executeEvent(){
     }
     if(EMuTrig_MuLeg){
       MeasEffEMuTrig_MuLeg(muonTightColl, muonLooseColl, electronTightColl, electronLooseColl, jetColl, bjetColl, vMET, ev, weight, "");
+    }
+    if(EMuTrig_DZ){
+      MeasEffEMuTrig_DZ(muonTightColl, muonLooseColl, electronTightColl, electronLooseColl, jetColl, bjetColl, vMET, ev, weight, "");
     }
   }
 
@@ -342,6 +346,61 @@ void MeasTrigEff::MeasEffEMuTrig_ElLeg(vector<Muon>& MuTColl, vector<Muon>& MuLC
 }
 
 
+void MeasTrigEff::MeasEffEMuTrig_DZ(vector<Muon>& MuTColl, vector<Muon>& MuLColl, vector<Electron>& ElTColl, vector<Electron>& ElLColl,
+                                    vector<Jet>& JetColl, vector<Jet>& BJetColl, Particle& vMET, Event& ev, float weight, TString Label)
+{
+  if( !(MuTColl.size()==1 && MuLColl.size()==1) ) return;
+  if( !(ElTColl.size()==1 && ElLColl.size()==1) ) return;
+  if( !(ElTColl.at(0).Pt()>15 && MuTColl.at(0).Pt()>10) ) return;
+  if( !(ElTColl.at(0).Pt()>25 || MuTColl.at(0).Pt()>25) ) return;
+  if(  ElTColl.at(0).Charge() == MuTColl.at(0).Charge() ) return;
+  if(  ElTColl.at(0).DeltaR(MuTColl.at(0))<0.4  ) return;
+  
+  vector<TString> TrigListDen1    = {"HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_v"};
+  vector<TString> TrigListDen2    = {"HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_v"};
+  vector<TString> TrigListToMeas1 = {"HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v"};
+  vector<TString> TrigListToMeas2 = {"HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v"};
+
+  bool IsCase1 = ElTColl.at(0).Pt()>25 && MuTColl.at(0).Pt()>10 && ev.PassTrigger(TrigListDen1);
+  bool IsCase2 = ElTColl.at(0).Pt()>15 && MuTColl.at(0).Pt()>25 && ev.PassTrigger(TrigListDen2);
+
+  int NMatchIsoFilt=0, NMatchDZFilt=0;
+  if(IsCase1){ NMatchIsoFilt=2; NMatchDZFilt=ev.PassTrigger(TrigListToMeas1)? 2:0;}
+  if(IsCase2){ NMatchIsoFilt=2; NMatchDZFilt=ev.PassTrigger(TrigListToMeas2)? 2:0;}
+
+  if(NMatchIsoFilt!=2) return;
+
+  if(IsCase1){
+    TString Label1=Label+"_HLT1";
+    FillHist("NEvt"     +Label1, 0., weight, 1, 0., 1.);
+    FillHist("NEvt_DZ1" +Label1, fabs(MuTColl.at(0).dZ()), weight, 20, 0., 0.1);
+    FillHist("NEvt_DZ2" +Label1, fabs(ElTColl.at(0).dZ()), weight, 20, 0., 0.1);
+    FillHist("NEvt_DZ12"+Label1, fabs(MuTColl.at(0).dZ()-ElTColl.at(0).dZ()), weight, 40, 0., 0.2);
+    if(NMatchDZFilt==2){
+      FillHist("NEvtTrig"     +Label1, 0., weight, 1, 0., 1.);
+      FillHist("NEvtTrig_DZ1" +Label1, fabs(MuTColl.at(0).dZ()), weight, 20, 0., 0.1);
+      FillHist("NEvtTrig_DZ2" +Label1, fabs(ElTColl.at(0).dZ()), weight, 20, 0., 0.1);
+      FillHist("NEvtTrig_DZ12"+Label1, fabs(MuTColl.at(0).dZ()-ElTColl.at(0).dZ()), weight, 40, 0., 0.2);
+    }
+  }
+  if(IsCase2){
+    TString Label2=Label+"_HLT2";
+    FillHist("NEvt"     +Label2, 0., weight, 1, 0., 1.);
+    FillHist("NEvt_DZ1" +Label2, fabs(MuTColl.at(0).dZ()), weight, 20, 0., 0.1);
+    FillHist("NEvt_DZ2" +Label2, fabs(ElTColl.at(0).dZ()), weight, 20, 0., 0.1);
+    FillHist("NEvt_DZ12"+Label2, fabs(MuTColl.at(0).dZ()-ElTColl.at(0).dZ()), weight, 40, 0., 0.2);
+    if(NMatchDZFilt==2){
+      FillHist("NEvtTrig"     +Label2, 0., weight, 1, 0., 1.);
+      FillHist("NEvtTrig_DZ1" +Label2, fabs(MuTColl.at(0).dZ()), weight, 20, 0., 0.1);
+      FillHist("NEvtTrig_DZ2" +Label2, fabs(ElTColl.at(0).dZ()), weight, 20, 0., 0.1);
+      FillHist("NEvtTrig_DZ12"+Label2, fabs(MuTColl.at(0).dZ()-ElTColl.at(0).dZ()), weight, 40, 0., 0.2);
+    }
+  }
+
+} 
+
+
+
 
 void MeasTrigEff::MeasEffDiMuTrig_DZ(std::vector<Muon>& MuTColl, std::vector<Muon>& MuLColl, std::vector<Electron>& ElTColl, std::vector<Electron>& ElLColl,
                                       std::vector<Jet>& JetColl, std::vector<Jet>& BJetColl, Particle& vMET, Event& ev, float weight, TString Label)
@@ -352,7 +411,8 @@ void MeasTrigEff::MeasEffDiMuTrig_DZ(std::vector<Muon>& MuTColl, std::vector<Muo
   if( MuTColl.at(0).Charge() == MuTColl.at(1).Charge() ) return;
   
   float Mmumu = (MuTColl.at(0)+MuTColl.at(1)).M();
-  if(Mmumu<4) return;
+  if(Mmumu<10) return;
+  //if(Mmumu<4) return;
 
   int NMatchIsoFilt=0, NMatchDZFilt=0;
   if(MCSample.Contains("Trig") or DataStream.Contains("Trig")){
@@ -371,7 +431,9 @@ void MeasTrigEff::MeasEffDiMuTrig_DZ(std::vector<Muon>& MuTColl, std::vector<Muo
       }
     }
   }
-  else{NMatchIsoFilt=2; NMatchDZFilt= ev.PassTrigger("HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v")? 2:0;}
+  else{NMatchIsoFilt=2; NMatchDZFilt= ev.PassTrigger("HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8_v")? 2:0;}
+  //else{NMatchIsoFilt=2; NMatchDZFilt= ev.PassTrigger("HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8_v")? 2:0;}
+  //else{NMatchIsoFilt=2; NMatchDZFilt= ev.PassTrigger("HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v")? 2:0;}
 
   if(NMatchIsoFilt!=2) return;
   FillHist("NEvt"     +Label, 0., weight, 1, 0., 1.);

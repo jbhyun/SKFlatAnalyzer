@@ -58,12 +58,11 @@ List_HNTopFeas_BkdMC_2016 = [
   ["WGToLNuG", 5], ["ZGTo2LG", 5], ["TTG", 5], ["TG", 1], ["VHToNonbb", 1], ["WpWp_EWK", 1], ["WpWp_QCD", 1],
 ]
 List_HNTopFeas_BkdMC_2017 = [
-#  ["DYJets", 25], ["TTLL_powheg", 13],
-#  ["ZZTo4L_powheg", 3], ["ggHToZZTo4L", 2], ["VBF_HToZZTo4L", 1], ["ttHToNonbb", 2], ["ttZToLLNuNu", 4], ["WWZ", 1], ["WZZ", 1], ["ZZZ", 1],
-#  ["WZTo3LNu_powheg", 1], ["ttWToLNu", 2], ["WWW", 1], #Only Trilep  
-#  ["WJets_MG", 7], ["TTLJ_powheg", 7], #Only SS2l
-#  ["WGToLNuG_01J", 5], ["ZGToLLG_01J", 5], ["TTG", 2], ["TG", 1], ["VHToNonbb", 1], ["WpWp_EWK", 1], ["WpWp_QCD", 1],
-  ["QCD_Pt-1000toInf_MuEnrichedPt5",1], ["QCD_Pt-120to170_EMEnriched",1], ["QCD_Pt-120to170_MuEnrichedPt5",1], ["QCD_Pt-15to20_EMEnriched",1], ["QCD_Pt-15to20_MuEnrichedPt5",1], ["QCD_Pt-170to300_MuEnrichedPt5",1], ["QCD_Pt-20to30_EMEnriched",1], ["QCD_Pt-20to30_MuEnrichedPt5",1], ["QCD_Pt-300to470_MuEnrichedPt5",1], ["QCD_Pt-300toInf_EMEnriched",1], ["QCD_Pt-30to40_DoubleEMEnriched_MGG-80toInf",1], ["QCD_Pt-30to50_EMEnriched",1], ["QCD_Pt-30to50_MuEnrichedPt5",1], ["QCD_Pt-40toInf_DoubleEMEnriched_MGG-80toInf",1], ["QCD_Pt-470to600_MuEnrichedPt5",1], ["QCD_Pt-50to80_EMEnriched",1], ["QCD_Pt-50to80_MuEnrichedPt5",1], ["QCD_Pt-600to800_MuEnrichedPt5",1], ["QCD_Pt-800to1000_MuEnrichedPt5",1], ["QCD_Pt-80to120_EMEnriched",1], ["QCD_Pt-80to120_MuEnrichedPt5",1], ["QCD_Pt_170to250_bcToE",1], ["QCD_Pt_20to30_bcToE",1], ["QCD_Pt_250toInf_bcToE",1], ["QCD_Pt_30to80_bcToE",1], ["QCD_Pt_80to170_bcToE",1]
+  ["DYJets", 25], ["TTLL_powheg", 13],
+  ["ZZTo4L_powheg", 3], ["ggHToZZTo4L", 2], ["VBF_HToZZTo4L", 1], ["ttHToNonbb", 2], ["ttZToLLNuNu", 4], ["WWZ", 1], ["WZZ", 1], ["ZZZ", 1],
+  ["WZTo3LNu_powheg", 1], ["ttWToLNu", 2], ["WWW", 1], #Only Trilep  
+  ["WJets_MG", 7], ["TTLJ_powheg", 7], #Only SS2l
+  ["WGToLNuG_01J", 5], ["ZGToLLG_01J", 5], ["TTG", 2], ["TG", 1], ["VHToNonbb", 1], ["WpWp_EWK", 1], ["WpWp_QCD", 1],
 ]
 List_HNTopFeas_BkdMC_2018 = [
   ["DYJets", 25], ["TTLL_powheg", 13],
@@ -72,14 +71,6 @@ List_HNTopFeas_BkdMC_2018 = [
   ["WJets_MG", 13], ["TTLJ_powheg", 25], #Only SS2l
   ["WGToLNuG_01J", 5], ["ZGToLLG_01J", 5], ["TTG", 2], ["TG", 1], ["VHToNonbb", 1], ["WpWp_EWK", 1], ["WpWp_QCD", 1],
 ]
-
-List_HNTopFeas_SigMC_2017 = [
-  ["TT_TTobNMu_SS2L_LO_MN20", 1], ["TT_TTobNMu_SS2L_LO_MN50", 1], ["TT_TTobNMu_SS2L_LO_MN100", 1],
-  ["TT_TTobNMu_LepTop3L_LO_MN20", 1], ["TT_TTobNMu_LepTop3L_LO_MN50", 1], ["TT_TTobNMu_LepTop3L_LO_MN100", 1],
-  ["TT_TTobNMu_HadTop3L_LO_MN20", 1], ["TT_TTobNMu_HadTop3L_LO_MN50", 1], ["TT_TTobNMu_HadTop3L_LO_MN100", 1],
-  ["TT_TTobNMu_4L_LO_MN20", 1], ["TT_TTobNMu_4L_LO_MN50", 1], ["TT_TTobNMu_4L_LO_MN100", 1],
-]
-
 
 
 List_SkimTree_SS2lOR3l_Data_2016 = [
@@ -119,12 +110,22 @@ List_TrigCheck_BkdMC_2017 = [
 ]
 
 List_MCPUDist17_BkdMC_2017 = [
-  ["QCD_Pt-1000toInf_MuEnrichedPt5",10], ["QCD_Pt-120to170_EMEnriched",10], ["QCD_Pt-120to170_MuEnrichedPt5",10], ["QCD_Pt-15to20_EMEnriched",10], ["QCD_Pt-15to20_MuEnrichedPt5",10], ["QCD_Pt-170to300_MuEnrichedPt5",10], ["QCD_Pt-20to30_EMEnriched",10], ["QCD_Pt-20to30_MuEnrichedPt5",10], ["QCD_Pt-300to470_MuEnrichedPt5",10], ["QCD_Pt-300toInf_EMEnriched",10], ["QCD_Pt-30to40_DoubleEMEnriched_MGG-80toInf",10], ["QCD_Pt-30to50_EMEnriched",10], ["QCD_Pt-30to50_MuEnrichedPt5",10], ["QCD_Pt-40toInf_DoubleEMEnriched_MGG-80toInf",10], ["QCD_Pt-470to600_MuEnrichedPt5",10], ["QCD_Pt-50to80_EMEnriched",10], ["QCD_Pt-50to80_MuEnrichedPt5",10], ["QCD_Pt-600to800_MuEnrichedPt5",10], ["QCD_Pt-800to1000_MuEnrichedPt5",10], ["QCD_Pt-80to120_EMEnriched",10], ["QCD_Pt-80to120_MuEnrichedPt5",10], ["QCD_Pt_170to250_bcToE",10], ["QCD_Pt_20to30_bcToE",10], ["QCD_Pt_250toInf_bcToE",10], ["QCD_Pt_30to80_bcToE",10], ["QCD_Pt_80to170_bcToE",10]
-#["DYJets", 25], 
-#  ["WGToLNuG_01J", 5], ["VHToNonbb", 1], ["WpWp_EWK", 1], ["WpWp_QCD", 1],
-#  ["TT_TTobNMu_LepTop3L_LO_MN20", 1], ["TT_TTobNMu_LepTop3L_LO_MN50", 1], ["TT_TTobNMu_LepTop3L_LO_MN100", 1], 
-#  ["TT_TTobNMu_HadTop3L_LO_MN20", 1], ["TT_TTobNMu_HadTop3L_LO_MN50", 1], ["TT_TTobNMu_HadTop3L_LO_MN100", 1], 
-#  ["TT_TTobNMu_4L_LO_MN20", 1], ["TT_TTobNMu_4L_LO_MN50", 1], ["TT_TTobNMu_4L_LO_MN100", 1], 
+ ["TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN20" ,1], ["TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN30" ,1], ["TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN60" ,1], 
+]
+
+List_HNTopV1_SigMC_2017 = [
+  ["TT_TTobNMu_SS2L_LO_MN20", 1], ["TT_TTobNMu_SS2L_LO_MN50", 1], ["TT_TTobNMu_SS2L_LO_MN100", 1],
+  ["TT_TTobNMu_LepTop3L_LO_MN20", 1], ["TT_TTobNMu_LepTop3L_LO_MN50", 1], ["TT_TTobNMu_LepTop3L_LO_MN100", 1],
+  ["TT_TTobNMu_HadTop3L_LO_MN20", 1], ["TT_TTobNMu_HadTop3L_LO_MN50", 1], ["TT_TTobNMu_HadTop3L_LO_MN100", 1],
+  ["TT_TTobNMu_4L_LO_MN20", 1], ["TT_TTobNMu_4L_LO_MN50", 1], ["TT_TTobNMu_4L_LO_MN100", 1],
+]
+
+
+List_HNTopV2_SigMC_2017 = [
+["TTbarTypeIHeavyN-El_2L_MLM_MN100",1], ["TTbarTypeIHeavyN-El_2L_MLM_MN20" ,1], ["TTbarTypeIHeavyN-El_2L_MLM_MN30" ,1], ["TTbarTypeIHeavyN-El_2L_MLM_MN40" ,1], ["TTbarTypeIHeavyN-El_2L_MLM_MN50" ,1], ["TTbarTypeIHeavyN-El_2L_MLM_MN60" ,1], ["TTbarTypeIHeavyN-El_2L_MLM_MN70" ,1], ["TTbarTypeIHeavyN-El_2L_MLM_MN75" ,1], ["TTbarTypeIHeavyN-El_2L_MLM_MN85" ,1], ["TTbarTypeIHeavyN-El_2L_MLM_MN90" ,1], ["TTbarTypeIHeavyN-Mu_2L_MLM_MN100",1], ["TTbarTypeIHeavyN-Mu_2L_MLM_MN20" ,1], ["TTbarTypeIHeavyN-Mu_2L_MLM_MN30" ,1], ["TTbarTypeIHeavyN-Mu_2L_MLM_MN40" ,1], ["TTbarTypeIHeavyN-Mu_2L_MLM_MN50" ,1], ["TTbarTypeIHeavyN-Mu_2L_MLM_MN60" ,1], ["TTbarTypeIHeavyN-Mu_2L_MLM_MN70" ,1], ["TTbarTypeIHeavyN-Mu_2L_MLM_MN75" ,1], ["TTbarTypeIHeavyN-Mu_2L_MLM_MN85" ,1], ["TTbarTypeIHeavyN-Mu_2L_MLM_MN90" ,1],
+["TTbarTypeIHeavyN-El_LepTop3L_MLM_MN100",1], ["TTbarTypeIHeavyN-El_LepTop3L_MLM_MN20" ,1], ["TTbarTypeIHeavyN-El_LepTop3L_MLM_MN30" ,1], ["TTbarTypeIHeavyN-El_LepTop3L_MLM_MN40" ,1], ["TTbarTypeIHeavyN-El_LepTop3L_MLM_MN50" ,1], ["TTbarTypeIHeavyN-El_LepTop3L_MLM_MN60" ,1], ["TTbarTypeIHeavyN-El_LepTop3L_MLM_MN70" ,1], ["TTbarTypeIHeavyN-El_LepTop3L_MLM_MN75" ,1], ["TTbarTypeIHeavyN-El_LepTop3L_MLM_MN85" ,1], ["TTbarTypeIHeavyN-El_LepTop3L_MLM_MN90" ,1], ["TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN100",1], ["TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN20" ,1], ["TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN30" ,1], ["TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN40" ,1], ["TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN50" ,1], ["TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN60" ,1], ["TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN70" ,1], ["TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN75" ,1], ["TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN85" ,1], ["TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN90" ,1],
+["TTbarTypeIHeavyN-El_HadTop3L_MLM_MN100",1], ["TTbarTypeIHeavyN-El_HadTop3L_MLM_MN20" ,1], ["TTbarTypeIHeavyN-El_HadTop3L_MLM_MN30" ,1], ["TTbarTypeIHeavyN-El_HadTop3L_MLM_MN40" ,1], ["TTbarTypeIHeavyN-El_HadTop3L_MLM_MN50" ,1], ["TTbarTypeIHeavyN-El_HadTop3L_MLM_MN60" ,1], ["TTbarTypeIHeavyN-El_HadTop3L_MLM_MN70" ,1], ["TTbarTypeIHeavyN-El_HadTop3L_MLM_MN75" ,1], ["TTbarTypeIHeavyN-El_HadTop3L_MLM_MN85" ,1], ["TTbarTypeIHeavyN-El_HadTop3L_MLM_MN90" ,1], ["TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN100",1], ["TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN20" ,1], ["TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN30" ,1], ["TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN40" ,1], ["TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN50" ,1], ["TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN60" ,1], ["TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN70" ,1], ["TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN75" ,1], ["TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN85" ,1], ["TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN90" ,1],
+["TTbarTypeIHeavyN-El_4L_MLM_MN100",1], ["TTbarTypeIHeavyN-El_4L_MLM_MN20" ,1], ["TTbarTypeIHeavyN-El_4L_MLM_MN30" ,1], ["TTbarTypeIHeavyN-El_4L_MLM_MN40" ,1], ["TTbarTypeIHeavyN-El_4L_MLM_MN50" ,1], ["TTbarTypeIHeavyN-El_4L_MLM_MN60" ,1], ["TTbarTypeIHeavyN-El_4L_MLM_MN70" ,1], ["TTbarTypeIHeavyN-El_4L_MLM_MN75" ,1], ["TTbarTypeIHeavyN-El_4L_MLM_MN85" ,1], ["TTbarTypeIHeavyN-El_4L_MLM_MN90" ,1], ["TTbarTypeIHeavyN-Mu_4L_MLM_MN100",1], ["TTbarTypeIHeavyN-Mu_4L_MLM_MN20" ,1], ["TTbarTypeIHeavyN-Mu_4L_MLM_MN30" ,1], ["TTbarTypeIHeavyN-Mu_4L_MLM_MN40" ,1], ["TTbarTypeIHeavyN-Mu_4L_MLM_MN50" ,1], ["TTbarTypeIHeavyN-Mu_4L_MLM_MN60" ,1], ["TTbarTypeIHeavyN-Mu_4L_MLM_MN70" ,1], ["TTbarTypeIHeavyN-Mu_4L_MLM_MN75" ,1], ["TTbarTypeIHeavyN-Mu_4L_MLM_MN85" ,1], ["TTbarTypeIHeavyN-Mu_4L_MLM_MN90" ,1],
 ]
 
 List_GenMatchingValid_BkdMC_2016 = [
@@ -140,7 +141,9 @@ List_GenMatchingValid_BkdMC_2018 = [
 ]
 
 List_GenMatchingValid_SigMC_2017 = [
-  ["TT_TTobNMu_SS2L_LO_MN20", 1], ["TT_TTobNMu_SS2L_LO_MN50", 1], ["TT_TTobNMu_SS2L_LO_MN100", 1],
+#  ["TT_TTobNMu_SS2L_LO_MN20", 1], ["TT_TTobNMu_SS2L_LO_MN50", 1], ["TT_TTobNMu_SS2L_LO_MN100", 1],
+  ["TTbarTypeIHeavyN-El_2L_MLM_MN100",1], ["TTbarTypeIHeavyN-El_2L_MLM_MN20" ,1], ["TTbarTypeIHeavyN-El_2L_MLM_MN30" ,1], ["TTbarTypeIHeavyN-El_2L_MLM_MN40" ,1], ["TTbarTypeIHeavyN-El_2L_MLM_MN50" ,1], ["TTbarTypeIHeavyN-El_2L_MLM_MN60" ,1], ["TTbarTypeIHeavyN-El_2L_MLM_MN70" ,1], ["TTbarTypeIHeavyN-El_2L_MLM_MN75" ,1], ["TTbarTypeIHeavyN-El_2L_MLM_MN85" ,1], ["TTbarTypeIHeavyN-El_2L_MLM_MN90" ,1],
+#  ["TTbarTypeIHeavyN-Mu_2L_MLM_MN100",1], ["TTbarTypeIHeavyN-Mu_2L_MLM_MN20" ,1], ["TTbarTypeIHeavyN-Mu_2L_MLM_MN30" ,1], ["TTbarTypeIHeavyN-Mu_2L_MLM_MN40" ,1], ["TTbarTypeIHeavyN-Mu_2L_MLM_MN50" ,1], ["TTbarTypeIHeavyN-Mu_2L_MLM_MN60" ,1], ["TTbarTypeIHeavyN-Mu_2L_MLM_MN70" ,1], ["TTbarTypeIHeavyN-Mu_2L_MLM_MN75" ,1], ["TTbarTypeIHeavyN-Mu_2L_MLM_MN85" ,1], ["TTbarTypeIHeavyN-Mu_2L_MLM_MN90" ,1]
 ]
 
 List_IDOptimization_BkdMC_2016 = [
@@ -148,13 +151,13 @@ List_IDOptimization_BkdMC_2016 = [
 ]
 
 List_IDOptimization_BkdMC_2017 = [
-#  ["ZGToLLG_01J", 5],
-#  ["TTLL_powheg", 13],
+  ["ZGToLLG_01J", 5],
+  ["TTLL_powheg", 13],
   ["TTLJ_powheg", 15],
 #  ["TTLL_powheg_TrigInfo", 13],
 #  ["TTLJ_powheg_TrigInfo", 15],
-  ["DYJets", 25],
-  ["WJets_MG", 7],
+#  ["DYJets", 25],
+#  ["WJets_MG", 7],
 #  ["DYJets_TrigInfo", 10],
 ]
 
@@ -169,8 +172,8 @@ List_MeasTrigEff_Data_2017_DiMu = [
   ["DoubleMuon", 13, "B"], ["DoubleMuon", 15, "C"], ["DoubleMuon", 7, "D"], ["DoubleMuon", 15, "E"], ["DoubleMuon", 24, "F"],
 ]
 List_MeasTrigEff_Data_2017_ElMu = [
-#  ["MuonEG", 13, "B"], ["MuonEG", 15, "C"], ["MuonEG", 7, "D"], ["MuonEG", 15, "E"], ["MuonEG", 24, "F"],
-  ["SingleMuonTrigInfo", 13, "B"], ["SingleMuonTrigInfo", 15, "C"], ["SingleMuonTrigInfo", 7, "D"], ["SingleMuonTrigInfo", 15, "E"], ["SingleMuonTrigInfo", 24, "F"],
+  ["MuonEG", 13, "B"], ["MuonEG", 15, "C"], ["MuonEG", 7, "D"], ["MuonEG", 15, "E"], ["MuonEG", 24, "F"],
+#  ["SingleMuonTrigInfo", 13, "B"], ["SingleMuonTrigInfo", 15, "C"], ["SingleMuonTrigInfo", 7, "D"], ["SingleMuonTrigInfo", 15, "E"], ["SingleMuonTrigInfo", 24, "F"],
 #  ["SingleElectronTrigInfo", 13, "B"], ["SingleElectronTrigInfo", 15, "C"], ["SingleElectronTrigInfo", 7, "D"], ["SingleElectronTrigInfo", 15, "E"], ["SingleElectronTrigInfo", 24, "F"],
 ]
 
@@ -188,9 +191,17 @@ List_Debug_Data_2016 = [["MuonEG", 1, "B_ver2"]]
 List_Debug_SigMC_2017 = [
   #["TT_TTobNMu_SS2L_LO_MN50", 1]
   #["TT_TTobNMu_LepTop3L_LO_MN20", 1]
-  ["TT_TTobNMu_4L_LO_MN20", 1]
+  #["TT_TTobNMu_4L_LO_MN20", 1]
+  ["TTbarTypeIHeavyN-El_2L_MLM_MN20", 1],
+  ["TTbarTypeIHeavyN-El_2L_MLM_MN100", 1],
+  ["TTbarTypeIHeavyN-El_HadTop3L_MLM_MN20", 1],
+  ["TTbarTypeIHeavyN-El_HadTop3L_MLM_MN100", 1],
+  ["TTbarTypeIHeavyN-El_LepTop3L_MLM_MN20", 1],
+  ["TTbarTypeIHeavyN-El_LepTop3L_MLM_MN100", 1],
+  ["TTbarTypeIHeavyN-El_4L_MLM_MN20", 1],
+  ["TTbarTypeIHeavyN-El_4L_MLM_MN100", 1],
 ]
-List_Debug_BkdMC_2017 = [["TTLJ_powheg", 1]]
+List_Debug_BkdMC_2017 = [["TTLL_powheg_TrigInfo", 1]]
 List_Debug_Data_2017 = [["SingleMuonTrigInfo", 1, "B"]]
 List_Debug_SigMC_2018 = [["TestFiltered_TTToHcToWA_AToMuMu_MHc160_MA75", 1]]
 List_Debug_BkdMC_2018 = [["ZZTo4L_powheg", 1]]
@@ -218,8 +229,8 @@ Dict_JobConfig = {
  "SkimRateCheck_Data_2017_TrigInfo": List_SkimTree_TrigInfo_Data_2017,
  "SkimTree_SS2lOR3l_BkdMC_2016": List_HNTopFeas_BkdMC_2016,
  "SkimTree_SS2lOR3l_BkdMC_2017": List_HNTopFeas_BkdMC_2017,
- "SkimTree_SS2lOR3l_SigMC_2017": List_HNTopFeas_SigMC_2017,
  "SkimTree_SS2lOR3l_BkdMC_2018": List_HNTopFeas_BkdMC_2018,
+ "SkimTree_SS2lOR3l_SigMC_2017": List_HNTopV2_SigMC_2017,
  "SkimTree_SS2lOR3l_Data_2016_SS2lOR3l": List_SkimTree_SS2lOR3l_Data_2016,
  "SkimTree_SS2lOR3l_Data_2017_SS2lOR3l": List_SkimTree_SS2lOR3l_Data_2017,
  "SkimTree_SS2lOR3l_Data_2018_SS2lOR3l": List_SkimTree_SS2lOR3l_Data_2018,
@@ -229,7 +240,7 @@ Dict_JobConfig = {
  "HNTopFeas_BkdMC_2016": List_HNTopFeas_BkdMC_2016,
  "HNTopFeas_BkdMC_2017": List_HNTopFeas_BkdMC_2017,
  "HNTopFeas_BkdMC_2018": List_HNTopFeas_BkdMC_2018,
- "HNTopFeas_SigMC_2017": List_HNTopFeas_SigMC_2017,
+ "HNTopFeas_SigMC_2017": List_HNTopV2_SigMC_2017,
  "TestRun_Data_2016_TriMu": List_TestRun_Data_2016_TriMu,
  "TestRun_Data_2017_TriMu": List_TestRun_Data_2017_TriMu,
  "TestRun_Data_2018_TriMu": List_TestRun_Data_2018_TriMu,

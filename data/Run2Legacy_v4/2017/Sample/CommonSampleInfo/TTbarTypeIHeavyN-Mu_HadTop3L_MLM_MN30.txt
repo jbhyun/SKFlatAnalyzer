@@ -1,0 +1,2 @@
+# alias PD xsec nmc sumw
+TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN30	TTbarTypeIHeavyN-Mu_HadTop3L_LO_MN30	1.0	280402	280151

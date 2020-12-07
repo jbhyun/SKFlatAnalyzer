@@ -69,7 +69,7 @@ void HNTopFeas::executeEvent(){
   float weight = 1.;
   if(!IsDATA){
     weight*=ev.MCweight()*weight_norm_1invpb*GetKFactor()*ev.GetTriggerLumi("Full");
-    weight *= GetGenFilterEffCorr();
+    weight*=GetBRWeight();
     weight*=GetPileUpWeight(nPileUp, 0);
   }
   FillHist("CutFlow", 0., weight, 20, 0., 20.);
@@ -127,13 +127,14 @@ void HNTopFeas::executeEvent(){
   std::vector<Electron> electronTightColl = SelectElectrons(electronPreColl, "TopHN17"+IDSSLabel+"T", 10., 2.5);
   std::vector<Muon>     muonLooseColl     = SelectMuons(muonPreColl, "TopHN17L", 10., 2.4);
   std::vector<Electron> electronLooseColl = SelectElectrons(electronPreColl, "TopHN17"+IDSSLabel+"L", 10., 2.5);
+  std::vector<Electron> electronVetoColl  = SelectElectrons(electronPreColl, "TopHN17L", 10., 2.5);
 
 
   JetTagging::Parameters param_jets = JetTagging::Parameters(JetTagging::DeepCSV, JetTagging::Medium, JetTagging::incl, JetTagging::mujets);
   std::vector<Jet> jetNoVetoColl  = GetJets("tight", 25., 2.4);
   std::sort(jetNoVetoColl.begin(), jetNoVetoColl.end(), PtComparing);
   std::vector<Jet> bjetNoVetoColl = SelBJets(jetNoVetoColl, param_jets);
-  std::vector<Jet> jetColl  = JetsVetoLeptonInside(jetNoVetoColl, electronLooseColl, muonLooseColl, 0.4);
+  std::vector<Jet> jetColl  = JetsVetoLeptonInside(jetNoVetoColl, electronVetoColl, muonLooseColl, 0.4);
   std::vector<Jet> bjetColl = SelBJets(jetColl, param_jets);
 
 
@@ -172,36 +173,104 @@ void HNTopFeas::executeEvent(){
 
  
   if(SS2l){
-    AnalyzeSSDiLepton(muonTightColl, muonLooseColl, electronTightColl, electronLooseColl,
+    AnalyzeSSDiLepton(muonTightColl, muonLooseColl, muonLooseColl, electronTightColl, electronLooseColl, electronVetoColl,
                       jetColl, bjetColl, vMET_xyCorr, weight, "");
   }
-  if(MuMuMu){
-    AnalyzeTriMuon(muonTightColl, muonLooseColl, electronTightColl, electronLooseColl,
-                   jetColl, bjetColl, vMET_xyCorr, weight, "");
-  }
-  if(ElMuMu){
-    AnalyzeElectronDiMuon(muonTightColl, muonLooseColl, electronTightColl, electronLooseColl,
-                          jetColl, bjetColl, vMET_xyCorr, weight, "");
-  }
   if(TriLep){
-    AnalyzeTriLepton(muonTightColl, muonLooseColl, electronTightColl, electronLooseColl,
+    AnalyzeTriLepton(muonTightColl, muonLooseColl, muonLooseColl, electronTightColl, electronLooseColl, electronVetoColl,
                      jetColl, bjetColl, vMET_xyCorr, weight, "");
   }
   if(TetraLep){
-    AnalyzeTetraLepton(muonTightColl, muonLooseColl, electronTightColl, electronLooseColl,
+    AnalyzeTetraLepton(muonTightColl, muonLooseColl, muonLooseColl, electronTightColl, electronLooseColl, electronVetoColl,
                        jetColl, bjetColl, vMET_xyCorr, weight, "");
+  }
+ 
+
+  if(false){
+    int NvPr=0, NvWp=0, NvWm=0, Nvn1=0, Nvn1_depth2=0;
+    for(unsigned int it_t=2; it_t<truthColl.size(); it_t++){
+      int PID=truthColl.at(it_t).PID(), aPID=abs(PID);
+      if(!(aPID==12 or aPID==14 or aPID==16)) continue;
+      int MIdx   = truthColl.at(it_t).MotherIndex();
+      int GrMIdx = MIdx!=-1? FirstNonSelfMotherIdx(MIdx, truthColl):-1;
+      int MPID   = truthColl.at(MIdx).PID(), aMPID=abs(MPID);
+      int GrMPID = GrMIdx!=-1? truthColl.at(GrMIdx).PID():-1, aGrMPID=abs(GrMPID);
+      if     (MPID== 24     ) {NvPr++; NvWp++;}
+      else if(MPID==-24     ) {NvPr++; NvWm++;}
+      else if(aMPID==9900012) {NvPr++; Nvn1++; Nvn1_depth2++;}
+  
+      if(aMPID==24 && aGrMPID==9900012){ Nvn1_depth2++; }
+    }
+  
+    FillHist("NvPr", NvPr, weight, 5, 0., 5.);
+    FillHist("NvWp", NvWp, weight, 5, 0., 5.);
+    FillHist("NvWm", NvWm, weight, 5, 0., 5.);
+    FillHist("Nvn1", Nvn1, weight, 5, 0., 5.);
+    FillHist("Nvn1_depth2", Nvn1_depth2, weight, 5, 0., 5.);
+    if(NvWp!=0) PrintGen(truthColl);
   }
 
 }
 
 
-void HNTopFeas::AnalyzeSSDiLepton(std::vector<Muon>& MuTColl, std::vector<Muon>& MuLColl, std::vector<Electron>& ElTColl, std::vector<Electron>& ElLColl,
-                                  std::vector<Jet>& JetColl, std::vector<Jet>& BJetColl, Particle& vMET, float weight, TString Label)
+int HNTopFeas::CheckDecMode(vector<Gen>& TruthColl){
+
+  int NlPr=0, Nln1=0, Nen1=0, Nmn1=0, Ntn1=0, Nta=0;
+  int NvPr=0, Nvn1=0, Nven1=0, Nvmn1=0;
+  for(unsigned int it_t=2; it_t<TruthColl.size(); it_t++){
+    int PID=TruthColl.at(it_t).PID(), aPID=abs(PID);
+    if(aPID>10 and aPID<20){
+      int MIdx   = TruthColl.at(it_t).MotherIndex();
+      int GrMIdx = MIdx!=-1? FirstNonSelfMotherIdx(MIdx, TruthColl):-1;
+      int MPID   = TruthColl.at(MIdx).PID(), aMPID=abs(MPID);
+      int GrMPID = GrMIdx!=-1? TruthColl.at(GrMIdx).PID():-1, aGrMPID=abs(GrMPID);
+      if((aMPID==24 && aGrMPID==9900012) or aMPID==9900012){
+        NlPr++; Nln1++;
+        if     (aPID==15){ Nta++; Ntn1++; }
+        else if(aPID==13){ Nmn1++; }
+        else if(aPID==11){ Nen1++; }
+        else if(aPID==16){ NvPr++; Nvn1++; }
+        else if(aPID==14){ NvPr++; Nvn1++; Nvmn1++; }
+        else if(aPID==12){ NvPr++; Nvn1++; Nven1++; }
+      }
+      else if(aMPID==24){
+        if(aPID==15){ Nta++; }
+        if(aPID==12 or aPID==14 or aPID==16) NvPr++;
+      }
+    }
+  }
+ 
+  //NT: 1:jj, 2:jl 3:jta, 4:lj, 5:taj, 6:ll, 7:tal, 8:lta, 9:tata, 10:N->Z(ee)v, 20: N->Z(mm)v, 30:N->Z(tata)v
+  int NReturn=0;
+  if(NvPr==0) NReturn=1;
+  else if(NvPr==1 && Nvn1==0 && Nta==0) NReturn=2;
+  else if(NvPr==1 && Nvn1==0 && Nta==1) NReturn=3;
+  else if(NvPr==1 && Nvn1==1 && Nta==0) NReturn=4;
+  else if(NvPr==1 && Nvn1==1 && Nta==1) NReturn=5;
+  else if(NvPr==2 && Nta==0) NReturn=6;
+  else if(NvPr==2 && Ntn1==1 && Nta==1) NReturn=7;
+  else if(NvPr==2 && Ntn1==0 && Nta==1) NReturn=8;
+  else if(NvPr==2 && Nta==2) NReturn=9;
+  if     (Nvmn1==1 && Nen1==2) NReturn+=10;
+  else if(Nven1==1 && Nmn1==2) NReturn+=20;
+  else if(Ntn1==2) NReturn+=30;
+
+  return NReturn;
+}
+
+
+void HNTopFeas::AnalyzeSSDiLepton(vector<Muon>& MuTColl, vector<Muon>& MuLColl, vector<Muon>& MuVColl,
+                                  vector<Electron>& ElTColl, vector<Electron>& ElLColl, vector<Electron>& ElVColl,
+                                  vector<Jet>& JetColl, vector<Jet>& BJetColl, Particle& vMET, float weight, TString Label)
 {
-  int NMuT=MuTColl.size(), NElT=ElTColl.size(), NMuL=MuLColl.size(), NElL=ElLColl.size();
+  int NMuT=MuTColl.size(), NElT=ElTColl.size(), NMuL=MuLColl.size(), NElL=ElLColl.size(), NMuV=MuVColl.size(), NElV=ElVColl.size();
   int it_cut=3;
+  bool CheckComposition=true;
+  vector<Gen> TruthColl; if(CheckComposition){ TruthColl = GetGens(); }
+
   if( !( (NMuT==2 and NElT==0) or (NElT==2 and NMuT==0) ) ) return;
   if( !(NMuT==NMuL and NElT==NElL) ) return;
+  if( !(NMuT==NMuV and NElT==NElV) ) return;
   if(NMuT==2){
     Label+="_2M";
     if(MuTColl.at(0).Charge()!=MuTColl.at(1).Charge()) return;
@@ -250,6 +319,57 @@ void HNTopFeas::AnalyzeSSDiLepton(std::vector<Muon>& MuTColl, std::vector<Muon>&
 
     FillHist("NPresel", 0., weight, 12, 0., 12.);
     FillHist("NPresel_Tot", 0., weight, 3, 0., 3.);
+
+    int NDecMode = CheckDecMode(TruthColl);
+    FillHist("DecMode"+Label, NDecMode, weight, 40, 0., 40.);
+    int NL_AccF=0, NL_IDF=0, NTa_HadORAccF=0, NTaL_IDF=0;
+    for(unsigned int it_t=2; it_t<TruthColl.size(); it_t++){
+      int pid = TruthColl.at(it_t).PID(), apid = abs(pid);
+      if(!(apid==11 or apid==13 or apid==15)) continue;
+      if(TruthColl.at(it_t).DeltaR(MuTColl.at(0))<0.1) continue;
+      if(TruthColl.at(it_t).DeltaR(MuTColl.at(1))<0.1) continue;
+      int midx = TruthColl.at(it_t).MotherIndex(), mpid = TruthColl.at(midx).PID(), ampid=abs(mpid);
+      int grmidx = TruthColl.at(midx).MotherIndex(), grmpid = grmidx>0? TruthColl.at(grmidx).PID():0, agrmpid=abs(grmpid);
+      float pt=TruthColl.at(it_t).Pt(), feta=fabs(TruthColl.at(it_t).Eta());
+
+      bool SigTa=false, SigL=false, PassAcc=false, PassAcc_TaL=false;
+      if((ampid==24 && agrmpid==9900012) or ampid==9900012){
+        if(apid==15){ SigTa=true; } else{ SigL=true; }
+      }
+      else if(ampid==24){
+        if(apid==15){ SigTa=true; } else{ SigL=true; }
+      }
+      if(SigL){
+        if     (apid==11 && pt>10 && feta<2.5){ PassAcc=true; }
+        else if(apid==13 && pt>10 && feta<2.4){ PassAcc=true; }
+        if(PassAcc){ NL_IDF++; } else{ NL_AccF++; }
+      }
+      else if(SigTa){
+        for(unsigned int i=2; i<TruthColl.size(); i++){
+          if(TruthColl.at(i).MotherIndex()!=(int) it_t) continue;
+          int  tmppid = TruthColl.at(i).PID(), tmpapid=abs(tmppid);
+          float tmppt = TruthColl.at(i).Pt(), tmpfeta = fabs(TruthColl.at(i).Eta());
+          if(!(tmpapid==11 or tmpapid==13)) continue;
+
+          if(tmpapid==11 && tmppt>10 && tmpfeta<2.5) PassAcc_TaL=true;
+          else if(tmpapid==13 && tmppt>10 && tmpfeta<2.4) PassAcc_TaL=true;
+
+          if(PassAcc_TaL) break;
+        }
+        if(PassAcc_TaL){ NTaL_IDF++; } else{ NTa_HadORAccF++; }
+      }
+    }
+    if(NL_AccF >0 && NL_IDF==0 && NTaL_IDF==0 && NTa_HadORAccF==0) FillHist("MigrationType"+Label, 0., weight, 10, 0., 10.);
+    if(NL_AccF==0 && NL_IDF >0 && NTaL_IDF==0 && NTa_HadORAccF==0) FillHist("MigrationType"+Label, 1., weight, 10, 0., 10.);
+    if(NL_AccF==0 && NL_IDF==0 && NTaL_IDF >0 && NTa_HadORAccF==0) FillHist("MigrationType"+Label, 2., weight, 10, 0., 10.);
+    if(NL_AccF==0 && NL_IDF==0 && NTaL_IDF==0 && NTa_HadORAccF >0) FillHist("MigrationType"+Label, 3., weight, 10, 0., 10.);
+    if(NL_AccF >0 && NL_IDF >0 && NTaL_IDF==0 && NTa_HadORAccF==0) FillHist("MigrationType"+Label, 4., weight, 10, 0., 10.);
+    if(NL_AccF >0 && NL_IDF==0 && NTaL_IDF >0 && NTa_HadORAccF==0) FillHist("MigrationType"+Label, 5., weight, 10, 0., 10.);
+    if(NL_AccF >0 && NL_IDF==0 && NTaL_IDF==0 && NTa_HadORAccF >0) FillHist("MigrationType"+Label, 6., weight, 10, 0., 10.);
+    if(NL_AccF==0 && NL_IDF >0 && NTaL_IDF >0 && NTa_HadORAccF==0) FillHist("MigrationType"+Label, 7., weight, 10, 0., 10.);
+    if(NL_AccF==0 && NL_IDF >0 && NTaL_IDF==0 && NTa_HadORAccF >0) FillHist("MigrationType"+Label, 8., weight, 10, 0., 10.);
+    if(NL_AccF==0 && NL_IDF==0 && NTaL_IDF >0 && NTa_HadORAccF >0) FillHist("MigrationType"+Label, 9., weight, 10, 0., 10.);
+
 
     if(vMET.Pt()>100) return;
     FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
@@ -317,6 +437,56 @@ void HNTopFeas::AnalyzeSSDiLepton(std::vector<Muon>& MuTColl, std::vector<Muon>&
 
 
     FillHist("NPresel", 1., weight, 12, 0., 12.);
+    int NDecMode = CheckDecMode(TruthColl);
+    FillHist("DecMode"+Label, NDecMode, weight, 40, 0., 40.);
+    int NL_AccF=0, NL_IDF=0, NTa_HadORAccF=0, NTaL_IDF=0;
+    for(unsigned int it_t=2; it_t<TruthColl.size(); it_t++){
+      int pid = TruthColl.at(it_t).PID(), apid = abs(pid);
+      if(!(apid==11 or apid==13 or apid==15)) continue;
+      if(TruthColl.at(it_t).DeltaR(ElTColl.at(0))<0.1) continue;
+      if(TruthColl.at(it_t).DeltaR(ElTColl.at(1))<0.1) continue;
+      int midx = TruthColl.at(it_t).MotherIndex(), mpid = TruthColl.at(midx).PID(), ampid=abs(mpid);
+      int grmidx = TruthColl.at(midx).MotherIndex(), grmpid = grmidx>0? TruthColl.at(grmidx).PID():0, agrmpid=abs(grmpid);
+      float pt=TruthColl.at(it_t).Pt(), feta=fabs(TruthColl.at(it_t).Eta());
+
+      bool SigTa=false, SigL=false, PassAcc=false, PassAcc_TaL=false;
+      if((ampid==24 && agrmpid==9900012) or ampid==9900012){
+        if(apid==15){ SigTa=true; } else{ SigL=true; }
+      }
+      else if(ampid==24){
+        if(apid==15){ SigTa=true; } else{ SigL=true; }
+      }
+      if(SigL){
+        if     (apid==11 && pt>10 && feta<2.5){ PassAcc=true; }
+        else if(apid==13 && pt>10 && feta<2.4){ PassAcc=true; }
+        if(PassAcc){ NL_IDF++; } else{ NL_AccF++; }
+      }
+      else if(SigTa){
+        for(unsigned int i=2; i<TruthColl.size(); i++){
+          if(TruthColl.at(i).MotherIndex()!=(int) it_t) continue;
+          int  tmppid = TruthColl.at(i).PID(), tmpapid=abs(tmppid);
+          float tmppt = TruthColl.at(i).Pt(), tmpfeta = fabs(TruthColl.at(i).Eta());
+          if(!(tmpapid==11 or tmpapid==13)) continue;
+
+          if(tmpapid==11 && tmppt>10 && tmpfeta<2.5) PassAcc_TaL=true;
+          else if(tmpapid==13 && tmppt>10 && tmpfeta<2.4) PassAcc_TaL=true;
+
+          if(PassAcc_TaL) break;
+        }
+        if(PassAcc_TaL){ NTaL_IDF++; } else{ NTa_HadORAccF++; }
+      }
+    }
+    if(NL_AccF >0 && NL_IDF==0 && NTaL_IDF==0 && NTa_HadORAccF==0) FillHist("MigrationType"+Label, 0., weight, 10, 0., 10.);
+    if(NL_AccF==0 && NL_IDF >0 && NTaL_IDF==0 && NTa_HadORAccF==0) FillHist("MigrationType"+Label, 1., weight, 10, 0., 10.);
+    if(NL_AccF==0 && NL_IDF==0 && NTaL_IDF >0 && NTa_HadORAccF==0) FillHist("MigrationType"+Label, 2., weight, 10, 0., 10.);
+    if(NL_AccF==0 && NL_IDF==0 && NTaL_IDF==0 && NTa_HadORAccF >0) FillHist("MigrationType"+Label, 3., weight, 10, 0., 10.);
+    if(NL_AccF >0 && NL_IDF >0 && NTaL_IDF==0 && NTa_HadORAccF==0) FillHist("MigrationType"+Label, 4., weight, 10, 0., 10.);
+    if(NL_AccF >0 && NL_IDF==0 && NTaL_IDF >0 && NTa_HadORAccF==0) FillHist("MigrationType"+Label, 5., weight, 10, 0., 10.);
+    if(NL_AccF >0 && NL_IDF==0 && NTaL_IDF==0 && NTa_HadORAccF >0) FillHist("MigrationType"+Label, 6., weight, 10, 0., 10.);
+    if(NL_AccF==0 && NL_IDF >0 && NTaL_IDF >0 && NTa_HadORAccF==0) FillHist("MigrationType"+Label, 7., weight, 10, 0., 10.);
+    if(NL_AccF==0 && NL_IDF >0 && NTaL_IDF==0 && NTa_HadORAccF >0) FillHist("MigrationType"+Label, 8., weight, 10, 0., 10.);
+    if(NL_AccF==0 && NL_IDF==0 && NTaL_IDF >0 && NTa_HadORAccF >0) FillHist("MigrationType"+Label, 9., weight, 10, 0., 10.);
+
 
     if(vMET.Pt()>100) return;
     FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
@@ -343,87 +513,16 @@ void HNTopFeas::AnalyzeSSDiLepton(std::vector<Muon>& MuTColl, std::vector<Muon>&
 
 
 
-void HNTopFeas::AnalyzeTriMuon(std::vector<Muon>& MuTColl, std::vector<Muon>& MuLColl, std::vector<Electron>& ElTColl, std::vector<Electron>& ElLColl,
-                                std::vector<Jet>& JetColl, std::vector<Jet>& BJetColl, Particle& vMET, float weight, TString Label)
-{
-  if( !(MuTColl.size()==3 && MuLColl.size()==3) ) return;
-  if( ElLColl.size()!=0 ) return;
-  if( !(MuTColl.at(0).Pt()>20. && MuTColl.at(2).Pt()>10) ) return;
-  if( abs(SumCharge(MuTColl,ElTColl)) != 1 ) return;
-  FillHist("CutFlow"+Label, 3., weight, 10, 0., 10.);
-  
-  
-  int IdxOS  = TriMuChargeIndex(MuTColl, "OS");
-  int IdxSS1 = TriMuChargeIndex(MuTColl, "SS1");
-  int IdxSS2 = TriMuChargeIndex(MuTColl, "SS2");
-  float Mmumu1 = (MuTColl.at(IdxOS)+MuTColl.at(IdxSS1)).M();
-  float Mmumu2 = (MuTColl.at(IdxOS)+MuTColl.at(IdxSS2)).M();
-  float MSSSF = (MuTColl.at(IdxSS1)+MuTColl.at(IdxSS2)).M();
-  if( !(Mmumu1>12 && Mmumu2>12) ) return;
-  FillHist("CutFlow"+Label, 4., weight, 10, 0., 10.);
-  if( !(fabs(Mmumu1-91.2)>10 && fabs(Mmumu2-91.2)>10) ) return;
-  FillHist("CutFlow"+Label, 5., weight, 10, 0., 10.);
-
-  if(BJetColl.size()==0) return;
-  FillHist("CutFlow"+Label, 6., weight, 10, 0., 10.);
-
-  if(JetColl.size()>1){
-    float M3l = (MuTColl.at(0)+MuTColl.at(1)+MuTColl.at(2)).M();
-    FillHist("CutFlow"+Label, 7., weight, 10, 0., 10.);
-    FillHist("Composition_3l1b2jNoZ2l"+Label, 2., weight, 10, 0., 10.);
-    FillHist("M3l"+Label, M3l, weight, 30, 0., 300.);
-    FillHist("MOSSF1"+Label, Mmumu1, weight, 30., 0., 300.);
-    FillHist("MOSSF2"+Label, Mmumu2, weight, 30., 0., 300.);
-    FillHist("MSSSF"+Label, MSSSF, weight, 30., 0., 300.);
-    if(M3l<85){
-      FillHist("SigBins_1b"+Label, 4., weight, 20, 0., 20.);
-    }
-    else{
-      float mindR=-1, mindRM=-1;
-      for(unsigned int i=0; i<MuTColl.size(); i++){
-        for(unsigned int j=i+1; j<MuTColl.size(); j++){
-           float TmpdR = MuTColl.at(i).DeltaR(MuTColl.at(j));
-           float TmpM  = (MuTColl.at(i)+MuTColl.at(j)).M();
-           if(mindR<0 or TmpdR<mindR){ mindR=TmpdR; mindRM=TmpM; }
-        }
-      }
-      if(mindRM>0 and mindRM<85){
-        FillHist("SigBins_1b"+Label, 5., weight, 20, 0., 20.);
-      }
-    }
-    if(BJetColl.size()>1){
-      FillHist("CutFlow"+Label, 8., weight, 10, 0., 10.);
-      FillHist("Composition_3l2b2jNoZ2l"+Label, 2., weight, 10, 0., 10.);
-      if(M3l<85){
-        FillHist("SigBins_2b"+Label, 4., weight, 20, 0., 20.);
-      }
-      else{
-        float mindR=-1, mindRM=-1;
-        for(unsigned int i=0; i<MuTColl.size(); i++){
-          for(unsigned int j=i+1; j<MuTColl.size(); j++){
-             float TmpdR = MuTColl.at(i).DeltaR(MuTColl.at(j));
-             float TmpM  = (MuTColl.at(i)+MuTColl.at(j)).M();
-             if(mindR<0 or TmpdR<mindR){ mindR=TmpdR; mindRM=TmpM; }
-          }
-        }
-        if(mindRM>0 and mindRM<85){
-          FillHist("SigBins_2b"+Label, 5., weight, 20, 0., 20.);
-        }
-      }
-    }
-  }
-
-} 
-
-
-void HNTopFeas::AnalyzeTriLepton(vector<Muon>& MuTColl, vector<Muon>& MuLColl, vector<Electron>& ElTColl, vector<Electron>& ElLColl,
+void HNTopFeas::AnalyzeTriLepton(vector<Muon>& MuTColl, vector<Muon>& MuLColl, vector<Muon>& MuVColl,
+                                 vector<Electron>& ElTColl, vector<Electron>& ElLColl, vector<Electron>& ElVColl,
                                  vector<Jet>& JetColl, vector<Jet>& BJetColl, Particle& vMET, float weight, TString Label)
 {
-  int NElT=ElTColl.size(), NMuT=MuTColl.size(), NElL=ElLColl.size(), NMuL=MuLColl.size();
+  int NElT=ElTColl.size(), NMuT=MuTColl.size(), NElL=ElLColl.size(), NMuL=MuLColl.size(), NMuV=MuVColl.size(), NElV=ElVColl.size();
   int NLepT=NElT+NMuT, NLepL=NElL+NMuL;
   int it_cut=3;
   if( !(NLepT==3 && NLepL==3) ) return;
   if( !(NMuT==NMuL && NElT==NElL) ) return;
+  if( !(NMuT==NMuV && NElT==NElV) ) return;
 
 
 
@@ -491,88 +590,29 @@ void HNTopFeas::AnalyzeTriLepton(vector<Muon>& MuTColl, vector<Muon>& MuLColl, v
   if(MOSSF2>0) FillHist("MOSSF2_PreSel", MOSSF1, weight, 30, 0., 300.);
 
 
-  if     (IsMu3El0) FillHist("NPresel", 2., weight, 12, 0., 12.);
-  else if(IsMu2El1) FillHist("NPresel", 3., weight, 12, 0., 12.);
-  else if(IsMu1El2) FillHist("NPresel", 4., weight, 12, 0., 12.);
-  else if(IsMu0El3) FillHist("NPresel", 5., weight, 12, 0., 12.);
+  if     (IsMu3El0){ FillHist("NPresel", 2., weight, 12, 0., 12.); Label+="_3M0E"; }
+  else if(IsMu2El1){ FillHist("NPresel", 3., weight, 12, 0., 12.); Label+="_2M1E"; }
+  else if(IsMu1El2){ FillHist("NPresel", 4., weight, 12, 0., 12.); Label+="_1M2E"; }
+  else if(IsMu0El3){ FillHist("NPresel", 5., weight, 12, 0., 12.); Label+="_0M3E"; }
 
-  if(IsMu3El0 or IsMu2El1) FillHist("NPresel_Tot", 1., weight, 3, 0., 3.);
+  vector<Gen> TruthColl = GetGens();
+  int NDecMode = CheckDecMode(TruthColl);
+  FillHist("DecMode"+Label, NDecMode, weight, 40, 0., 40.);
+
 
 }
 
 
 
-void HNTopFeas::AnalyzeElectronDiMuon(std::vector<Muon>& MuTColl, std::vector<Muon>& MuLColl, std::vector<Electron>& ElTColl, std::vector<Electron>& ElLColl,
-                                      std::vector<Jet>& JetColl, std::vector<Jet>& BJetColl, Particle& vMET, float weight, TString Label)
-{
-  if( !(ElTColl.size()==1 && ElLColl.size()==1) ) return;
-  if( !(MuTColl.size()==2 && MuLColl.size()==2) ) return;
-  if( !(ElTColl.at(0).Pt()>25 or MuTColl.at(0).Pt()>20)  ) return;
-  FillHist("CutFlow"+Label, 3., weight, 10, 0., 10.);
-
-  bool SSmm = MuTColl.at(0).Charge()==MuTColl.at(1).Charge(), OSmm = !SSmm; 
-  float MOSSF = OSmm? (MuTColl.at(0)+MuTColl.at(1)).M():-1.;
-  if(OSmm && MOSSF<12) return;
-  FillHist("CutFlow"+Label, 4., weight, 10, 0., 10.);
-
-  if(OSmm && fabs(MOSSF-91.2)<10) return;
-  FillHist("CutFlow"+Label, 5., weight, 10, 0., 10.);
-
-  if(BJetColl.size()==0) return;
-  FillHist("CutFlow"+Label, 6., weight, 10, 0., 10.);
-
-  if(JetColl.size()>1){
-    FillHist("CutFlow"+Label, 7., weight, 10, 0., 10.);
-    float M3l     = (ElTColl.at(0)+MuTColl.at(0)+MuTColl.at(1)).M();
-    float Mem_OS1 = -1., Mem_OS2 = -1., Mem_SS = -1.;
-    float MSSSF   = SSmm? (MuTColl.at(0)+MuTColl.at(1)).M():-1.;
-    if(OSmm){
-      Mem_OS1 = MuTColl.at(0).Charge()==ElTColl.at(0).Charge()? (ElTColl.at(0)+MuTColl.at(1)).M():(ElTColl.at(0)+MuTColl.at(0)).M();
-      Mem_SS  = MuTColl.at(0).Charge()==ElTColl.at(0).Charge()? (ElTColl.at(0)+MuTColl.at(0)).M():(ElTColl.at(0)+MuTColl.at(1)).M();
-      FillHist("Composition_3l1b2jNoZ2l"+Label, 1., weight, 10, 0., 10.);
-      FillHist("M3l_OSmm"+Label, M3l, weight, 30, 0., 300.);
-      FillHist("MemOS1_OSmm"+Label, Mem_OS1, weight, 30, 0., 300.);
-      FillHist("MemSS_OSmm"+Label, Mem_SS, weight, 30, 0., 300.);
-      FillHist("MOSSF_OSmm"+Label, MOSSF, weight, 30., 0., 300.);
-      if     (M3l<85  ) FillHist("SigBins_1b"+Label, 2., weight, 20, 0., 20.);
-      else if(MOSSF<85) FillHist("SigBins_1b"+Label, 3., weight, 20, 0., 20.);
-    }
-    if(SSmm){
-      Mem_OS1 = (ElTColl.at(0)+MuTColl.at(0)).M();
-      Mem_OS2 = (ElTColl.at(0)+MuTColl.at(1)).M();
-      FillHist("Composition_3l1b2jNoZ2l"+Label, 3., weight, 10, 0., 10.);
-      FillHist("M3l_SSmm"+Label, M3l, weight, 30, 0., 300.);
-      FillHist("MemOS1_SSmm"+Label, Mem_OS1, weight, 30, 0., 300.);
-      FillHist("MemOS2_SSmm"+Label, Mem_OS2, weight, 30, 0., 300.);
-      FillHist("MSSSF_SSmm"+Label, MSSSF, weight, 30., 0., 300.);
-      if     (M3l<85  ) FillHist("SigBins_1b"+Label, 0., weight, 20, 0., 20.);
-      else if(MSSSF<85) FillHist("SigBins_1b"+Label, 1., weight, 20, 0., 20.);
-    }
-    if(BJetColl.size()>1){
-      FillHist("CutFlow"+Label, 8., weight, 10, 0., 10.);
-      if(OSmm){
-        FillHist("Composition_3l2b2jNoZ2l"+Label, 1., weight, 10, 0., 10.);
-        if     (M3l<85  ) FillHist("SigBins_2b"+Label, 2., weight, 20, 0., 20.);
-        else if(MOSSF<85) FillHist("SigBins_2b"+Label, 3., weight, 20, 0., 20.);
-      }
-      if(SSmm){
-        FillHist("Composition_3l2b2jNoZ2l"+Label, 3., weight, 10, 0., 10.);
-        if     (M3l<85  ) FillHist("SigBins_2b"+Label, 0., weight, 20, 0., 20.);
-        else if(MSSSF<85) FillHist("SigBins_2b"+Label, 1., weight, 20, 0., 20.);
-      }
-    }
-  }
-
-}
-
-
-void HNTopFeas::AnalyzeTetraLepton(vector<Muon>& MuTColl, vector<Muon>& MuLColl, vector<Electron>& ElTColl, vector<Electron>& ElLColl,
+void HNTopFeas::AnalyzeTetraLepton(vector<Muon>& MuTColl, vector<Muon>& MuLColl, vector<Muon>& MuVColl,
+                                   vector<Electron>& ElTColl, vector<Electron>& ElLColl, vector<Electron>& ElVColl,
                                    vector<Jet>& JetColl, vector<Jet>& BJetColl, Particle& vMET, float weight, TString Label)
 {
-  int NElT = ElTColl.size(), NMuT=MuTColl.size(), NElL = ElLColl.size(), NMuL=MuLColl.size();
+  int NElT = ElTColl.size(), NMuT=MuTColl.size(), NElL = ElLColl.size(), NMuL=MuLColl.size(), NElV=ElVColl.size(), NMuV=MuVColl.size();
   int it_cut=3;
   if( (NElT+NMuT)!=4 ) return;
   if( !(NElT==NElL && NMuT==NMuL) ) return;
+  if( !(NElT==NElV && NMuT==NMuV) ) return;
 
   bool PassTrigAccept=false;
   if     ( NMuT>=2 && MuTColl.at(0).Pt()>20 && MuTColl.at(1).Pt()>10 ) PassTrigAccept=true;
@@ -634,7 +674,6 @@ void HNTopFeas::AnalyzeTetraLepton(vector<Muon>& MuTColl, vector<Muon>& MuLColl,
   }
   TLorentzVector V4l(px4l,py4l,pz4l,E4l);
   float M4l = V4l.M();
-  cout<<M4l<<endl;
 
   SSSF = (IdxMupColl.size()==2 and IdxElmColl.size()==2) or (IdxMumColl.size()==2 and IdxElpColl.size()==2);
   OSSF = (IdxMupColl.size()==IdxMumColl.size()) and (IdxElpColl.size()==IdxElmColl.size());
@@ -701,13 +740,16 @@ void HNTopFeas::AnalyzeTetraLepton(vector<Muon>& MuTColl, vector<Muon>& MuLColl,
   else if(OddF and NElT==1) FillHist("Composition_4l1b2j"+Label, 4., weight, 10, 0., 10.);
   else if(OddF and NElT==3) FillHist("Composition_4l1b2j"+Label, 5., weight, 10, 0., 10.);
   if(!IsZlike){
-    if     (OSSF and NElT==4) FillHist("NPresel"+Label, 6., weight, 12, 0., 12.);
-    else if(OSSF and NElT==2) FillHist("NPresel"+Label, 7., weight, 12, 0., 12.);
-    else if(OSSF and NElT==0) FillHist("NPresel"+Label, 8., weight, 12, 0., 12.);
-    else if(SSSF and NElT==2) FillHist("NPresel"+Label, 9., weight, 12, 0., 12.);
-    else if(OddF and NElT==1) FillHist("NPresel"+Label, 10., weight, 12, 0., 12.);
-    else if(OddF and NElT==3) FillHist("NPresel"+Label, 11., weight, 12, 0., 12.);
+    if     (OSSF and NElT==4){ FillHist("NPresel"+Label, 6., weight, 12, 0., 12.); Label+="_0M4E"; }
+    else if(OSSF and NElT==2){ FillHist("NPresel"+Label, 7., weight, 12, 0., 12.); Label+="_2M2EOS"; }
+    else if(OSSF and NElT==0){ FillHist("NPresel"+Label, 8., weight, 12, 0., 12.); Label+="_4M0E"; }
+    else if(SSSF and NElT==2){ FillHist("NPresel"+Label, 9., weight, 12, 0., 12.); Label+="_2M2ESS"; }
+    else if(OddF and NElT==1){ FillHist("NPresel"+Label, 10., weight, 12, 0., 12.); Label+="_3M1E"; }
+    else if(OddF and NElT==3){ FillHist("NPresel"+Label, 11., weight, 12, 0., 12.); Label+="_1M3E"; }
     if(NElT<3) FillHist("NPresel_Tot", 2., weight, 3, 0., 3.);
+    vector<Gen> TruthColl = GetGens();
+    int NDecMode = CheckDecMode(TruthColl);
+    FillHist("DecMode"+Label, NDecMode, weight, 40, 0., 40.);
 
     if     (OSSF and NElT==4) FillHist("Composition_4l1b2jNoZ2l"+Label, 0., weight, 10, 0., 10.);
     else if(OSSF and NElT==2) FillHist("Composition_4l1b2jNoZ2l"+Label, 1., weight, 10, 0., 10.);

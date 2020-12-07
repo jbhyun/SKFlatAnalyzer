@@ -2273,6 +2273,35 @@ float AnalyzerCore::GetKFactor(){
 }
 
 
+float AnalyzerCore::GetBRWeight(){
+
+  if(IsDATA) return 1.;
+
+  float weight=1.;
+  if(MCSample.Contains("TTbarTypeIHeavyN")){
+    float BrN_ljj=-1., BrN_llv=-1., BrW_jj=0.6742, BrW_lv=0.3258;
+    //BrW from PDG2019 table, 
+    //BrN from Madgraph LO calculation (Gm(t->bmn1, n1->ljj/llv)/Gm(t->bmn1))
+    if     (MCSample.Contains("MN20") ){ BrN_ljj=4.65E-01; BrN_llv=2.01E-01; }
+    else if(MCSample.Contains("MN30") ){ BrN_ljj=4.65E-01; BrN_llv=2.01E-01; }
+    else if(MCSample.Contains("MN40") ){ BrN_ljj=4.68E-01; BrN_llv=2.03E-01; }
+    else if(MCSample.Contains("MN50") ){ BrN_ljj=4.73E-01; BrN_llv=2.05E-01; }
+    else if(MCSample.Contains("MN60") ){ BrN_ljj=4.78E-01; BrN_llv=2.09E-01; }
+    else if(MCSample.Contains("MN70") ){ BrN_ljj=4.88E-01; BrN_llv=2.16E-01; }
+    else if(MCSample.Contains("MN75") ){ BrN_ljj=4.97E-01; BrN_llv=2.23E-01; }
+    else if(MCSample.Contains("MN85") ){ BrN_ljj=5.66E-01; BrN_llv=2.74E-01; }
+    else if(MCSample.Contains("MN90") ){ BrN_ljj=5.76E-01; BrN_llv=2.83E-01; }
+    else if(MCSample.Contains("MN100")){ BrN_ljj=5.27E-01; BrN_llv=2.65E-01; }
+
+    if     (MCSample.Contains("_2L_")      ){ weight=BrN_ljj*BrW_jj; }
+    else if(MCSample.Contains("_LepTop3L_")){ weight=BrN_ljj*BrW_lv; }
+    else if(MCSample.Contains("_HadTop3L_")){ weight=BrN_llv*BrW_jj; }
+    else if(MCSample.Contains("_4L_")      ){ weight=BrN_llv*BrW_lv; }
+  }
+
+  return weight;
+}
+
 
 float AnalyzerCore::GetGenFilterEffCorr(){
 
@@ -2281,24 +2310,7 @@ float AnalyzerCore::GetGenFilterEffCorr(){
   TString MassStr = MCSample;
   float filtereff=1.;
 
-  if(MCSample.Contains("TTobNMu")){
-    MassStr.ReplaceAll("TT_TTobNMu_","");
-    if(MassStr.Contains("SS2L_LO_MN20")     ){ filtereff = 0.251*0.67; }
-    else if(MassStr.Contains("SS2L_LO_MN50")     ){ filtereff = 0.257*0.67; }
-    else if(MassStr.Contains("SS2L_LO_MN100")    ){ filtereff = 0.295*0.67; }
-    else if(MassStr.Contains("LepTop3L_LO_MN20") ){ filtereff = 0.502*0.22; }
-    else if(MassStr.Contains("LepTop3L_LO_MN50") ){ filtereff = 0.513*0.22; }
-    else if(MassStr.Contains("LepTop3L_LO_MN100")){ filtereff = 0.591*0.22; }
-    else if(MassStr.Contains("HadTop3L_LO_MN20") ){ filtereff = 0.133*0.67; }
-    else if(MassStr.Contains("HadTop3L_LO_MN50") ){ filtereff = 0.137*0.67; }
-    else if(MassStr.Contains("HadTop3L_LO_MN100")){ filtereff = 0.198*0.67; }
-    else if(MassStr.Contains("4L_LO_MN20")       ){ filtereff = 0.133*0.22; }
-    else if(MassStr.Contains("4L_LO_MN50")       ){ filtereff = 0.137*0.22; }
-    else if(MassStr.Contains("4L_LO_MN100")      ){ filtereff = 0.198*0.22; }
-
-    return filtereff;
-  }
-  else if(MCSample.Contains("TTToHcToWA_AToMuMu")){
+  if(MCSample.Contains("TTToHcToWA_AToMuMu")){
     MassStr.ReplaceAll("TTToHcToWA_AToMuMu_","");
     if(MassStr=="MHc100_MA15"){       filtereff = 5.816e-01; }
     else if(MassStr=="MHc100_MA25"){  filtereff = 6.661e-01; }

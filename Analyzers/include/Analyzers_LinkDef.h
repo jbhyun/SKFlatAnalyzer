@@ -30,6 +30,7 @@
 #pragma link C++ class IDOptimization+;
 #pragma link C++ class SkimTree_TrigInfo+;
 #pragma link C++ class MeasTrigEff+;
+#pragma link C++ class KinVarSearch+;
 //my codes end
 
 #endif

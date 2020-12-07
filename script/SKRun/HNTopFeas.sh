@@ -2,8 +2,8 @@
 
 ########################################################################
 #declare -a List_runModes=("runBkdMC")
-declare -a List_runModes=("runSigMC")
-#declare -a List_runModes=("runBkdMC" "runSigMC")
+#declare -a List_runModes=("runSigMC")
+declare -a List_runModes=("runBkdMC" "runSigMC")
 #declare -a List_runModes=("runData")
 #declare -a List_runModes=("runBkdMC" "runData")
 
@@ -114,7 +114,7 @@ do
     echo "SKFlat.py ${Option}" >> CommandHist.txt
 
     if [[ ${runDebug} == "True" ]]; then 
-      sleep 5s
+      sleep 10s
       DirName=$( ls -rt ${SKFlatRunlogDir} | tail -1 ) 
       if [[ ${DirName} == "www"* ]]; then DirName= $( ls -rt ${SKFlatRunlogDir} | tail -2 | head -1 ); fi
       PeriodLabel=""

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ########################################################################
-#declare -a List_runModes=("runBkdMC" "runSigMC")
-declare -a List_runModes=("runBkdMC")
+declare -a List_runModes=("runBkdMC" "runSigMC")
+#declare -a List_runModes=("runBkdMC")
 #declare -a List_runModes=("runSigMC")
 #declare -a List_runModes=("runData")
 #declare -a List_runModes=("runBkdMC" "runData")
@@ -14,7 +14,7 @@ AnalysisCode="IDOptimization"
 FinalState="Electron" #"Electron" #"Muon"
 Skim=""  #"SkimTree_SS2lOR3l"
 Year="2017"
-RunningMode="ElEl,SelEffCheck" #"ElEl,SelEffCheck" #"ElEl,TrigEffCheck" #"MuMu,SelEffCheck" #"ElTrigEffect" #"MuTrigEffect" #"MuID" #"ElTrigCut" #"MuID" #"ElID
+RunningMode="ElEl,SelEffCheck" #"ElEl,FakeRateCheck" #"ElEl,SelEffCheck" #"ElEl,TrigEffCheck" #"MuMu,SelEffCheck" #"ElTrigEffect" #"MuTrigEffect" #"MuID" #"ElTrigCut" #"MuID" #"ElID
 
 NJobs=""
 Memory=""
@@ -94,7 +94,7 @@ do
     if [[ ${NJobs} -gt 0 ]]; then :; 
     elif [[ ${NJobs} == "-" ]]; then NJobs=20; 
     else echo "NJob Config invalid for ${SampleName} in ${CategoryLabel} mode"; continue; fi
-    if [[ ( ${runDebug} == "False" ) && ( -z ${ReductionFactor} ) ]]; then (( NJobs *= 2 )); fi
+    if [[ ( ${runDebug} == "False" ) && ( -z ${ReductionFactor} ) ]]; then (( NJobs *= 3 )); fi
 
     Option+=" -i ${SampleName}" 
     Option+=" -n ${NJobs}" 

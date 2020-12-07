@@ -4,6 +4,8 @@ float GetNentries(TString filename){
 
   TTree* tree;
   file->GetObject("recoTree/SKFlat", tree);
+//  if(tree==NULL){ delete file; return 0; }
+
   Long64_t nentries = tree->GetEntries();
 
   delete file;
@@ -16,8 +18,8 @@ float GetSumW(TString filename){
 
   TFile* file = new TFile(filename);
 
-  TTree* tree;
-  file->GetObject("recoTree/SKFlat", tree);
+  TTree* tree = (TTree*) file->Get("recoTree/SKFlat");
+//  if(tree==NULL){ delete file; return 0; }
 
   double gen_Weight=0;
   TBranch        *b_gen_Weight;

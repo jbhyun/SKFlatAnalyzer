@@ -23,7 +23,50 @@ if not "SKFlat_WD" in os.environ:
 #               "TT_TTobNMu_LepTop3L_LO_MN20", "TT_TTobNMu_LepTop3L_LO_MN50", "TT_TTobNMu_LepTop3L_LO_MN100",
 #               "TT_TTobNMu_HadTop3L_LO_MN20", "TT_TTobNMu_HadTop3L_LO_MN50", "TT_TTobNMu_HadTop3L_LO_MN100",
 #               "TT_TTobNMu_4L_LO_MN20", "TT_TTobNMu_4L_LO_MN50", "TT_TTobNMu_4L_LO_MN100"]
-Arr_MCSample =["QCD_Pt-1000toInf_MuEnrichedPt5", "QCD_Pt-1000toInf_MuEnrichedPt5", "QCD_Pt-1000toInf_MuEnrichedPt5", "QCD_Pt-120to170_EMEnriched", "QCD_Pt-120to170_EMEnriched", "QCD_Pt-120to170_EMEnriched", "QCD_Pt-120to170_MuEnrichedPt5", "QCD_Pt-120to170_MuEnrichedPt5", "QCD_Pt-120to170_MuEnrichedPt5", "QCD_Pt-15to20_EMEnriched", "QCD_Pt-15to20_EMEnriched", "QCD_Pt-15to20_EMEnriched", "QCD_Pt-15to20_MuEnrichedPt5", "QCD_Pt-15to20_MuEnrichedPt5", "QCD_Pt-15to20_MuEnrichedPt5", "QCD_Pt-170to300_MuEnrichedPt5", "QCD_Pt-170to300_MuEnrichedPt5", "QCD_Pt-170to300_MuEnrichedPt5", "QCD_Pt-20to30_EMEnriched", "QCD_Pt-20to30_EMEnriched", "QCD_Pt-20to30_EMEnriched", "QCD_Pt-20to30_MuEnrichedPt5", "QCD_Pt-20to30_MuEnrichedPt5", "QCD_Pt-20to30_MuEnrichedPt5", "QCD_Pt-300to470_MuEnrichedPt5", "QCD_Pt-300to470_MuEnrichedPt5", "QCD_Pt-300to470_MuEnrichedPt5", "QCD_Pt-300toInf_EMEnriched", "QCD_Pt-300toInf_EMEnriched", "QCD_Pt-300toInf_EMEnriched", "QCD_Pt-30to40_DoubleEMEnriched_MGG-80toInf", "QCD_Pt-30to40_DoubleEMEnriched_MGG-80toInf", "QCD_Pt-30to40_DoubleEMEnriched_MGG-80toInf", "QCD_Pt-30to50_EMEnriched", "QCD_Pt-30to50_EMEnriched", "QCD_Pt-30to50_EMEnriched", "QCD_Pt-30to50_MuEnrichedPt5", "QCD_Pt-30to50_MuEnrichedPt5", "QCD_Pt-30to50_MuEnrichedPt5", "QCD_Pt-40toInf_DoubleEMEnriched_MGG-80toInf", "QCD_Pt-40toInf_DoubleEMEnriched_MGG-80toInf", "QCD_Pt-40toInf_DoubleEMEnriched_MGG-80toInf", "QCD_Pt-470to600_MuEnrichedPt5", "QCD_Pt-470to600_MuEnrichedPt5", "QCD_Pt-470to600_MuEnrichedPt5", "QCD_Pt-50to80_EMEnriched", "QCD_Pt-50to80_EMEnriched", "QCD_Pt-50to80_EMEnriched", "QCD_Pt-50to80_MuEnrichedPt5", "QCD_Pt-50to80_MuEnrichedPt5", "QCD_Pt-50to80_MuEnrichedPt5", "QCD_Pt-600to800_MuEnrichedPt5", "QCD_Pt-600to800_MuEnrichedPt5", "QCD_Pt-600to800_MuEnrichedPt5", "QCD_Pt-800to1000_MuEnrichedPt5", "QCD_Pt-800to1000_MuEnrichedPt5", "QCD_Pt-800to1000_MuEnrichedPt5", "QCD_Pt-80to120_EMEnriched", "QCD_Pt-80to120_EMEnriched", "QCD_Pt-80to120_EMEnriched", "QCD_Pt-80to120_MuEnrichedPt5", "QCD_Pt-80to120_MuEnrichedPt5", "QCD_Pt-80to120_MuEnrichedPt5", "QCD_Pt_170to250_bcToE", "QCD_Pt_170to250_bcToE", "QCD_Pt_170to250_bcToE", "QCD_Pt_20to30_bcToE", "QCD_Pt_20to30_bcToE", "QCD_Pt_20to30_bcToE", "QCD_Pt_250toInf_bcToE", "QCD_Pt_250toInf_bcToE", "QCD_Pt_250toInf_bcToE", "QCD_Pt_30to80_bcToE", "QCD_Pt_30to80_bcToE", "QCD_Pt_30to80_bcToE", "QCD_Pt_80to170_bcToE", "QCD_Pt_80to170_bcToE", "QCD_Pt_80to170_bcToE"]
+Arr_MCSample =[
+#"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN100","TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN100",
+"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN20" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN20" ,
+"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN30" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN30" ,
+#"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN40" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN40" ,
+#"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN50" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN50" ,
+"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN60" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN60" ,
+#"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN70" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN70" ,
+#"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN75" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN75" ,
+#"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN85" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN85" ,
+#"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN90" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN90" ,
+#"TTbarTypeIHeavyN-Mu_2L_MLM_MN100","TTbarTypeIHeavyN-Mu_4L_MLM_MN100",
+#"TTbarTypeIHeavyN-Mu_2L_MLM_MN20" ,"TTbarTypeIHeavyN-Mu_4L_MLM_MN20" ,
+#"TTbarTypeIHeavyN-Mu_2L_MLM_MN30" ,"TTbarTypeIHeavyN-Mu_4L_MLM_MN30" ,
+#"TTbarTypeIHeavyN-Mu_2L_MLM_MN40" ,"TTbarTypeIHeavyN-Mu_4L_MLM_MN40" ,
+#"TTbarTypeIHeavyN-Mu_2L_MLM_MN50" ,"TTbarTypeIHeavyN-Mu_4L_MLM_MN50" ,
+#"TTbarTypeIHeavyN-Mu_2L_MLM_MN60" ,"TTbarTypeIHeavyN-Mu_4L_MLM_MN60" ,
+#"TTbarTypeIHeavyN-Mu_2L_MLM_MN70" ,"TTbarTypeIHeavyN-Mu_4L_MLM_MN70" ,
+#"TTbarTypeIHeavyN-Mu_2L_MLM_MN75" ,"TTbarTypeIHeavyN-Mu_4L_MLM_MN75" ,
+#"TTbarTypeIHeavyN-Mu_2L_MLM_MN85" ,"TTbarTypeIHeavyN-Mu_4L_MLM_MN85" ,
+#"TTbarTypeIHeavyN-Mu_2L_MLM_MN90" ,"TTbarTypeIHeavyN-Mu_4L_MLM_MN90" ,
+#"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN100","TTbarTypeIHeavyN-El_LepTop3L_MLM_MN100",
+#"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN20" ,"TTbarTypeIHeavyN-El_LepTop3L_MLM_MN20" ,
+#"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN30" ,"TTbarTypeIHeavyN-El_LepTop3L_MLM_MN30" ,
+#"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN40" ,"TTbarTypeIHeavyN-El_LepTop3L_MLM_MN40" ,
+#"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN50" ,"TTbarTypeIHeavyN-El_LepTop3L_MLM_MN50" ,
+#"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN60" ,"TTbarTypeIHeavyN-El_LepTop3L_MLM_MN60" ,
+#"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN70" ,"TTbarTypeIHeavyN-El_LepTop3L_MLM_MN70" ,
+#"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN75" ,"TTbarTypeIHeavyN-El_LepTop3L_MLM_MN75" ,
+#"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN85" ,"TTbarTypeIHeavyN-El_LepTop3L_MLM_MN85" ,
+#"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN90" ,"TTbarTypeIHeavyN-El_LepTop3L_MLM_MN90" ,
+#"TTbarTypeIHeavyN-El_2L_MLM_MN100","TTbarTypeIHeavyN-El_4L_MLM_MN100",
+#"TTbarTypeIHeavyN-El_2L_MLM_MN20" ,"TTbarTypeIHeavyN-El_4L_MLM_MN20" ,
+#"TTbarTypeIHeavyN-El_2L_MLM_MN30" ,"TTbarTypeIHeavyN-El_4L_MLM_MN30" ,
+#"TTbarTypeIHeavyN-El_2L_MLM_MN40" ,"TTbarTypeIHeavyN-El_4L_MLM_MN40" ,
+#"TTbarTypeIHeavyN-El_2L_MLM_MN50" ,"TTbarTypeIHeavyN-El_4L_MLM_MN50" ,
+#"TTbarTypeIHeavyN-El_2L_MLM_MN60" ,"TTbarTypeIHeavyN-El_4L_MLM_MN60" ,
+#"TTbarTypeIHeavyN-El_2L_MLM_MN70" ,"TTbarTypeIHeavyN-El_4L_MLM_MN70" ,
+#"TTbarTypeIHeavyN-El_2L_MLM_MN75" ,"TTbarTypeIHeavyN-El_4L_MLM_MN75" ,
+#"TTbarTypeIHeavyN-El_2L_MLM_MN85" ,"TTbarTypeIHeavyN-El_4L_MLM_MN85" ,
+#"TTbarTypeIHeavyN-El_2L_MLM_MN90" ,"TTbarTypeIHeavyN-El_4L_MLM_MN90" ,
+]
+
+
 
 
 #Arr_MCSample = [#18

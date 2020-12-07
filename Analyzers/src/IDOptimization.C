@@ -5,17 +5,19 @@ void IDOptimization::initializeAnalyzer(){
   MuMu=false, ElEl=false;
   MuID=false, ElID=false, ZData=false, SystRun=false; 
   ElTrigCut=false, ElTrigEffect=false, MuTrigEffect=false, TrigEffCheck=false, SelEffCheck=false;
+  FakeRateCheck=false;
   for(unsigned int i=0; i<Userflags.size(); i++){
     if(Userflags.at(i).Contains("MuMu"))      MuMu    = true; 
     if(Userflags.at(i).Contains("ElEl"))      ElEl    = true; 
     if(Userflags.at(i).Contains("ElID"))      ElID    = true; 
     if(Userflags.at(i).Contains("MuID"))      MuID    = true; 
     if(Userflags.at(i).Contains("ZData"))     ZData   = true; 
-    if(Userflags.at(i).Contains("ElTrigCut"))    ElTrigCut    = true; 
-    if(Userflags.at(i).Contains("ElTrigEffect")) ElTrigEffect = true; 
-    if(Userflags.at(i).Contains("MuTrigEffect")) MuTrigEffect = true; 
-    if(Userflags.at(i).Contains("TrigEffCheck")) TrigEffCheck = true; 
-    if(Userflags.at(i).Contains("SelEffCheck"))  SelEffCheck  = true;
+    if(Userflags.at(i).Contains("ElTrigCut"))     ElTrigCut     = true; 
+    if(Userflags.at(i).Contains("ElTrigEffect"))  ElTrigEffect  = true; 
+    if(Userflags.at(i).Contains("MuTrigEffect"))  MuTrigEffect  = true; 
+    if(Userflags.at(i).Contains("TrigEffCheck"))  TrigEffCheck  = true; 
+    if(Userflags.at(i).Contains("SelEffCheck"))   SelEffCheck   = true;
+    if(Userflags.at(i).Contains("FakeRateCheck")) FakeRateCheck = true;
     if(Userflags.at(i).Contains("SystRun"))   SystRun   = true; 
   }
 
@@ -77,7 +79,8 @@ void IDOptimization::executeEvent(){
     }
   }
   if(!ZData && (MuID or ElID)) PassTrig=true;
-  if(ElTrigCut or ElTrigEffect or MuTrigEffect or TrigEffCheck or SelEffCheck) PassTrig=true;
+  if(ElTrigCut or ElTrigEffect or MuTrigEffect or TrigEffCheck or SelEffCheck 
+     or FakeRateCheck) PassTrig=true;
   if(!PassTrig) return;
   float TmpW = IsDATA? 1:ev.MCweight()*weight_norm_1invpb*GetKFactor()*ev.GetTriggerLumi("Full");
   FillHist("CutFlow", 0., weight*TmpW, 10, 0., 10.);
@@ -98,6 +101,7 @@ void IDOptimization::executeEvent(){
   if( ElTrigEffect && electronPreColl.size()>0     ) PreCutPass=true;
   if( TrigEffCheck && MuMu && muonPreColl.size()>1 ) PreCutPass=true;
   if( TrigEffCheck && ElEl && electronPreColl.size()>1 ) PreCutPass=true;
+  if( FakeRateCheck && ElEl && electronPreColl.size()>1) PreCutPass=true;
   if( SelEffCheck ) PreCutPass=true; 
   if(!PreCutPass) return;
   FillHist("CutFlow", 2., weight*TmpW, 10, 0., 10.);
@@ -109,9 +113,9 @@ void IDOptimization::executeEvent(){
   std::sort(electronRawColl.begin(), electronRawColl.end(), PtComparing);
 
   vector<Muon>     muonTightColl     = SelectMuons(muonPreColl, "TopHN17T", 10., 2.4);
-  vector<Electron> electronTightColl = SelectElectrons(electronPreColl, "TESTT", 10., 2.5);
+  vector<Electron> electronTightColl = SelectElectrons(electronPreColl, "TopHN17T", 10., 2.5);
   vector<Muon>     muonLooseColl     = SelectMuons(muonPreColl, "TopHN17L", 10., 2.4);
-  vector<Electron> electronLooseColl = SelectElectrons(electronPreColl, "TESTL", 10., 2.5);
+  vector<Electron> electronLooseColl = SelectElectrons(electronPreColl, "TopHN17L", 10., 2.5);
 
 
   JetTagging::Parameters param_jets = JetTagging::Parameters(JetTagging::DeepCSV, JetTagging::Medium, JetTagging::incl, JetTagging::mujets);
@@ -159,7 +163,9 @@ void IDOptimization::executeEvent(){
   }
   if(ElID){
     vector<Electron> ElPOGMHLTCvColl = SelectElectrons(electronPreColl, "POGMVAni90HLT172lCv", 10., 2.5);
-    CheckIDVar_MC(muonLooseColl, muonRawColl, ElPOGMHLTCvColl, electronRawColl, jetColl, bjetColl, vMET, weight, "");
+    vector<Electron> ElPOGMCvColl = SelectElectrons(electronPreColl, "POGMVAni90Cv", 10., 2.5);
+    CheckIDVar_MC(muonLooseColl, muonRawColl, ElPOGMHLTCvColl, electronRawColl, jetColl, bjetColl, vMET, weight, "_MVAni90HLTCv");
+    CheckIDVar_MC(muonLooseColl, muonRawColl, ElPOGMCvColl, electronRawColl, jetColl, bjetColl, vMET, weight, "_MVAni90Cv");
   }
   if(ElTrigCut){
     vector<Electron> ElPOGMVAMColl = SelectElectrons(electronPreColl, "passMVAID_noIso_WP90", 10., 2.5);
@@ -194,15 +200,20 @@ void IDOptimization::executeEvent(){
     vector<Muon> MuPOGMIsoTColl = SelectMuons(muonPreColl, "POGMIPIsoT", 10., 2.4);
     vector<Muon> MuPOGMIsoVVLColl = SelectMuons(muonPreColl, "POGMIPIsoVVL", 10., 2.4);
 
-
     vector<Electron> ElTopHNTColl = SelectElectrons(electronPreColl, "TopHN17T", 10., 2.5);
     vector<Electron> ElTopHNLColl = SelectElectrons(electronPreColl, "TopHN17L", 10., 2.5);
+    vector<Electron> ElTopHNSSTColl = SelectElectrons(electronPreColl, "TopHN17SST", 10., 2.5);
+    vector<Electron> ElTopHNSSLColl = SelectElectrons(electronPreColl, "TopHN17SSL", 10., 2.5);
     vector<Electron> ElTopHNTColl_NoHLT = SelectElectrons(electronPreColl, "TopHN17T_NoHLT", 10., 2.5);
     vector<Electron> ElTopHNLColl_NoHLT = SelectElectrons(electronPreColl, "TopHN17L_NoHLT", 10., 2.5);
+    vector<Electron> ElTopHNSSTColl_NoHLT = SelectElectrons(electronPreColl, "TopHN17SST_NoHLT", 10., 2.5);
+    vector<Electron> ElTopHNSSLColl_NoHLT = SelectElectrons(electronPreColl, "TopHN17SSL_NoHLT", 10., 2.5);
 
     if(ElEl){
       CheckSelectionEfficiency(MuMiniTColl, MuMiniLColl, muonRawColl, ElTopHNTColl, ElTopHNLColl, electronRawColl, jetNoVetoColl, bjetNoVetoColl, vMET, ev, weight, "_HLT");
+      CheckSelectionEfficiency(MuMiniTColl, MuMiniLColl, muonRawColl, ElTopHNSSTColl, ElTopHNSSLColl, electronRawColl, jetNoVetoColl, bjetNoVetoColl, vMET, ev, weight, "_HLTSS");
       CheckSelectionEfficiency(MuMiniTColl, MuMiniLColl, muonRawColl, ElTopHNTColl_NoHLT, ElTopHNLColl_NoHLT, electronRawColl, jetNoVetoColl, bjetNoVetoColl, vMET, ev, weight, "_NoHLT");
+      CheckSelectionEfficiency(MuMiniTColl, MuMiniLColl, muonRawColl, ElTopHNSSTColl_NoHLT, ElTopHNSSLColl_NoHLT, electronRawColl, jetNoVetoColl, bjetNoVetoColl, vMET, ev, weight, "_NoHLTSS");
     }
     if(MuMu){
       CheckSelectionEfficiency(MuMiniTColl, MuMiniLColl, muonRawColl, ElTopHNTColl, ElTopHNLColl, electronRawColl, jetNoVetoColl, bjetNoVetoColl, vMET, ev, weight, "_NoHLT");
@@ -210,7 +221,13 @@ void IDOptimization::executeEvent(){
       CheckSelectionEfficiency(MuPOGMIsoTColl, MuPOGMIsoVVLColl, muonRawColl, ElTopHNTColl, ElTopHNLColl, electronRawColl, jetNoVetoColl, bjetNoVetoColl, vMET, ev, weight, "_POG");
     }
   }
-
+  if(FakeRateCheck){
+    vector<Gen> TruthColl = GetGens();
+    if(ElEl){
+      CheckTrigEffonTightLooseRatio(electronPreColl, "TopHN17L", "TopHN17T", TruthColl, ev, weight, "_TopHN17");
+      CheckTrigEffonTightLooseRatio(electronPreColl, "TopHN17L_NoHLT", "TopHN17T_NoHLT", TruthColl, ev, weight, "_TopHN17NoHLT");
+    }
+  }
 
 }
 
@@ -220,6 +237,75 @@ vector<Jet>& JetColl, vector<Jet>& BJetColl, Particle& vMET, Event& ev, float we
 
  return;
 }
+
+
+void IDOptimization::CheckTrigEffonTightLooseRatio(
+vector<Electron>& ElRawColl, TString Str_ElLID, TString Str_ElTID, vector<Gen>& TruthColl, Event& ev, float weight, TString Label)
+{
+  if(ElRawColl.size()<2) return;
+
+  const int NPtEdges=8, NfEtaEdges=4;
+  double fEtaEdges[NfEtaEdges]={0., 0.8, 1.5, 2.5};
+  double PtEdges[NPtEdges]={10., 15., 20., 25., 30., 50., 100., 200.};
+  bool MatchHLTTag=false, Idx_TagEl=-1;
+  for(unsigned int it_e=0; it_e<ElRawColl.size(); it_e++){
+    if(!(ElRawColl.at(it_e).Pt()>10 && fabs(ElRawColl.at(it_e).Eta())<2.5) ) continue;
+    if(!ElRawColl.at(it_e).PassID(Str_ElLID)) continue;
+
+    int LepType = GetLeptonType_JH(ElRawColl.at(it_e), TruthColl);
+    bool IsPrompt = LepType>0 && LepType!=3;
+    if(!IsPrompt) continue;
+    if(MCSample.Contains("Trig") or DataStream.Contains("Trig")){
+      for(unsigned int it_obj=0; it_obj<HLTObject_eta->size(); it_obj++){
+        float dR = sqrt(pow(ElRawColl.at(it_e).Eta()-HLTObject_eta->at(it_obj),2)+pow(ElRawColl.at(it_e).Phi()-HLTObject_phi->at(it_obj),2));
+        if(dR>0.2) continue;
+        if(HLTObject_FiredPaths->at(it_obj).find("HLT_Ele32_WPTight_Gsf_v")!=std::string::npos ){ MatchHLTTag=true; Idx_TagEl=it_e; break; }
+      }
+    }
+    if(MatchHLTTag) break;
+  }
+  if(!MatchHLTTag) return;
+
+
+  for(unsigned int it_e=0; it_e<ElRawColl.size(); it_e++){
+    if(!(ElRawColl.at(it_e).Pt()>10 && fabs(ElRawColl.at(it_e).Eta())<2.5) ) continue;
+    if(!ElRawColl.at(it_e).PassID(Str_ElLID)) continue;
+    if(it_e==Idx_TagEl) continue;
+
+    int LepType = GetLeptonType_JH(ElRawColl.at(it_e), TruthColl);
+    bool IsHFake = LepType>-5 && LepType<0, IsPrompt = LepType>0 && LepType!=3;
+    double PtEl = ElRawColl.at(it_e).Pt(), fEtaEl = fabs(ElRawColl.at(it_e).Eta());
+    bool MatchHLT=false;
+    bool PassTight = ElRawColl.at(it_e).PassID(Str_ElTID);
+    if(MCSample.Contains("Trig") or DataStream.Contains("Trig")){
+      for(unsigned int it_obj=0; it_obj<HLTObject_eta->size(); it_obj++){
+        float dR = sqrt(pow(ElRawColl.at(it_e).Eta()-HLTObject_eta->at(it_obj),2)+pow(ElRawColl.at(it_e).Phi()-HLTObject_phi->at(it_obj),2));
+        if(dR>0.2) continue;
+        if(HLTObject_FiredPaths->at(it_obj).find("HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_v")!=std::string::npos ){ MatchHLT=true; break; }
+        //if(HLTObject_FiredPaths->at(it_obj).find("HLT_Ele8_CaloIdL_TrackIdL_IsoVL_PFJet30_v")!=std::string::npos ){ MatchHLT=true; break; }
+      }
+    }
+
+    if(IsHFake){
+      FillHist("NElL_PtEta_HFk"+Label, PtEl, fEtaEl, weight, NPtEdges-1, PtEdges, NfEtaEdges-1, fEtaEdges);
+      if(PassTight) FillHist("NElT_PtEta_HFk"+Label, PtEl, fEtaEl, weight, NPtEdges-1, PtEdges, NfEtaEdges-1, fEtaEdges);
+      if(MatchHLT){
+        FillHist("NTrigElL_PtEta_HFk"+Label, PtEl, fEtaEl, weight, NPtEdges-1, PtEdges, NfEtaEdges-1, fEtaEdges);
+        if(PassTight) FillHist("NTrigElT_PtEta_HFk"+Label, PtEl, fEtaEl, weight, NPtEdges-1, PtEdges, NfEtaEdges-1, fEtaEdges);
+      }
+    }
+    else if(IsPrompt){
+      FillHist("NElL_PtEta_Pr"+Label, PtEl, fEtaEl, weight, NPtEdges-1, PtEdges, NfEtaEdges-1, fEtaEdges);
+      if(PassTight) FillHist("NElT_PtEta_Pr"+Label, PtEl, fEtaEl, weight, NPtEdges-1, PtEdges, NfEtaEdges-1, fEtaEdges);
+      if(MatchHLT){
+        FillHist("NTrigElL_PtEta_Pr"+Label, PtEl, fEtaEl, weight, NPtEdges-1, PtEdges, NfEtaEdges-1, fEtaEdges);
+        if(PassTight) FillHist("NTrigElT_PtEta_Pr"+Label, PtEl, fEtaEl, weight, NPtEdges-1, PtEdges, NfEtaEdges-1, fEtaEdges);
+      }
+    }
+  }
+
+}
+
 
 
 void IDOptimization::CheckSelectionEfficiency(
@@ -367,15 +453,13 @@ vector<Jet>& JetColl, vector<Jet>& BJetColl, Particle& vMET, Event& ev, float we
     int it_cut=0;
     FillHist("CutFlow"+Label, it_cut, weight, 10, 0., 10.); it_cut++;
 
-
     std::vector<Jet> JetVetoColl  = JetsVetoLeptonInside(JetColl, ElLColl, MuLColl, 0.4);
     std::vector<Jet> BJetVetoColl = JetsVetoLeptonInside(BJetColl, ElLColl, MuLColl, 0.4);
-
 
     if(BJetVetoColl.size()==0) return;
     FillHist("CutFlow"+Label, it_cut, weight, 10, 0., 10.); it_cut++;
 
-    if(JetVetoColl.size()<2) return;
+    if(JetVetoColl.size()<3) return;
     FillHist("CutFlow"+Label, it_cut, weight, 10, 0., 10.); it_cut++;
   }
 }
@@ -868,7 +952,7 @@ void IDOptimization::CheckIDVar_MC(vector<Muon>& MuLColl, vector<Muon>& MuRawCol
         FillHist("SIP2D_Type12"+Label, SIP2D, weight, 20, 0., 10.);
         FillHist("SIP3D_Type12"+Label, SIP3D, weight, 20, 0., 10.);
         FillHist("h2_SIP2D_SIP3D_Type12"+Label, SIP2D, SIP3D, weight, 20, 0., 10., 20, 0., 10.); 
-        if(SIP2D<3 && SIP3D<5){
+        if(SIP3D<4){
           FillHist("NMissHits_atSIP2D3D_Type12"+Label, ElLColl.at(it_e).NMissingHits(), weight, 10, 0., 10.);    
           FillHist("TightQ_atSIP2D3D_Type12"+Label, TightQPass, weight, 2, 0., 2.);
         }
@@ -882,7 +966,7 @@ void IDOptimization::CheckIDVar_MC(vector<Muon>& MuLColl, vector<Muon>& MuRawCol
         FillHist("SIP2D_Typem1234"+Label, SIP2D, weight, 20, 0., 10.);
         FillHist("SIP3D_Typem1234"+Label, SIP3D, weight, 20, 0., 10.);
         FillHist("h2_SIP2D_SIP3D_Typem1234"+Label, SIP2D, SIP3D, weight, 20, 0., 10., 20, 0., 10.); 
-        if(SIP2D<3 && SIP3D<5){
+        if(SIP3D<4){
           FillHist("NMissHits_atSIP2D3D_Typem1234"+Label, ElLColl.at(it_e).NMissingHits(), weight, 10, 0., 10.);
           FillHist("TightQ_atSIP2D3D_Typem1234"+Label, TightQPass, weight, 2, 0., 2.);
         }
@@ -896,7 +980,7 @@ void IDOptimization::CheckIDVar_MC(vector<Muon>& MuLColl, vector<Muon>& MuRawCol
         FillHist("SIP2D_Typem56"+Label, SIP2D, weight, 20, 0., 10.);
         FillHist("SIP3D_Typem56"+Label, SIP3D, weight, 20, 0., 10.);
         FillHist("h2_SIP2D_SIP3D_Typem56"+Label, SIP2D, SIP3D, weight, 20, 0., 10., 20, 0., 10.); 
-        if(SIP2D<3 && SIP3D<5){
+        if(SIP3D<4){
           FillHist("NMissHits_atSIP2D3D_Typem56"+Label, ElLColl.at(it_e).NMissingHits(), weight, 10, 0., 10.);
           FillHist("TightQ_atSIP2D3D_Typem56"+Label, TightQPass, weight, 2, 0., 2.);
         }

@@ -1,0 +1,2 @@
+/gv0/DATA/SKFlat/Run2Legacy_v4/2017/MC_SkimTree_SS2lOR3l/TTbarTypeIHeavyN-El_HadTop3L_LO_MN60/2020_11_24_143615/SKFlatNtuple_2017_MC_0.root
+/gv0/DATA/SKFlat/Run2Legacy_v4/2017/MC_SkimTree_SS2lOR3l/TTbarTypeIHeavyN-El_HadTop3L_LO_MN60/2020_11_24_143615/SKFlatNtuple_2017_MC_1.root

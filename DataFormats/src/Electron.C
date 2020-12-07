@@ -198,6 +198,12 @@ bool Electron::PassID(TString ID) const{
     if(!(fabs(Eta())<2.5)) return false;
     return true;
   }
+  if(ID=="POGMVAni90Cv"){
+    if(!passMVAID_noIso_WP90()) return false;
+    if(!PassConversionVeto()) return false;
+    if(!(fabs(Eta())<2.5)) return false;
+    return true;
+  }
   if(ID=="TopHN17T"){
     if(! passMVAID_noIso_WP90()          ) return false;
     if(! (MiniRelIso()<0.1)              ) return false;
@@ -244,7 +250,6 @@ bool Electron::PassID(TString ID) const{
     if(! IsGsfCtfScPixChargeConsistent() ) return false;
     return true;
   }
-
   if(ID=="TopHN17T_NoHLT"){
     if(! passMVAID_noIso_WP90()          ) return false;
     if(! (MiniRelIso()<0.1)              ) return false;
@@ -265,6 +270,29 @@ bool Electron::PassID(TString ID) const{
     if(! (fabs(Eta())<2.5)               ) return false;
     return true;
   }
+  if(ID=="TopHN17SST_NoHLT"){
+    if(! passMVAID_noIso_WP90()          ) return false;
+    if(! (MiniRelIso()<0.1)              ) return false;
+    if(! (IP3Derr()!=0. && fabs(IP3D()/IP3Derr())<4.) ) return false;
+    if(! (fabs(dZ())<0.1)                ) return false;
+    if(! PassConversionVeto()            ) return false;
+    if(! (NMissingHits()<2)              ) return false;
+    if(! (fabs(Eta())<2.5)               ) return false;
+    if(! IsGsfCtfScPixChargeConsistent() ) return false;
+    return true;
+  }
+  if(ID=="TopHN17SSL_NoHLT"){
+    if(! passMVAID_noIso_WPLoose()       ) return false;
+    if(! (MiniRelIso()<0.4)              ) return false;
+    if(! (IP3Derr()!=0. && fabs(IP3D()/IP3Derr())<4.) ) return false;
+    if(! (fabs(dZ())<0.1)                ) return false;
+    if(! PassConversionVeto()            ) return false;
+    if(! (NMissingHits()<2)              ) return false;
+    if(! (fabs(Eta())<2.5)               ) return false;
+    if(! IsGsfCtfScPixChargeConsistent() ) return false;
+    return true;
+  }
+
 
 
   cout << "[Electron::PassID] No id : " << ID << endl;

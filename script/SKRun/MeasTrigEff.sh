@@ -9,10 +9,10 @@ declare -a List_runModes=("runBkdMC" "runData")
 ## RUN PARAMETERS
 
 AnalysisCode="MeasTrigEff" 
-FinalState="ElectronMuon" #"DiMuon"
+FinalState="ElectronMuon" #"ElectronMuon" #"DiMuon"
 Skim=""
 Year="2017"
-RunningMode="ElMu,EMuTrig_ElLeg" #"ElMu,EMuTrig_ElLeg" #"MuMu,DiMuDZFilter"
+RunningMode="ElMu,EMuTrig_DZ" #"ElMu,EMuTrig_ElLeg" #"MuMu,DiMuTrig_DZ"
 
 NJobs=""
 Memory=""

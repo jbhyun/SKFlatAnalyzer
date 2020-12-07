@@ -6,21 +6,35 @@ if not "SKFlat_WD" in os.environ:
   print("Set up SKFlat environment."); exit(); 
 
 #[PD(Or PrivateMC dir name), alias, xsec(fb)]
-Arr_Sample = [["preliminary_TTbarTypeIHeavyN-Mu_LepTop3L_LO_MN20" , "TT_TTobNMu_LepTop3L_LO_MN20" , 1.],
-              ["preliminary_TTbarTypeIHeavyN-Mu_LepTop3L_LO_MN50" , "TT_TTobNMu_LepTop3L_LO_MN50" , 1.],
-              ["preliminary_TTbarTypeIHeavyN-Mu_LepTop3L_LO_MN100", "TT_TTobNMu_LepTop3L_LO_MN100", 1.],
-              ["preliminary_TTbarTypeIHeavyN-Mu_HadTop3L_LO_MN20" , "TT_TTobNMu_HadTop3L_LO_MN20" , 1.],
-              ["preliminary_TTbarTypeIHeavyN-Mu_HadTop3L_LO_MN50" , "TT_TTobNMu_HadTop3L_LO_MN50" , 1.],
-              ["preliminary_TTbarTypeIHeavyN-Mu_HadTop3L_LO_MN100", "TT_TTobNMu_HadTop3L_LO_MN100", 1.],
-              ["preliminary_TTbarTypeIHeavyN-Mu_4L_LO_MN20" , "TT_TTobNMu_4L_LO_MN20" , 1.],
-              ["preliminary_TTbarTypeIHeavyN-Mu_4L_LO_MN50" , "TT_TTobNMu_4L_LO_MN50" , 1.],
-              ["preliminary_TTbarTypeIHeavyN-Mu_4L_LO_MN100", "TT_TTobNMu_4L_LO_MN100", 1.]]
+Arr_Sample = [
+#               ["TTbarTypeIHeavyN-El_HadTop3L_LO_MN100" ,"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN100" , 1.],
+#              ["TTbarTypeIHeavyN-El_HadTop3L_LO_MN20"  ,"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN20"  , 1.],
+#              ["TTbarTypeIHeavyN-El_HadTop3L_LO_MN30"  ,"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN30"  , 1.],
+#              ["TTbarTypeIHeavyN-El_HadTop3L_LO_MN40"  ,"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN40"  , 1.],
+#              ["TTbarTypeIHeavyN-El_HadTop3L_LO_MN50"  ,"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN50"  , 1.],
+#              ["TTbarTypeIHeavyN-El_HadTop3L_LO_MN60"  ,"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN60"  , 1.],
+#              ["TTbarTypeIHeavyN-El_HadTop3L_LO_MN70"  ,"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN70"  , 1.],
+#              ["TTbarTypeIHeavyN-El_HadTop3L_LO_MN75"  ,"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN75"  , 1.],
+#              ["TTbarTypeIHeavyN-El_HadTop3L_LO_MN85"  ,"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN85"  , 1.],
+#              ["TTbarTypeIHeavyN-El_HadTop3L_LO_MN90"  ,"TTbarTypeIHeavyN-El_HadTop3L_MLM_MN90"  , 1.],
+#              ["TTbarTypeIHeavyN-Mu_HadTop3L_LO_MN100" ,"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN100" , 1.],
+              ["TTbarTypeIHeavyN-Mu_HadTop3L_LO_MN20"  ,"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN20"  , 1.],
+              ["TTbarTypeIHeavyN-Mu_HadTop3L_LO_MN30"  ,"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN30"  , 1.],
+#              ["TTbarTypeIHeavyN-Mu_HadTop3L_LO_MN40"  ,"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN40"  , 1.],
+#              ["TTbarTypeIHeavyN-Mu_HadTop3L_LO_MN50"  ,"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN50"  , 1.],
+              ["TTbarTypeIHeavyN-Mu_HadTop3L_LO_MN60"  ,"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN60"  , 1.],
+#              ["TTbarTypeIHeavyN-Mu_HadTop3L_LO_MN70"  ,"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN70"  , 1.],
+#              ["TTbarTypeIHeavyN-Mu_HadTop3L_LO_MN75"  ,"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN75"  , 1.],
+#              ["TTbarTypeIHeavyN-Mu_HadTop3L_LO_MN85"  ,"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN85"  , 1.],
+#              ["TTbarTypeIHeavyN-Mu_HadTop3L_LO_MN90"  ,"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN90"  , 1.],
+              ]
+#/gv0/DATA/SKFlat/Run2Legacy_v4/2017/PrivateMC/TTbarTypeIHeavyN/TTbarTypeIHeavyN-Mu_2L_LO_MN100/2020_11_16_141620/
 
 
 VerProc="Run2Legacy_v4"
 Year="2017"
 DataType="PrivateMC"
-Category="preliminary_TTbarTypeIHeavuN-Mu" #"HctoWA"
+Category="TTbarTypeIHeavyN" #"HctoWA"
 #SamplePath="/data9/Users/jbhyun/SKFlat/"+VerProc+"/"+Year+"/"+DataType+"/"+Category+"/" #HctoWA Test
 #SamplePath="/gv0/Users/jbhyun/SKFlat/TrigStudy/"+Year+"/" #TrigStudy
 SamplePath="/gv0/DATA/SKFlat/"+VerProc+"/"+Year+"/"+DataType+"/"+Category+"/" #Normal samples
@@ -62,4 +76,5 @@ for it_proc in Arr_Sample:
 
   if Verbose:
     print("Processed "+Alias+" ("+VerProc+", "+Year+", "+DataType+").")
+
 
