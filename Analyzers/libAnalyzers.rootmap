@@ -1,15 +1,19 @@
-[ libAnalyzers.so libAnalyzerTools.so libGEScaleSyst.so libDataFormats.so libTree.so ]
+[ libAnalyzers.so libAnalyzerTools.so libGEScaleSyst.so libDataFormats.so libTree.so libTMVA.so ]
 # List of selected classes
 class AnalyzerCore
 class BTagEff_MC
+class ControlPlots
 class DiLepValid
 class ExampleRun
+class FakeRateMeas
 class GenMatchingValid
 class GetEffLumi
 class HNTopFeas
 class IDOptimization
+class KinVarPlot
 class KinVarSearch
 class MCPUDist17
+class MeasCFlipRate
 class MeasTrigEff
 class MeasureJetTaggingEfficiency
 class NewAnalyzer
@@ -26,14 +30,18 @@ class TestRun
 class TrigCheck
 header AnalyzerCore.h
 header BTagEff_MC.h
+header ControlPlots.h
 header DiLepValid.h
 header ExampleRun.h
+header FakeRateMeas.h
 header GenMatchingValid.h
 header GetEffLumi.h
 header HNTopFeas.h
 header IDOptimization.h
+header KinVarPlot.h
 header KinVarSearch.h
 header MCPUDist17.h
+header MeasCFlipRate.h
 header MeasTrigEff.h
 header MeasureJetTaggingEfficiency.h
 header NewAnalyzer.h

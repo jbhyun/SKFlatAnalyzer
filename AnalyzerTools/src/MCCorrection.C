@@ -1072,19 +1072,30 @@ double MCCorrection::GetJetTaggingCutValue(JetTagging::Tagger tagger, JetTagging
 
 }
 
-double MCCorrection::GetBTaggingReweight_1a(const vector<Jet>& jets, JetTagging::Parameters jtp, string Syst){
+double MCCorrection::GetBTaggingReweight_1a(const vector<Jet>& jets, JetTagging::Parameters jtp, TString SystStr){
 
   if(IsDATA) return 1.;
 
   double Prob_MC(1.), Prob_DATA(1.);
+  bool Syst_HTag=false, Syst_LTag=false; int SystDir=0;
+  string SystKey;
+  if(SystStr.Contains("Syst")){
+    if     (SystStr.Contains("HTag")) Syst_HTag=true;    
+    else if(SystStr.Contains("LTag")) Syst_LTag=true;
+    if     (SystStr.Contains("Up")  ) SystDir= 1;
+    else if(SystStr.Contains("Down")) SystDir=-1;
+  }
+
   for(unsigned int i=0; i<jets.size(); i++){
-    double this_MC_Eff = GetMCJetTagEff(jtp.j_Tagger, jtp.j_WP, jets.at(i).hadronFlavour(), jets.at(i).Pt(), jets.at(i).Eta());
-    double this_SF = GetJetTaggingSF(jtp,
-                                     jets.at(i).hadronFlavour(),
-                                     jets.at(i).Pt(),
-                                     jets.at(i).Eta(),
-                                     jets.at(i).GetTaggerResult(jtp.j_Tagger),
-                                     Syst );
+    int JetHadFlav = jets.at(i).hadronFlavour();
+    if     (Syst_HTag && (JetHadFlav==4 or JetHadFlav==5)){ SystKey=SystDir>0? "up":SystDir<0? "down":"central"; }
+    else if(Syst_LTag && (JetHadFlav==0                 )){ SystKey=SystDir>0? "up":SystDir<0? "down":"central"; }
+    else SystKey="central";
+
+    double this_MC_Eff = GetMCJetTagEff(
+      jtp.j_Tagger, jtp.j_WP, JetHadFlav, jets.at(i).Pt(), jets.at(i).Eta());
+    double this_SF = GetJetTaggingSF(
+      jtp, JetHadFlav, jets.at(i).Pt(), jets.at(i).Eta(), jets.at(i).GetTaggerResult(jtp.j_Tagger), SystKey);
     double this_DATA_Eff = this_MC_Eff*this_SF;
 
     bool isTagged = jets.at(i).GetTaggerResult(jtp.j_Tagger) > GetJetTaggingCutValue(jtp.j_Tagger, jtp.j_WP);

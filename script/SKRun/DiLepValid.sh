@@ -1,18 +1,18 @@
 #!/bin/bash
 
 ########################################################################
-declare -a List_runModes=("runBkdMC")
+#declare -a List_runModes=("runBkdMC")
 #declare -a List_runModes=("runData")
-#declare -a List_runModes=("runBkdMC" "runData")
+declare -a List_runModes=("runBkdMC" "runData")
 
 ########################################################################
 ## RUN PARAMETERS
 
 AnalysisCode="DiLepValid" 
-FinalState="DiElectron" #DiMuon / DiElectron / ElectronMuon
+FinalState="ElectronMuon" #DiMuon / DiElectron / ElectronMuon
 Skim=""
 Year="2017"
-RunningMode="ElEl" #"ElMu,HEMCheck" #MuMu / ElEl / ElMu / TrigEffMeas
+RunningMode="ElMu" #"ElMu,HEMCheck" #MuMu / ElEl / ElMu / TrigEffMeas
 
 NJobs=""
 Memory=""

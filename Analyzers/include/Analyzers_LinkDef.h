@@ -31,6 +31,11 @@
 #pragma link C++ class SkimTree_TrigInfo+;
 #pragma link C++ class MeasTrigEff+;
 #pragma link C++ class KinVarSearch+;
+#pragma link C++ class KinVarPlot+;
+#pragma link C++ class TestRun+;
+#pragma link C++ class ControlPlots+;
+#pragma link C++ class FakeRateMeas+;
+#pragma link C++ class MeasCFlipRate+;
 //my codes end
 
 #endif

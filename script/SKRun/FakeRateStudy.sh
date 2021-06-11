@@ -3,21 +3,23 @@
 ########################################################################
 declare -a List_runModes=("runBkdMC")
 #declare -a List_runModes=("runSigMC")
+#declare -a List_runModes=("runBkdMC" "runSigMC")
 #declare -a List_runModes=("runData")
 #declare -a List_runModes=("runBkdMC" "runData")
 
 ########################################################################
 ## RUN PARAMETERS
 
-AnalysisCode="SkimTree_SS2lOR3l" #SkimTree_SS2lOR3l / SkimRateCheck 
-FinalState="SS2lOR3l" #"TrigInfo" #"SS2lOR3l" / "TrigInfo"
-Skim="" #"SkimTree_SS2lOR3l"
+AnalysisCode="FakeRateMeas"
+FinalState="Mu" #"Mu" "El"
+Skim=""
 Year="2017"
-RunningMode="" #MuMuMu / ElMuMu / TetraLep / SS2l
+RunningMode="MuFR,MeasFR,SystRun" 
+#"MuFR,MeasPU" "ElFR,MeasPU" "MuFR,PrVal" "ElFR,PrVal" "MuFR,MeasFR", "ElFR,MeasFR" "MuFR,METMTWCut" "SystRun"
 
 NJobs=""
 Memory=""
-NJobMax="70"
+NJobMax="80"
 NEvtMax="100000"
 NSkipEvt=""
 ReductionFactor="" #"10"
@@ -93,7 +95,8 @@ do
     if [[ ${NJobs} -gt 0 ]]; then :; 
     elif [[ ${NJobs} == "-" ]]; then NJobs=20; 
     else echo "NJob Config invalid for ${SampleName} in ${CategoryLabel} mode"; continue; fi
-    if [[ ( ${runDebug} == "False" ) && ( -z ${ReductionFactor} ) ]]; then (( NJobs *= 2 )); fi
+    if [[ ( ${runDebug} == "False" ) ]]; then (( NJobs *= 2 )); fi
+    #if [[ ( ${runDebug} == "False" ) && ( -z ${ReductionFactor} ) ]]; then (( NJobs *= 2 )); fi
 
     Option+=" -i ${SampleName}" 
     Option+=" -n ${NJobs}" 
@@ -109,7 +112,7 @@ do
     echo "SKFlat.py ${Option}" >> CommandHist.txt
 
     if [[ ${runDebug} == "True" ]]; then 
-      sleep 5s
+      sleep 10s
       DirName=$( ls -rt ${SKFlatRunlogDir} | tail -1 ) 
       if [[ ${DirName} == "www"* ]]; then DirName= $( ls -rt ${SKFlatRunlogDir} | tail -2 | head -1 ); fi
       PeriodLabel=""

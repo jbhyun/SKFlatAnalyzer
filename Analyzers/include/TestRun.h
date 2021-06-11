@@ -11,16 +11,13 @@ public:
   void executeEventFromParameter(AnalyzerParameter param);
   void executeEvent();
 
-  bool MuMuMu, ElMuMu; 
+  bool SS2l, TriLep, TetraLep; 
+  bool DblMu, DblEG, MuEG;
   bool SystRun;
-  vector<TString> TrigList_1e2mu, TrigList_3mu;
+  vector<TString> TrigList_DblMu, TrigList_DblEG, TrigList_MuEG;
 
-  void AnalyzeTriMuon(std::vector<Muon>& MuTColl, std::vector<Muon>& MuLColl, std::vector<Electron>& EleTColl, std::vector<Electron>& EleLColl,
-                     std::vector<Jet>& JetColl, std::vector<Jet>& BJetColl, Particle& vMET, float weight, TString Label);
-  void AnalyzeElectronDiMuon(std::vector<Muon>& MuTColl, std::vector<Muon>& MuLColl, std::vector<Electron>& EleTColl, std::vector<Electron>& EleLColl,
-                             std::vector<Jet>& JetColl, std::vector<Jet>& BJetColl, Particle& vMET, float weight, TString Label);
-
-
+  void TestThis(vector<Muon>& MuTColl, vector<Muon>& MuLColl, vector<Muon>& MuVColl, vector<Electron>& ElTColl, vector<Electron>& ElLColl, vector<Electron>& ElVColl,
+                vector<Jet>& JetColl, vector<Jet>& BJetColl, Particle& vMET, float weight, TString Label);
 
   TestRun();
   ~TestRun();
@@ -30,4 +27,3 @@ public:
 
 
 #endif
-

@@ -2,16 +2,10 @@
 
 void KinVarSearch::initializeAnalyzer(){
 
-  ElMuMu=false, MuMuMu=false, SSMuMu=false, SSElEl=false, SSElMu=false;
   TriLep=false, TetraLep=false, SS2l=false, SystRun=false; 
   for(unsigned int i=0; i<Userflags.size(); i++){
-    if(Userflags.at(i).Contains("ElMuMu")) ElMuMu=true; 
-    if(Userflags.at(i).Contains("MuMuMu")) MuMuMu=true; 
-    if(Userflags.at(i).Contains("SSMuMu")) SSMuMu=true;
-    if(Userflags.at(i).Contains("SSElEl")) SSElEl=true;
-    if(Userflags.at(i).Contains("SSElMu")) SSElMu=true;
-    if(Userflags.at(i).Contains("TriLep")) TriLep=true;
     if(Userflags.at(i).Contains("SS2l"))   SS2l=true;
+    if(Userflags.at(i).Contains("TriLep")) TriLep=true;
     if(Userflags.at(i).Contains("TetraLep")) TetraLep=true; 
     if(Userflags.at(i).Contains("SystRun")) SystRun=true; 
   }
@@ -55,9 +49,96 @@ void KinVarSearch::initializeAnalyzer(){
   }
 
   //Set up the tagger map only for the param settings to be used.
-  std::vector<JetTagging::Parameters> jtps;
+  vector<JetTagging::Parameters> jtps;
   jtps.push_back( JetTagging::Parameters(JetTagging::DeepCSV, JetTagging::Medium, JetTagging::incl, JetTagging::mujets) );
   mcCorr->SetJetTaggingParameters(jtps);
+
+  InitializeTreeVars();
+  tree_mm->Branch("Nj", &Nj, "Nj/I");                 tree_ee->Branch("Nj", &Nj, "Nj/I");
+  tree_mm->Branch("Nb", &Nb, "Nb/I");                 tree_ee->Branch("Nb", &Nb, "Nb/I");
+  tree_mm->Branch("Ptl1", &Ptl1, "Ptl1/F");           tree_ee->Branch("Ptl1", &Ptl1, "Ptl1/F");
+  tree_mm->Branch("Ptl2", &Ptl2, "Ptl2/F");           tree_ee->Branch("Ptl2", &Ptl2, "Ptl2/F");
+  tree_mm->Branch("Ptj1", &Ptj1, "Ptj1/F");           tree_ee->Branch("Ptj1", &Ptj1, "Ptj1/F");
+  tree_mm->Branch("Ptj2", &Ptj2, "Ptj2/F");           tree_ee->Branch("Ptj2", &Ptj2, "Ptj2/F");
+  tree_mm->Branch("Ptj3", &Ptj3, "Ptj3/F");           tree_ee->Branch("Ptj3", &Ptj3, "Ptj3/F");
+  tree_mm->Branch("Ptb1", &Ptb1, "Ptb1/F");           tree_ee->Branch("Ptb1", &Ptb1, "Ptb1/F");
+  tree_mm->Branch("Ptb2", &Ptb2, "Ptb2/F");           tree_ee->Branch("Ptb2", &Ptb2, "Ptb2/F");
+  tree_mm->Branch("MET", &MET, "MET/F");              tree_ee->Branch("MET", &MET, "MET/F");
+  tree_mm->Branch("HT", &HT, "HT/F");                 tree_ee->Branch("HT", &HT, "HT/F");
+  tree_mm->Branch("MET2HT", &MET2HT, "MET2HT/F");     tree_ee->Branch("MET2HT", &MET2HT, "MET2HT/F");
+  tree_mm->Branch("dEtall", &dEtall, "dEtall/F");     tree_ee->Branch("dEtall", &dEtall, "dEtall/F");
+  tree_mm->Branch("dRll", &dRll, "dRll/F");           tree_ee->Branch("dRll", &dRll, "dRll/F");
+  tree_mm->Branch("dRjj12", &dRjj12, "dRjj12/F");     tree_ee->Branch("dRjj12", &dRjj12, "dRjj12/F");
+  tree_mm->Branch("dRjj23", &dRjj23, "dRjj23/F");     tree_ee->Branch("dRjj23", &dRjj23, "dRjj23/F");
+  tree_mm->Branch("dRjj13", &dRjj13, "dRjj13/F");     tree_ee->Branch("dRjj13", &dRjj13, "dRjj13/F");
+  tree_mm->Branch("dRlj11", &dRlj11, "dRlj11/F");     tree_ee->Branch("dRlj11", &dRlj11, "dRlj11/F");
+  tree_mm->Branch("dRlj12", &dRlj12, "dRlj12/F");     tree_ee->Branch("dRlj12", &dRlj12, "dRlj12/F");
+  tree_mm->Branch("dRlj13", &dRlj13, "dRlj13/F");     tree_ee->Branch("dRlj13", &dRlj13, "dRlj13/F");
+  tree_mm->Branch("dRlj21", &dRlj21, "dRlj21/F");     tree_ee->Branch("dRlj21", &dRlj21, "dRlj21/F");
+  tree_mm->Branch("dRlj22", &dRlj22, "dRlj22/F");     tree_ee->Branch("dRlj22", &dRlj22, "dRlj22/F");
+  tree_mm->Branch("dRlj23", &dRlj23, "dRlj23/F");     tree_ee->Branch("dRlj23", &dRlj23, "dRlj23/F");
+  tree_mm->Branch("dRlb11", &dRlb11, "dRlb11/F");     tree_ee->Branch("dRlb11", &dRlb11, "dRlb11/F");
+  tree_mm->Branch("dRlb21", &dRlb21, "dRlb21/F");     tree_ee->Branch("dRlb21", &dRlb21, "dRlb21/F");
+  tree_mm->Branch("MSSSF", &MSSSF, "MSSSF/F");        tree_ee->Branch("MSSSF", &MSSSF, "MSSSF/F");
+  tree_mm->Branch("Mbl11", &Mbl11, "Mbl11/F");        tree_ee->Branch("Mbl11", &Mbl11, "Mbl11/F");
+  tree_mm->Branch("Mbl12", &Mbl12, "Mbl12/F");        tree_ee->Branch("Mbl12", &Mbl12, "Mbl12/F");
+  tree_mm->Branch("Mbl21", &Mbl21, "Mbl21/F");        tree_ee->Branch("Mbl21", &Mbl21, "Mbl21/F");
+  tree_mm->Branch("Mbl22", &Mbl22, "Mbl22/F");        tree_ee->Branch("Mbl22", &Mbl22, "Mbl22/F");
+  tree_mm->Branch("Mlj11", &Mlj11, "Mlj11/F");        tree_ee->Branch("Mlj11", &Mlj11, "Mlj11/F");
+  tree_mm->Branch("Mlj12", &Mlj12, "Mlj12/F");        tree_ee->Branch("Mlj12", &Mlj12, "Mlj12/F");
+  tree_mm->Branch("Mlj13", &Mlj13, "Mlj13/F");        tree_ee->Branch("Mlj13", &Mlj13, "Mlj13/F");
+  tree_mm->Branch("Mlj21", &Mlj21, "Mlj21/F");        tree_ee->Branch("Mlj21", &Mlj21, "Mlj21/F");
+  tree_mm->Branch("Mlj22", &Mlj22, "Mlj22/F");        tree_ee->Branch("Mlj22", &Mlj22, "Mlj22/F");
+  tree_mm->Branch("Mlj23", &Mlj23, "Mlj23/F");        tree_ee->Branch("Mlj23", &Mlj23, "Mlj23/F");
+  tree_mm->Branch("MTvl1", &MTvl1, "MTvl1/F");        tree_ee->Branch("MTvl1", &MTvl1, "MTvl1/F");
+  tree_mm->Branch("MTvl2", &MTvl2, "MTvl2/F");        tree_ee->Branch("MTvl2", &MTvl2, "MTvl2/F");
+  tree_mm->Branch("Mllj1", &Mllj1, "Mllj1/F");        tree_ee->Branch("Mllj1", &Mllj1, "Mllj1/F");
+  tree_mm->Branch("Mllj2", &Mllj2, "Mllj2/F");        tree_ee->Branch("Mllj2", &Mllj2, "Mllj2/F");
+  tree_mm->Branch("Mllj3", &Mllj3, "Mllj3/F");        tree_ee->Branch("Mllj3", &Mllj3, "Mllj3/F");
+  tree_mm->Branch("Mllj4", &Mllj4, "Mllj4/F");        tree_ee->Branch("Mllj4", &Mllj4, "Mllj4/F");
+  tree_mm->Branch("Mllb1", &Mllb1, "Mllb1/F");        tree_ee->Branch("Mllb1", &Mllb1, "Mllb1/F");
+  tree_mm->Branch("Mllb2", &Mllb2, "Mllb2/F");        tree_ee->Branch("Mllb2", &Mllb2, "Mllb2/F");
+  tree_mm->Branch("Mlljj12", &Mlljj12, "Mlljj12/F");  tree_ee->Branch("Mlljj12", &Mlljj12, "Mlljj12/F");
+  tree_mm->Branch("Mlljj13", &Mlljj13, "Mlljj13/F");  tree_ee->Branch("Mlljj13", &Mlljj13, "Mlljj13/F");
+  tree_mm->Branch("Mlljj14", &Mlljj14, "Mlljj14/F");  tree_ee->Branch("Mlljj14", &Mlljj14, "Mlljj14/F");
+  tree_mm->Branch("Mlljj23", &Mlljj23, "Mlljj23/F");  tree_ee->Branch("Mlljj23", &Mlljj23, "Mlljj23/F");
+  tree_mm->Branch("Mlljj24", &Mlljj24, "Mlljj24/F");  tree_ee->Branch("Mlljj24", &Mlljj24, "Mlljj24/F");
+  tree_mm->Branch("Mlljj34", &Mlljj34, "Mlljj34/F");  tree_ee->Branch("Mlljj34", &Mlljj34, "Mlljj34/F");
+  tree_mm->Branch("Mljj112", &Mljj112, "Mljj112/F");  tree_ee->Branch("Mljj112", &Mljj112, "Mljj112/F");
+  tree_mm->Branch("Mljj113", &Mljj113, "Mljj113/F");  tree_ee->Branch("Mljj113", &Mljj113, "Mljj113/F");
+  tree_mm->Branch("Mljj114", &Mljj114, "Mljj114/F");  tree_ee->Branch("Mljj114", &Mljj114, "Mljj114/F");
+  tree_mm->Branch("Mljj123", &Mljj123, "Mljj123/F");  tree_ee->Branch("Mljj123", &Mljj123, "Mljj123/F");
+  tree_mm->Branch("Mljj124", &Mljj124, "Mljj124/F");  tree_ee->Branch("Mljj124", &Mljj124, "Mljj124/F");
+  tree_mm->Branch("Mljj134", &Mljj134, "Mljj134/F");  tree_ee->Branch("Mljj134", &Mljj134, "Mljj134/F");
+  tree_mm->Branch("Mljj212", &Mljj212, "Mljj212/F");  tree_ee->Branch("Mljj212", &Mljj212, "Mljj212/F");
+  tree_mm->Branch("Mljj213", &Mljj213, "Mljj213/F");  tree_ee->Branch("Mljj213", &Mljj213, "Mljj213/F");
+  tree_mm->Branch("Mljj214", &Mljj214, "Mljj214/F");  tree_ee->Branch("Mljj214", &Mljj214, "Mljj214/F");
+  tree_mm->Branch("Mljj223", &Mljj223, "Mljj223/F");  tree_ee->Branch("Mljj223", &Mljj223, "Mljj223/F");
+  tree_mm->Branch("Mljj224", &Mljj224, "Mljj224/F");  tree_ee->Branch("Mljj224", &Mljj224, "Mljj224/F");
+  tree_mm->Branch("Mljj234", &Mljj234, "Mljj234/F");  tree_ee->Branch("Mljj234", &Mljj234, "Mljj234/F");
+  tree_mm->Branch("Mjj12", &Mjj12, "Mjj12/F");        tree_ee->Branch("Mjj12", &Mjj12, "Mjj12/F");
+  tree_mm->Branch("Mjj13", &Mjj13, "Mjj13/F");        tree_ee->Branch("Mjj13", &Mjj13, "Mjj13/F");
+  tree_mm->Branch("Mjj14", &Mjj14, "Mjj14/F");        tree_ee->Branch("Mjj14", &Mjj14, "Mjj14/F");
+  tree_mm->Branch("Mjj23", &Mjj23, "Mjj23/F");        tree_ee->Branch("Mjj23", &Mjj23, "Mjj23/F");
+  tree_mm->Branch("Mjj24", &Mjj24, "Mjj24/F");        tree_ee->Branch("Mjj24", &Mjj24, "Mjj24/F");
+  tree_mm->Branch("Mjj34", &Mjj34, "Mjj34/F");        tree_ee->Branch("Mjj34", &Mjj34, "Mjj34/F");
+  tree_mm->Branch("MjjW1", &MjjW1, "MjjW1/F");          tree_ee->Branch("MjjW1", &MjjW1, "MjjW1/F");
+  tree_mm->Branch("MjjW2", &MjjW2, "MjjW2/F");          tree_ee->Branch("MjjW2", &MjjW2, "MjjW2/F");
+  tree_mm->Branch("MllW_2jL", &MllW_2jL, "MllW_2jL/F"); tree_ee->Branch("MllW_2jL", &MllW_2jL, "MllW_2jL/F");
+  tree_mm->Branch("MllW_1jL", &MllW_1jL, "MllW_1jL/F"); tree_ee->Branch("MllW_1jL", &MllW_1jL, "MllW_1jL/F");
+  tree_mm->Branch("MllW1_H", &MllW1_H, "MllW1_H/F");    tree_ee->Branch("MllW1_H", &MllW1_H, "MllW1_H/F");
+  tree_mm->Branch("MllW2_H", &MllW2_H, "MllW2_H/F");    tree_ee->Branch("MllW2_H", &MllW2_H, "MllW2_H/F");
+  tree_mm->Branch("Ml1W_2jL", &Ml1W_2jL, "Ml1W_2jL/F"); tree_ee->Branch("Ml1W_2jL", &Ml1W_2jL, "Ml1W_2jL/F");
+  tree_mm->Branch("Ml1W_1jL", &Ml1W_1jL, "Ml1W_1jL/F"); tree_ee->Branch("Ml1W_1jL", &Ml1W_1jL, "Ml1W_1jL/F");
+  tree_mm->Branch("Ml2W_2jL", &Ml2W_2jL, "Ml2W_2jL/F"); tree_ee->Branch("Ml2W_2jL", &Ml2W_2jL, "Ml2W_2jL/F");
+  tree_mm->Branch("Ml2W_1jL", &Ml2W_1jL, "Ml2W_1jL/F"); tree_ee->Branch("Ml2W_1jL", &Ml2W_1jL, "Ml2W_1jL/F");
+  tree_mm->Branch("Ml1W1_H", &Ml1W1_H, "Ml1W1_H/F");    tree_ee->Branch("Ml1W1_H", &Ml1W1_H, "Ml1W1_H/F");
+  tree_mm->Branch("Ml1W2_H", &Ml1W2_H, "Ml1W2_H/F");    tree_ee->Branch("Ml1W2_H", &Ml1W2_H, "Ml1W2_H/F");
+  tree_mm->Branch("Ml2W1_H", &Ml2W1_H, "Ml2W1_H/F");    tree_ee->Branch("Ml2W1_H", &Ml2W1_H, "Ml2W1_H/F");
+  tree_mm->Branch("Ml2W2_H", &Ml2W2_H, "Ml2W2_H/F");    tree_ee->Branch("Ml2W2_H", &Ml2W2_H, "Ml2W2_H/F");
+  tree_mm->Branch("w_tot", &w_tot, "w_tot/F");        tree_ee->Branch("w_tot", &w_tot, "w_tot/F");
+
+  outfile->cd();
 
 }
 
@@ -68,22 +149,14 @@ void KinVarSearch::executeEvent(){
   Event ev = GetEvent();
   float weight = 1.;
   if(!IsDATA){
-    weight*=ev.MCweight()*weight_norm_1invpb*GetKFactor()*ev.GetTriggerLumi("Full");
-    weight *= GetGenFilterEffCorr();
-    weight*=GetPileUpWeight(nPileUp, 0);
+    weight*= ev.MCweight()*weight_norm_1invpb*GetKFactor()*ev.GetTriggerLumi("Full");
+    weight*= GetBRWeight();
+    weight*= GetPileUpWeight(nPileUp, 0);
   }
   FillHist("CutFlow", 0., weight, 20, 0., 20.);
 
   bool PassTrig=false;
-  if     (MuMuMu){ PassTrig = ev.PassTrigger(TrigList_DblMu); }
-  else if(ElMuMu){
-    if(!IsDATA) PassTrig = ev.PassTrigger(TrigList_MuEG) or ev.PassTrigger(TrigList_DblMu);
-    else{
-      if     (MuEG)  PassTrig = ev.PassTrigger(TrigList_MuEG);
-      else if(DblMu) PassTrig = (!ev.PassTrigger(TrigList_MuEG)) and ev.PassTrigger(TrigList_DblMu);
-    }
-  }
-  else if(TetraLep or TriLep){
+  if(TetraLep or TriLep){
     if(!IsDATA) PassTrig = ev.PassTrigger(TrigList_MuEG) or ev.PassTrigger(TrigList_DblMu) or ev.PassTrigger(TrigList_DblEG);
     else{
       if     (MuEG)  PassTrig = ev.PassTrigger(TrigList_MuEG);
@@ -94,9 +167,9 @@ void KinVarSearch::executeEvent(){
   else if(SS2l){
     if(!IsDATA) PassTrig = ev.PassTrigger(TrigList_DblMu) or ev.PassTrigger(TrigList_DblEG) or ev.PassTrigger(TrigList_MuEG);
     else{
-      if     (SSMuMu) PassTrig = ev.PassTrigger(TrigList_DblMu);
-      else if(SSElEl) PassTrig = ev.PassTrigger(TrigList_DblEG);
-      else if(SSElMu) PassTrig = ev.PassTrigger(TrigList_MuEG);
+      if     (DblMu) PassTrig = ev.PassTrigger(TrigList_DblMu);
+      else if(DblEG) PassTrig = ev.PassTrigger(TrigList_DblEG);
+      else if(MuEG)  PassTrig = ev.PassTrigger(TrigList_MuEG);
     }
   }
   if(!PassTrig) return;
@@ -105,12 +178,10 @@ void KinVarSearch::executeEvent(){
   FillHist("CutFlow", 2., weight, 20, 0., 20.);
 
   bool PreCutPass=false;
-  std::vector<Muon>     muonPreColl     = GetMuons("NOCUT", 5., 2.4);
-  std::vector<Electron> electronPreColl = GetElectrons("NOCUT", 5., 2.5);
-  std::sort(muonPreColl.begin(), muonPreColl.end(), PtComparing);
-  std::sort(electronPreColl.begin(), electronPreColl.end(), PtComparing);
-  if(MuMuMu and muonPreColl.size()>2    ) PreCutPass=true;
-  if(ElMuMu and electronPreColl.size()>0 && muonPreColl.size()>1) PreCutPass=true;
+  vector<Muon>     muonPreColl     = GetMuons("NOCUT", 5., 2.4);
+  vector<Electron> electronPreColl = GetElectrons("NOCUT", 5., 2.5);
+  sort(muonPreColl.begin(), muonPreColl.end(), PtComparing);
+  sort(electronPreColl.begin(), electronPreColl.end(), PtComparing);
   if(TriLep and (muonPreColl.size()+electronPreColl.size())>2 ) PreCutPass=true;
   if(TetraLep and (muonPreColl.size()+electronPreColl.size())>3 ) PreCutPass=true;
   if(SS2l){
@@ -123,32 +194,33 @@ void KinVarSearch::executeEvent(){
 
 
   TString IDSSLabel = SS2l? "SS":"";
-  std::vector<Muon>     muonTightColl     = SelectMuons(muonPreColl, "TopHN17T", 10., 2.4);
-  std::vector<Electron> electronTightColl = SelectElectrons(electronPreColl, "TopHN17"+IDSSLabel+"T", 10., 2.5);
-  std::vector<Muon>     muonLooseColl     = SelectMuons(muonPreColl, "TopHN17L", 10., 2.4);
-  std::vector<Electron> electronLooseColl = SelectElectrons(electronPreColl, "TopHN17"+IDSSLabel+"L", 10., 2.5);
+  vector<Muon>     muonTightColl     = SelectMuons(muonPreColl, "TopHN17T", 10., 2.4);
+  vector<Electron> electronTightColl = SelectElectrons(electronPreColl, "TopHN17"+IDSSLabel+"T", 10., 2.5);
+  vector<Muon>     muonLooseColl     = SelectMuons(muonPreColl, "TopHN17L", 10., 2.4);
+  vector<Electron> electronLooseColl = SelectElectrons(electronPreColl, "TopHN17"+IDSSLabel+"L", 10., 2.5);
+  vector<Muon>     muonVetoColl     = SelectMuons(muonPreColl, "TopHN17L", 10., 2.4);
+  vector<Electron> electronVetoColl = SelectElectrons(electronPreColl, "TopHN17L", 10., 2.5);
+
 
 
   JetTagging::Parameters param_jets = JetTagging::Parameters(JetTagging::DeepCSV, JetTagging::Medium, JetTagging::incl, JetTagging::mujets);
-  std::vector<Jet> jetNoVetoColl  = GetJets("tight", 25., 2.4);
-  std::sort(jetNoVetoColl.begin(), jetNoVetoColl.end(), PtComparing);
-  std::vector<Jet> bjetNoVetoColl = SelBJets(jetNoVetoColl, param_jets);
-  std::vector<Jet> jetColl  = JetsVetoLeptonInside(jetNoVetoColl, electronLooseColl, muonLooseColl, 0.4);
-  std::vector<Jet> bjetColl = SelBJets(jetColl, param_jets);
+  vector<Jet> jetNoVetoColl  = GetJets("tight", 25., 2.4);
+  sort(jetNoVetoColl.begin(), jetNoVetoColl.end(), PtComparing);
+  vector<Jet> bjetNoVetoColl = SelBJets(jetNoVetoColl, param_jets);
+  vector<Jet> jetColl  = JetsVetoLeptonInside(jetNoVetoColl, electronVetoColl, muonVetoColl, 0.4);
+  vector<Jet> bjetColl = SelBJets(jetColl, param_jets);
 
 
   Particle vMET = ev.GetMETVector();
   Particle vMET_xyCorr(pfMET_Type1_PhiCor_pt*TMath::Cos(pfMET_Type1_PhiCor_phi), pfMET_Type1_PhiCor_pt*TMath::Sin(pfMET_Type1_PhiCor_phi), 0., pfMET_Type1_PhiCor_pt);
 
 
-  std::vector<Gen> truthColl;
+  vector<Gen> truthColl;
 
 
   bool EventCand = false;
   if(SS2l){ EventCand = muonTightColl.size()==2 or electronTightColl.size()==2 or (muonTightColl.size()==1 && electronTightColl.size()==1); }
   if(TriLep){ EventCand = (muonTightColl.size()+electronTightColl.size())==3; }
-  if(MuMuMu){ EventCand = muonLooseColl.size()>2; }
-  if(ElMuMu){ EventCand = electronLooseColl.size()>0 && muonLooseColl.size()>1; }
   if(TetraLep){ EventCand = (muonLooseColl.size()+electronLooseColl.size())>3; }
 
   float w_topptrw = 1., w_prefire = 1., sf_trig = 1.;
@@ -172,433 +244,330 @@ void KinVarSearch::executeEvent(){
 
  
   if(SS2l){
-    AnalyzeSSDiLepton(muonTightColl, muonLooseColl, electronTightColl, electronLooseColl,
-                      jetColl, bjetColl, vMET_xyCorr, weight, "");
-  }
-  if(TriLep){
-    AnalyzeTriLepton(muonTightColl, muonLooseColl, electronTightColl, electronLooseColl,
-                     jetColl, bjetColl, vMET_xyCorr, weight, "");
-  }
-  if(TetraLep){
-    AnalyzeTetraLepton(muonTightColl, muonLooseColl, electronTightColl, electronLooseColl,
-                       jetColl, bjetColl, vMET_xyCorr, weight, "");
+//    AnalyzeSSDiLepton(muonTightColl, muonLooseColl, muonVetoColl, electronTightColl, electronLooseColl, electronVetoColl,
+//                      jetColl, bjetColl, vMET_xyCorr, weight, "");
+      MakeTreeSS2L(muonTightColl, muonLooseColl, muonVetoColl, electronTightColl, electronLooseColl, electronVetoColl,
+                   jetColl, bjetColl, vMET_xyCorr, weight, "");
   }
 
 }
 
-
-void KinVarSearch::AnalyzeSSDiLepton(std::vector<Muon>& MuTColl, std::vector<Muon>& MuLColl, std::vector<Electron>& ElTColl, std::vector<Electron>& ElLColl,
-                                  std::vector<Jet>& JetColl, std::vector<Jet>& BJetColl, Particle& vMET, float weight, TString Label)
+void KinVarSearch::MakeTreeSS2L(vector<Muon>& MuTColl, vector<Muon>& MuLColl, vector<Muon>& MuVColl,
+                                vector<Electron>& ElTColl, vector<Electron>& ElLColl, vector<Electron>& ElVColl,
+                                vector<Jet>& JetColl, vector<Jet>& BJetColl, Particle& vMET, float weight, TString Label)
 {
-  int NMuT=MuTColl.size(), NElT=ElTColl.size(), NMuL=MuLColl.size(), NElL=ElLColl.size();
-  int it_cut=3;
+
+  int NMuT=MuTColl.size(), NElT=ElTColl.size(), NMuL=MuLColl.size(), NElL=ElLColl.size(), NMuV=MuVColl.size(), NElV=ElVColl.size();
   if( !( (NMuT==2 and NElT==0) or (NElT==2 and NMuT==0) ) ) return;
   if( !(NMuT==NMuL and NElT==NElL) ) return;
+  if( !(NMuT==NMuV and NElT==NElV) ) return;
   if(NMuT==2){
-    Label+="_2M";
     if(MuTColl.at(0).Charge()!=MuTColl.at(1).Charge()) return;
     if(!(MuTColl.at(0).Pt()>20 && MuTColl.at(1).Pt()>10)) return;
-    float MSSSF = (MuTColl.at(0)+MuTColl.at(1)).M();
-    if(DataYear>2016 && MSSSF<4) return; 
-    FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-
-    FillHist("NBJet"+Label, BJetColl.size(), weight, 10, 0., 10.);
+    float Mll = (MuTColl.at(0)+MuTColl.at(1)).M();
+    if(DataYear>2016 && Mll<4) return; 
     if(BJetColl.size()<1) return;
-    FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-  
-    FillHist("NJet"+Label, JetColl.size(), weight, 10, 0., 10.); 
-    if(JetColl.size()<3) return;
-    FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-  
-    FillHist("MSSSF"+Label, MSSSF, weight, 30, 0., 300.);
-  
-    float minSumdRql = -1., IdxJ_minSumdRql=-1;
-    for(unsigned int it_j=0; it_j<JetColl.size(); it_j++){
-      float SumdRql = MuTColl.at(0).DeltaR(JetColl.at(it_j))+MuTColl.at(1).DeltaR(JetColl.at(it_j));
-      if(minSumdRql<0 or minSumdRql>SumdRql){ minSumdRql = SumdRql; IdxJ_minSumdRql=it_j; }
+    if(JetColl.size() <3) return;
+    InitializeTreeVars();
+    Nj      = JetColl.size();
+    Nb      = BJetColl.size();
+    Ptl1    = MuTColl.at(0).Pt();
+    Ptl2    = MuTColl.at(1).Pt();
+    Ptj1    = JetColl.at(0).Pt();
+    Ptj2    = JetColl.at(1).Pt();
+    Ptj3    = JetColl.at(2).Pt();
+    Ptb1    = BJetColl.at(0).Pt();
+    Ptb2    = BJetColl.size()<2? -1.:BJetColl.at(1).Pt();
+    MET     = vMET.Pt();
+    dEtall  = abs(MuTColl.at(0).Eta()-MuTColl.at(1).Eta());
+    dRll    = MuTColl.at(0).DeltaR(MuTColl.at(1));
+    dRjj12  = JetColl.at(0).DeltaR(JetColl.at(1));
+    dRjj23  = JetColl.at(1).DeltaR(JetColl.at(2));
+    dRjj13  = JetColl.at(0).DeltaR(JetColl.at(2));
+    dRlj11  = MuTColl.at(0).DeltaR(JetColl.at(0));
+    dRlj12  = MuTColl.at(0).DeltaR(JetColl.at(1));
+    dRlj13  = MuTColl.at(0).DeltaR(JetColl.at(2));
+    dRlj21  = MuTColl.at(1).DeltaR(JetColl.at(0));
+    dRlj22  = MuTColl.at(1).DeltaR(JetColl.at(1));
+    dRlj23  = MuTColl.at(1).DeltaR(JetColl.at(2));
+    dRlb11  = MuTColl.at(0).DeltaR(BJetColl.at(0));
+    dRlb21  = MuTColl.at(1).DeltaR(BJetColl.at(0));
+    MSSSF   = (MuTColl.at(0)+MuTColl.at(1)).M();
+    Mbl11   = (MuTColl.at(0)+BJetColl.at(0)).M();
+    Mbl12   = (MuTColl.at(1)+BJetColl.at(0)).M();
+    Mbl21   = BJetColl.size()<2? -1.:(MuTColl.at(0)+BJetColl.at(1)).M();
+    Mbl22   = BJetColl.size()<2? -1.:(MuTColl.at(1)+BJetColl.at(1)).M();
+    Mlj11   = (MuTColl.at(0)+JetColl.at(0)).M();
+    Mlj12   = (MuTColl.at(0)+JetColl.at(1)).M();
+    Mlj13   = (MuTColl.at(0)+JetColl.at(2)).M();
+    Mlj21   = (MuTColl.at(1)+JetColl.at(0)).M();
+    Mlj22   = (MuTColl.at(1)+JetColl.at(1)).M();
+    Mlj23   = (MuTColl.at(1)+JetColl.at(2)).M();
+    MTvl1   = MT(MuTColl.at(0),vMET);
+    MTvl2   = MT(MuTColl.at(1),vMET);
+    Mllj1   = (MuTColl.at(0)+MuTColl.at(1)+JetColl.at(0)).M();
+    Mllj2   = (MuTColl.at(0)+MuTColl.at(1)+JetColl.at(1)).M();
+    Mllj3   = (MuTColl.at(0)+MuTColl.at(1)+JetColl.at(2)).M();
+    Mllj4   = JetColl.size()<4? -1.:(MuTColl.at(0)+MuTColl.at(1)+JetColl.at(3)).M();
+    Mllb1   = (MuTColl.at(0)+MuTColl.at(1)+BJetColl.at(0)).M();
+    Mllb2   = BJetColl.size()<2? -1.:(MuTColl.at(0)+MuTColl.at(1)+BJetColl.at(1)).M();
+    Mlljj12 = (MuTColl.at(0)+MuTColl.at(1)+JetColl.at(0)+JetColl.at(1)).M();
+    Mlljj13 = (MuTColl.at(0)+MuTColl.at(1)+JetColl.at(0)+JetColl.at(2)).M();
+    Mlljj14 = JetColl.size()<4? -1.:(MuTColl.at(0)+MuTColl.at(1)+JetColl.at(0)+JetColl.at(3)).M();
+    Mlljj23 = (MuTColl.at(0)+MuTColl.at(1)+JetColl.at(1)+JetColl.at(2)).M();
+    Mlljj24 = JetColl.size()<4? -1.:(MuTColl.at(0)+MuTColl.at(1)+JetColl.at(1)+JetColl.at(3)).M();
+    Mlljj34 = JetColl.size()<4? -1.:(MuTColl.at(0)+MuTColl.at(1)+JetColl.at(2)+JetColl.at(3)).M();
+    Mljj112 = (MuTColl.at(0)+JetColl.at(0)+JetColl.at(1)).M();
+    Mljj113 = (MuTColl.at(0)+JetColl.at(0)+JetColl.at(2)).M();
+    Mljj114 = JetColl.size()<4? -1.:(MuTColl.at(0)+JetColl.at(0)+JetColl.at(3)).M();
+    Mljj123 = (MuTColl.at(0)+JetColl.at(1)+JetColl.at(2)).M();
+    Mljj124 = JetColl.size()<4? -1.:(MuTColl.at(0)+JetColl.at(1)+JetColl.at(3)).M();
+    Mljj134 = JetColl.size()<4? -1.:(MuTColl.at(0)+JetColl.at(2)+JetColl.at(3)).M();
+    Mljj212 = (MuTColl.at(1)+JetColl.at(0)+JetColl.at(1)).M();
+    Mljj213 = (MuTColl.at(1)+JetColl.at(0)+JetColl.at(2)).M();
+    Mljj214 = JetColl.size()<4? -1.:(MuTColl.at(1)+JetColl.at(0)+JetColl.at(3)).M();
+    Mljj223 = (MuTColl.at(1)+JetColl.at(1)+JetColl.at(2)).M();
+    Mljj224 = JetColl.size()<4? -1.:(MuTColl.at(1)+JetColl.at(1)+JetColl.at(3)).M();
+    Mljj234 = JetColl.size()<4? -1.:(MuTColl.at(1)+JetColl.at(2)+JetColl.at(3)).M();
+    Mjj12   = (JetColl.at(0)+JetColl.at(1)).M();
+    Mjj13   = (JetColl.at(0)+JetColl.at(2)).M();
+    Mjj14   = JetColl.size()<4? -1.:(JetColl.at(0)+JetColl.at(3)).M();
+    Mjj23   = (JetColl.at(1)+JetColl.at(2)).M();
+    Mjj24   = JetColl.size()<4? -1.:(JetColl.at(1)+JetColl.at(3)).M();
+    Mjj34   = JetColl.size()<4? -1.:(JetColl.at(2)+JetColl.at(3)).M();
+
+    //Vars requiring complex algo.
+    HT      = 0;
+      for(unsigned int itj=0; itj<JetColl.size(); itj++){ HT+=JetColl.at(itj).Pt(); }
+    MET2HT  = pow(MET,2.)/HT;
+    int Idxj1W_2jL=-1, Idxj2W_2jL=-1; float bestmlljj=-1;
+    int Idxj1W_1jL=-1; float bestmllj=-1;
+    int Idxj1W1_H=-1, Idxj2W1_H=-1, Idxj1W2_H=-1, Idxj2W2_H=-1; float bestmjj1=-1, bestmjj2=-1;
+    for(unsigned int itj1=0; itj1<JetColl.size(); itj1++){
+      if(bestmllj<0){ Idxj1W_1jL=itj1; bestmllj=(MuTColl.at(0)+MuTColl.at(1)).M(); }
+      else{
+        float tmpmljj = (MuTColl.at(0)+MuTColl.at(1)+JetColl.at(itj1)).M();
+        if(fabs(tmpmljj-80.4)<fabs(bestmllj-80.4)){ bestmllj=tmpmljj; Idxj1W_1jL=itj1; }
+      }
+      for(unsigned int itj2=itj1+1; itj2<JetColl.size(); itj2++){
+        if(bestmlljj<0){ Idxj1W_2jL=itj1; Idxj2W_2jL=itj2; bestmlljj=(MuTColl.at(0)+MuTColl.at(1)+JetColl.at(itj1)+JetColl.at(itj2)).M(); }
+        else{
+          float tmpmlljj = (MuTColl.at(0)+MuTColl.at(1)+JetColl.at(itj1)+JetColl.at(itj2)).M();
+          if(fabs(tmpmlljj-80.4)<fabs(bestmlljj-80.4)){ bestmlljj=tmpmlljj; Idxj1W_2jL=itj1, Idxj2W_2jL=itj2; }
+        }
+        if(bestmjj1<0){ Idxj1W1_H=itj1, Idxj2W1_H=itj2; bestmjj1=(JetColl.at(itj1)+JetColl.at(itj2)).M(); }
+        else{
+          float tmpmjj = (JetColl.at(itj1)+JetColl.at(itj2)).M();
+          if(fabs(tmpmjj-80.4)<fabs(bestmjj1-80.4)){ bestmjj1=tmpmjj; Idxj1W1_H=itj1, Idxj2W1_H=itj2; }
+        }
+      }
     }
-    float dRll = MuTColl.at(0).DeltaR(MuTColl.at(1)), dEtall = abs(MuTColl.at(0).Eta()-MuTColl.at(1).Eta());
-    FillHist("dRll"+Label, dRll, weight, 50, 0., 5.);
-    FillHist("dEtall"+Label, dEtall, weight, 50, 0., 5.);
-    FillHist("dPhill"+Label, MuTColl.at(0).DeltaPhi(MuTColl.at(1)), weight, 10, -3.15, 3.15);
-    FillHist("minSumdRql"+Label, minSumdRql, weight, 50, 0., 10.);
-    FillHist("Ml1q_minSumdRql"+Label, (MuTColl.at(0)+JetColl.at(IdxJ_minSumdRql)).M(), weight, 30, 0., 300.);
-    FillHist("Ml2q_minSumdRql"+Label, (MuTColl.at(1)+JetColl.at(IdxJ_minSumdRql)).M(), weight, 30, 0., 300.);
-    FillHist("Mllq_minSumdRql"+Label, (MuTColl.at(0)+MuTColl.at(1)+JetColl.at(IdxJ_minSumdRql)).M(), weight, 30, 0., 300.);
-
-    float Pzv = GetvPz(MuTColl.at(0), vMET);
-    Particle vReco; vReco.SetXYZM(vMET.Px(),vMET.Py(),Pzv,0.);
-    FillHist("MET"+Label, vMET.Pt(), weight, 30, 0., 300.);
-    FillHist("MT_vl1"+Label, MT(MuTColl.at(0),vMET), weight, 30, 0., 300.); 
-    FillHist("Mlvb"+Label, (MuTColl.at(0)+vReco+BJetColl.at(0)).M(), weight, 50, 0., 500.);
-    FillHist("Mllb"+Label, (MuTColl.at(0)+MuTColl.at(1)+BJetColl.at(0)).M(), weight, 50, 0., 500.);
-    FillHist("Mllbq1"+Label, (MuTColl.at(0)+MuTColl.at(1)+BJetColl.at(0)+JetColl.at(0)).M(), weight, 50, 0., 500.);
-    FillHist("Mllbq2"+Label, (MuTColl.at(0)+MuTColl.at(1)+BJetColl.at(0)+JetColl.at(1)).M(), weight, 50, 0., 500.);
-    FillHist("Mllbq3"+Label, (MuTColl.at(0)+MuTColl.at(1)+BJetColl.at(0)+JetColl.at(2)).M(), weight, 50, 0., 500.);
-    FillHist("Mllq1"+Label, (MuTColl.at(0)+MuTColl.at(1)+JetColl.at(0)).M(), weight, 50, 0., 500.);
-    FillHist("Mllq2"+Label, (MuTColl.at(0)+MuTColl.at(1)+JetColl.at(1)).M(), weight, 50, 0., 500.);
-    FillHist("Mllq3"+Label, (MuTColl.at(0)+MuTColl.at(1)+JetColl.at(2)).M(), weight, 50, 0., 500.);
-
-
-    FillHist("NPresel", 0., weight, 12, 0., 12.);
-    FillHist("NPresel_Tot", 0., weight, 3, 0., 3.);
-
-    if(vMET.Pt()>100) return;
-    FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-
-    if(MSSSF>70.) return;
-    FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-    FillHist("dRll_atMETM"+Label, dRll, weight, 50, 0., 5.);
-    FillHist("dEtall_atMETM"+Label, dEtall, weight, 50, 0., 5.);
-
-    if(dRll>3.2) return;
-    FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-    FillHist("dEtall_atMETMdR"+Label, dEtall, weight, 50, 0., 5.);
-
-    if(dEtall>2.) return;
-    FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-    FillHist("Mllq_minSumdRql_atMETMdREta"+Label, (MuTColl.at(0)+MuTColl.at(1)+JetColl.at(IdxJ_minSumdRql)).M(), weight, 30, 0., 300.);
-
-    FillHist("NBJet_atMETMdREta"+Label, BJetColl.size(), weight, 10, 0., 10.);
-    FillHist("NJet_atMETMdREta"+Label, JetColl.size(), weight, 10, 0., 10.);
-    FillHist("MSSSF_2Mu_atMETMdREta"+Label, MSSSF, weight, 30, 0., 300.);
+    for(unsigned int itj1=0; itj1<JetColl.size(); itj1++){
+      for(unsigned int itj2=itj1+1; itj2<JetColl.size(); itj2++){
+        if((int) itj1==Idxj1W1_H or (int) itj1==Idxj2W1_H or (int) itj2==Idxj1W1_H or (int) itj2==Idxj2W1_H) continue;
+        if(bestmjj2<0){ Idxj1W2_H=itj1, Idxj2W2_H=itj2; bestmjj2=(JetColl.at(itj1)+JetColl.at(itj2)).M(); }
+        else{
+          float tmpmjj = (JetColl.at(itj1)+JetColl.at(itj2)).M();
+          if(fabs(tmpmjj-80.4)<fabs(bestmjj2-80.4)){ bestmjj2=tmpmjj; Idxj1W2_H=itj1, Idxj2W2_H=itj2; }
+        }
+      }
+    }
+    MllW_2jL = bestmlljj;
+    MllW_1jL = bestmllj;
+    MllW1_H  = (MuTColl.at(0)+MuTColl.at(1)+JetColl.at(Idxj1W1_H)+JetColl.at(Idxj2W1_H)).M();
+    MllW2_H  = bestmjj2<0? -1.:(MuTColl.at(0)+MuTColl.at(1)+JetColl.at(Idxj1W2_H)+JetColl.at(Idxj2W2_H)).M();
+    MjjW1    = bestmjj1;
+    MjjW2    = bestmjj2;
+    Ml1W_2jL = (MuTColl.at(0)+JetColl.at(Idxj1W_2jL)+JetColl.at(Idxj2W_2jL)).M();
+    Ml1W_1jL = (MuTColl.at(0)+JetColl.at(Idxj1W_1jL)).M();
+    Ml2W_2jL = (MuTColl.at(1)+JetColl.at(Idxj1W_2jL)+JetColl.at(Idxj2W_2jL)).M();
+    Ml2W_1jL = (MuTColl.at(1)+JetColl.at(Idxj1W_1jL)).M();
+    Ml1W1_H  = (MuTColl.at(0)+JetColl.at(Idxj1W1_H)+JetColl.at(Idxj2W1_H)).M();
+    Ml1W2_H  = bestmjj2<0? -1.:(MuTColl.at(0)+JetColl.at(Idxj1W2_H)+JetColl.at(Idxj2W2_H)).M();
+    Ml2W1_H  = (MuTColl.at(1)+JetColl.at(Idxj1W1_H)+JetColl.at(Idxj2W1_H)).M();
+    Ml2W2_H  = bestmjj2<0? -1.:(MuTColl.at(1)+JetColl.at(Idxj1W2_H)+JetColl.at(Idxj2W2_H)).M();
+    w_tot    = !IsDATA? weight:-1.;
+    tree_mm->Fill();
   }
-  else if(NElT==2){
-    Label+="_2E";
+  if(NElT==2){
     if(ElTColl.at(0).Charge()!=ElTColl.at(1).Charge()) return;
-    if(!(ElTColl.at(0).Pt()>25 and ElTColl.at(1).Pt()>15)) return;
-    float MSSSF = (ElTColl.at(0)+ElTColl.at(1)).M();
-    FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-
-    FillHist("NBJet"+Label, BJetColl.size(), weight, 10, 0., 10.);
+    if(!(ElTColl.at(0).Pt()>25 && ElTColl.at(1).Pt()>15)) return;
+    float Mll = (MuTColl.at(0)+MuTColl.at(1)).M();
     if(BJetColl.size()<1) return;
-    FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-  
-    FillHist("NJet"+Label, JetColl.size(), weight, 10, 0., 10.); 
-    if(JetColl.size()<3) return;
-    FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-  
-    FillHist("MSSSF"+Label, MSSSF, weight, 30, 0., 300.);
-  
-    float minSumdRql = -1., IdxJ_minSumdRql=-1;
-    for(unsigned int it_j=0; it_j<JetColl.size(); it_j++){
-      float SumdRql = ElTColl.at(0).DeltaR(JetColl.at(it_j))+ElTColl.at(1).DeltaR(JetColl.at(it_j));
-      if(minSumdRql<0 or minSumdRql>SumdRql){ minSumdRql = SumdRql; IdxJ_minSumdRql=it_j; }
+    if(JetColl.size() <3) return;
+    if(fabs(Mll-91.2)<10.) return;
+    InitializeTreeVars();
+    Nj      = JetColl.size();
+    Nb      = BJetColl.size();
+    Ptl1    = ElTColl.at(0).Pt();
+    Ptl2    = ElTColl.at(1).Pt();
+    Ptj1    = JetColl.at(0).Pt();
+    Ptj2    = JetColl.at(1).Pt();
+    Ptj3    = JetColl.at(2).Pt();
+    Ptb1    = BJetColl.at(0).Pt();
+    Ptb2    = BJetColl.size()<2? -1.:BJetColl.at(1).Pt();
+    MET     = vMET.Pt();
+    dEtall  = abs(ElTColl.at(0).Eta()-ElTColl.at(1).Eta());
+    dRll    = ElTColl.at(0).DeltaR(ElTColl.at(1));
+    dRjj12  = JetColl.at(0).DeltaR(JetColl.at(1));
+    dRjj23  = JetColl.at(1).DeltaR(JetColl.at(2));
+    dRjj13  = JetColl.at(0).DeltaR(JetColl.at(2));
+    dRlj11  = ElTColl.at(0).DeltaR(JetColl.at(0));
+    dRlj12  = ElTColl.at(0).DeltaR(JetColl.at(1));
+    dRlj13  = ElTColl.at(0).DeltaR(JetColl.at(2));
+    dRlj21  = ElTColl.at(1).DeltaR(JetColl.at(0));
+    dRlj22  = ElTColl.at(1).DeltaR(JetColl.at(1));
+    dRlj23  = ElTColl.at(1).DeltaR(JetColl.at(2));
+    dRlb11  = ElTColl.at(0).DeltaR(BJetColl.at(0));
+    dRlb21  = ElTColl.at(1).DeltaR(BJetColl.at(0));
+    MSSSF   = (ElTColl.at(0)+ElTColl.at(1)).M();
+    Mbl11   = (ElTColl.at(0)+BJetColl.at(0)).M();
+    Mbl12   = (ElTColl.at(1)+BJetColl.at(0)).M();
+    Mbl21   = BJetColl.size()<2? -1.:(ElTColl.at(0)+BJetColl.at(1)).M();
+    Mbl22   = BJetColl.size()<2? -1.:(ElTColl.at(1)+BJetColl.at(1)).M();
+    Mlj11   = (ElTColl.at(0)+JetColl.at(0)).M();
+    Mlj12   = (ElTColl.at(0)+JetColl.at(1)).M();
+    Mlj13   = (ElTColl.at(0)+JetColl.at(2)).M();
+    Mlj21   = (ElTColl.at(1)+JetColl.at(0)).M();
+    Mlj22   = (ElTColl.at(1)+JetColl.at(1)).M();
+    Mlj23   = (ElTColl.at(1)+JetColl.at(2)).M();
+    MTvl1   = MT(ElTColl.at(0),vMET);
+    MTvl2   = MT(ElTColl.at(1),vMET);
+    Mllj1   = (ElTColl.at(0)+ElTColl.at(1)+JetColl.at(0)).M();
+    Mllj2   = (ElTColl.at(0)+ElTColl.at(1)+JetColl.at(1)).M();
+    Mllj3   = (ElTColl.at(0)+ElTColl.at(1)+JetColl.at(2)).M();
+    Mllj4   = JetColl.size()<4? -1.:(ElTColl.at(0)+ElTColl.at(1)+JetColl.at(3)).M();
+    Mllb1   = (ElTColl.at(0)+ElTColl.at(1)+BJetColl.at(0)).M();
+    Mllb2   = BJetColl.size()<2? -1.:(ElTColl.at(0)+ElTColl.at(1)+BJetColl.at(1)).M();
+    Mlljj12 = (ElTColl.at(0)+ElTColl.at(1)+JetColl.at(0)+JetColl.at(1)).M();
+    Mlljj13 = (ElTColl.at(0)+ElTColl.at(1)+JetColl.at(0)+JetColl.at(2)).M();
+    Mlljj14 = JetColl.size()<4? -1.:(ElTColl.at(0)+ElTColl.at(1)+JetColl.at(0)+JetColl.at(3)).M();
+    Mlljj23 = (ElTColl.at(0)+ElTColl.at(1)+JetColl.at(1)+JetColl.at(2)).M();
+    Mlljj24 = JetColl.size()<4? -1.:(ElTColl.at(0)+ElTColl.at(1)+JetColl.at(1)+JetColl.at(3)).M();
+    Mlljj34 = JetColl.size()<4? -1.:(ElTColl.at(0)+ElTColl.at(1)+JetColl.at(2)+JetColl.at(3)).M();
+    Mljj112 = (ElTColl.at(0)+JetColl.at(0)+JetColl.at(1)).M();
+    Mljj113 = (ElTColl.at(0)+JetColl.at(0)+JetColl.at(2)).M();
+    Mljj114 = JetColl.size()<4? -1.:(ElTColl.at(0)+JetColl.at(0)+JetColl.at(3)).M();
+    Mljj123 = (ElTColl.at(0)+JetColl.at(1)+JetColl.at(2)).M();
+    Mljj124 = JetColl.size()<4? -1.:(ElTColl.at(0)+JetColl.at(1)+JetColl.at(3)).M();
+    Mljj134 = JetColl.size()<4? -1.:(ElTColl.at(0)+JetColl.at(2)+JetColl.at(3)).M();
+    Mljj212 = (ElTColl.at(1)+JetColl.at(0)+JetColl.at(1)).M();
+    Mljj213 = (ElTColl.at(1)+JetColl.at(0)+JetColl.at(2)).M();
+    Mljj214 = JetColl.size()<4? -1.:(ElTColl.at(1)+JetColl.at(0)+JetColl.at(3)).M();
+    Mljj223 = (ElTColl.at(1)+JetColl.at(1)+JetColl.at(2)).M();
+    Mljj224 = JetColl.size()<4? -1.:(ElTColl.at(1)+JetColl.at(1)+JetColl.at(3)).M();
+    Mljj234 = JetColl.size()<4? -1.:(ElTColl.at(1)+JetColl.at(2)+JetColl.at(3)).M();
+    Mjj12   = (JetColl.at(0)+JetColl.at(1)).M();
+    Mjj13   = (JetColl.at(0)+JetColl.at(2)).M();
+    Mjj14   = JetColl.size()<4? -1.:(JetColl.at(0)+JetColl.at(3)).M();
+    Mjj23   = (JetColl.at(1)+JetColl.at(2)).M();
+    Mjj24   = JetColl.size()<4? -1.:(JetColl.at(1)+JetColl.at(3)).M();
+    Mjj34   = JetColl.size()<4? -1.:(JetColl.at(2)+JetColl.at(3)).M();
+
+    //Vars requiring complex algo.
+    HT      = 0;
+      for(unsigned int itj=0; itj<JetColl.size(); itj++){ HT+=JetColl.at(itj).Pt(); }
+    MET2HT  = pow(MET,2.)/HT;
+    int Idxj1W_2jL=-1, Idxj2W_2jL=-1; float bestmlljj=-1;
+    int Idxj1W_1jL=-1; float bestmllj=-1;
+    int Idxj1W1_H=-1, Idxj2W1_H=-1, Idxj1W2_H=-1, Idxj2W2_H=-1; float bestmjj1=-1, bestmjj2=-1;
+    for(unsigned int itj1=0; itj1<JetColl.size(); itj1++){
+      if(bestmllj<0){ Idxj1W_1jL=itj1; bestmllj=(ElTColl.at(0)+ElTColl.at(1)).M(); }
+      else{
+        float tmpmljj = (ElTColl.at(0)+ElTColl.at(1)+JetColl.at(itj1)).M();
+        if(fabs(tmpmljj-80.4)<fabs(bestmllj-80.4)){ bestmllj=tmpmljj; Idxj1W_1jL=itj1; }
+      }
+      for(unsigned int itj2=itj1+1; itj2<JetColl.size(); itj2++){
+        if(bestmlljj<0){ Idxj1W_2jL=itj1; Idxj2W_2jL=itj2; bestmlljj=(ElTColl.at(0)+ElTColl.at(1)+JetColl.at(itj1)+JetColl.at(itj2)).M(); }
+        else{
+          float tmpmlljj = (ElTColl.at(0)+ElTColl.at(1)+JetColl.at(itj1)+JetColl.at(itj2)).M();
+          if(fabs(tmpmlljj-80.4)<fabs(bestmlljj-80.4)){ bestmlljj=tmpmlljj; Idxj1W_2jL=itj1, Idxj2W_2jL=itj2; }
+        }
+        if(bestmjj1<0){ Idxj1W1_H=itj1, Idxj2W1_H=itj2; bestmjj1=(JetColl.at(itj1)+JetColl.at(itj2)).M(); }
+        else{
+          float tmpmjj = (JetColl.at(itj1)+JetColl.at(itj2)).M();
+          if(fabs(tmpmjj-80.4)<fabs(bestmjj1-80.4)){ bestmjj1=tmpmjj; Idxj1W1_H=itj1, Idxj2W1_H=itj2; }
+        }
+      }
     }
-    float dRll = ElTColl.at(0).DeltaR(ElTColl.at(1)), dEtall = abs(ElTColl.at(0).Eta()-ElTColl.at(1).Eta());
-    FillHist("dRll"+Label, dRll, weight, 50, 0., 5.);
-    FillHist("dEtall"+Label, dEtall, weight, 50, 0., 5.);
-    FillHist("dPhill"+Label, ElTColl.at(0).DeltaPhi(ElTColl.at(1)), weight, 10, -3.15, 3.15);
-    FillHist("minSumdRql"+Label, minSumdRql, weight, 50, 0., 10.);
-    FillHist("Ml1q_minSumdRql"+Label, (ElTColl.at(0)+JetColl.at(IdxJ_minSumdRql)).M(), weight, 30, 0., 300.);
-    FillHist("Ml2q_minSumdRql"+Label, (ElTColl.at(1)+JetColl.at(IdxJ_minSumdRql)).M(), weight, 30, 0., 300.);
-    FillHist("Mllq_minSumdRql"+Label, (ElTColl.at(0)+ElTColl.at(1)+JetColl.at(IdxJ_minSumdRql)).M(), weight, 30, 0., 300.);
-
-    float Pzv = GetvPz(ElTColl.at(0), vMET);
-    Particle vReco; vReco.SetXYZM(vMET.Px(),vMET.Py(),Pzv,0.);
-    FillHist("MET"+Label, vMET.Pt(), weight, 30, 0., 300.);
-    FillHist("MT_vl1"+Label, MT(ElTColl.at(0),vMET), weight, 30, 0., 300.); 
-    FillHist("Mlvb"+Label, (ElTColl.at(0)+vReco+BJetColl.at(0)).M(), weight, 50, 0., 500.);
-    FillHist("Mllb"+Label, (ElTColl.at(0)+ElTColl.at(1)+BJetColl.at(0)).M(), weight, 50, 0., 500.);
-    FillHist("Mllbq1"+Label, (ElTColl.at(0)+ElTColl.at(1)+BJetColl.at(0)+JetColl.at(0)).M(), weight, 50, 0., 500.);
-    FillHist("Mllbq2"+Label, (ElTColl.at(0)+ElTColl.at(1)+BJetColl.at(0)+JetColl.at(1)).M(), weight, 50, 0., 500.);
-    FillHist("Mllbq3"+Label, (ElTColl.at(0)+ElTColl.at(1)+BJetColl.at(0)+JetColl.at(2)).M(), weight, 50, 0., 500.);
-    FillHist("Mllq1"+Label, (ElTColl.at(0)+ElTColl.at(1)+JetColl.at(0)).M(), weight, 50, 0., 500.);
-    FillHist("Mllq2"+Label, (ElTColl.at(0)+ElTColl.at(1)+JetColl.at(1)).M(), weight, 50, 0., 500.);
-    FillHist("Mllq3"+Label, (ElTColl.at(0)+ElTColl.at(1)+JetColl.at(2)).M(), weight, 50, 0., 500.);
-
-
-    FillHist("NPresel", 1., weight, 12, 0., 12.);
-
-    if(vMET.Pt()>100) return;
-    FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-
-    if(MSSSF>70.) return;
-    FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-    FillHist("dRll_atMETM"+Label, dRll, weight, 50, 0., 5.);
-    FillHist("dEtall_atMETM"+Label, dEtall, weight, 50, 0., 5.);
-
-    if(dRll>3.2) return;
-    FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-    FillHist("dEtall_atMETMdR"+Label, dEtall, weight, 50, 0., 5.);
-
-    if(dEtall>2.) return;
-    FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-    FillHist("Mllq_minSumdRql_atMETMdREta"+Label, (ElTColl.at(0)+ElTColl.at(1)+JetColl.at(IdxJ_minSumdRql)).M(), weight, 30, 0., 300.);
-
-    FillHist("NBJet_atMETMdREta"+Label, BJetColl.size(), weight, 10, 0., 10.);
-    FillHist("NJet_atMETMdREta"+Label, JetColl.size(), weight, 10, 0., 10.);
-    FillHist("MSSSF_2El_atMETMdREta"+Label, MSSSF, weight, 30, 0., 300.);
+    for(unsigned int itj1=0; itj1<JetColl.size(); itj1++){
+      for(unsigned int itj2=itj1+1; itj2<JetColl.size(); itj2++){
+        if((int) itj1==Idxj1W1_H or (int) itj1==Idxj2W1_H or (int) itj2==Idxj1W1_H or (int) itj2==Idxj2W1_H) continue;
+        if(bestmjj2<0){ Idxj1W2_H=itj1, Idxj2W2_H=itj2; bestmjj2=(JetColl.at(itj1)+JetColl.at(itj2)).M(); }
+        else{
+          float tmpmjj = (JetColl.at(itj1)+JetColl.at(itj2)).M();
+          if(fabs(tmpmjj-80.4)<fabs(bestmjj2-80.4)){ bestmjj2=tmpmjj; Idxj1W2_H=itj1, Idxj2W2_H=itj2; }
+        }
+      }
+    }
+    MllW_2jL = bestmlljj;
+    MllW_1jL = bestmllj;
+    MllW1_H  = (ElTColl.at(0)+ElTColl.at(1)+JetColl.at(Idxj1W1_H)+JetColl.at(Idxj2W1_H)).M();
+    MllW2_H  = bestmjj2<0? -1.:(ElTColl.at(0)+ElTColl.at(1)+JetColl.at(Idxj1W2_H)+JetColl.at(Idxj2W2_H)).M();
+    MjjW1    = bestmjj1;
+    MjjW2    = bestmjj2;
+    Ml1W_2jL = (ElTColl.at(0)+JetColl.at(Idxj1W_2jL)+JetColl.at(Idxj2W_2jL)).M();
+    Ml1W_1jL = (ElTColl.at(0)+JetColl.at(Idxj1W_1jL)).M();
+    Ml2W_2jL = (ElTColl.at(1)+JetColl.at(Idxj1W_2jL)+JetColl.at(Idxj2W_2jL)).M();
+    Ml2W_1jL = (ElTColl.at(1)+JetColl.at(Idxj1W_1jL)).M();
+    Ml1W1_H  = (ElTColl.at(0)+JetColl.at(Idxj1W1_H)+JetColl.at(Idxj2W1_H)).M();
+    Ml1W2_H  = bestmjj2<0? -1.:(ElTColl.at(0)+JetColl.at(Idxj1W2_H)+JetColl.at(Idxj2W2_H)).M();
+    Ml2W1_H  = (ElTColl.at(1)+JetColl.at(Idxj1W1_H)+JetColl.at(Idxj2W1_H)).M();
+    Ml2W2_H  = bestmjj2<0? -1.:(ElTColl.at(1)+JetColl.at(Idxj1W2_H)+JetColl.at(Idxj2W2_H)).M();
+    w_tot    = !IsDATA? weight:-1.;
+    tree_ee->Fill();
   }
 
 }
-
-
-
-void KinVarSearch::AnalyzeTriLepton(vector<Muon>& MuTColl, vector<Muon>& MuLColl, vector<Electron>& ElTColl, vector<Electron>& ElLColl,
-                                 vector<Jet>& JetColl, vector<Jet>& BJetColl, Particle& vMET, float weight, TString Label)
-{
-  int NElT=ElTColl.size(), NMuT=MuTColl.size(), NElL=ElLColl.size(), NMuL=MuLColl.size();
-  int NLepT=NElT+NMuT, NLepL=NElL+NMuL;
-  int it_cut=3;
-  if( !(NLepT==3 && NLepL==3) ) return;
-  if( !(NMuT==NMuL && NElT==NElL) ) return;
-
-
-
-  bool PassTrigAccept=false;
-  if( NMuT>=2 && MuTColl.at(0).Pt()>20 && MuTColl.at(1).Pt()>10 ) PassTrigAccept=true;
-  else if( NElT>=2 && ElTColl.at(0).Pt()>25 && ElTColl.at(1).Pt()>15 ) PassTrigAccept=true;
-  else if( NElT>0 && NMuT>0 && ElTColl.at(0).Pt()>25 && MuTColl.at(0).Pt()>10 ) PassTrigAccept=true;
-  else if( NElT>0 && NMuT>0 && ElTColl.at(0).Pt()>15 && MuTColl.at(0).Pt()>25 ) PassTrigAccept=true;
-  if(!PassTrigAccept) return;
-  FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-
-  int SumQ_M = SumCharge(MuTColl);
-  int SumQ_E = SumCharge(ElTColl);
-  int SumQ_L = SumQ_M+SumQ_E;
-  if(abs(SumQ_L)!=1) return;
-  bool IsMu3El0 = NMuT==3 && NElT==0, IsMu2El1 = NMuT==2 && NElT==1, IsMu1El2 = NMuT==1 && NElT==2, IsMu0El3 = NMuT==0 && NElT==3;
-  float MOSSF1=-1, MOSSF2=-1, MSSSF=-1, M3l=-1;
-  int IdxOS=-1, IdxSS1=-1, IdxSS2=-1;
-  if(IsMu3El0){
-    IdxOS  = TriMuChargeIndex(MuTColl, "OS");
-    IdxSS1 = TriMuChargeIndex(MuTColl, "SS1");
-    IdxSS2 = TriMuChargeIndex(MuTColl, "SS2");
-    MOSSF1 = (MuTColl.at(IdxOS)+MuTColl.at(IdxSS1)).M();
-    MOSSF2 = (MuTColl.at(IdxOS)+MuTColl.at(IdxSS2)).M();
-    MSSSF  = (MuTColl.at(IdxSS1)+MuTColl.at(IdxSS2)).M();
-    M3l    = (MuTColl.at(0)+MuTColl.at(1)+MuTColl.at(2)).M(); 
-  }
-  else if(IsMu0El3){
-    IdxOS  = TriElChargeIndex(ElTColl, "OS");
-    IdxSS1 = TriElChargeIndex(ElTColl, "SS1");
-    IdxSS2 = TriElChargeIndex(ElTColl, "SS2");
-    MOSSF1 = (ElTColl.at(IdxOS)+ElTColl.at(IdxSS1)).M();
-    MOSSF2 = (ElTColl.at(IdxOS)+ElTColl.at(IdxSS2)).M();
-    MSSSF  = (ElTColl.at(IdxSS1)+ElTColl.at(IdxSS2)).M();
-    M3l    = (ElTColl.at(0)+ElTColl.at(1)+ElTColl.at(2)).M(); 
-  }
-  else if(IsMu2El1){
-    if(MuTColl.at(0).Charge()!=MuTColl.at(1).Charge()) MOSSF1=(MuTColl.at(0)+MuTColl.at(1)).M();
-    else MSSSF = (MuTColl.at(0)+MuTColl.at(1)).M();
-  }
-  else if(IsMu1El2){
-    if(ElTColl.at(0).Charge()!=ElTColl.at(1).Charge()) MOSSF1=(ElTColl.at(0)+ElTColl.at(1)).M();
-    else MSSSF = (ElTColl.at(0)+ElTColl.at(1)).M();
-  }
-
-  float IsQCDLike = (MOSSF1>0 && MOSSF1<12) or (MOSSF2>0 && MOSSF2<12) or (NMuT>1 && MSSSF>0 && MSSSF<4);
-  if(IsQCDLike) return;
-  FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-
-  float IsZLike = (MOSSF1>0 && fabs(MOSSF1-91.2)<10) or (MOSSF2>0 && fabs(MOSSF2-91.2)<10);
-  if(MOSSF1>0) FillHist("MOSSF1", MOSSF1, weight, 30, 0., 300.);
-  if(MOSSF2>0) FillHist("MOSSF2", MOSSF1, weight, 30, 0., 300.);
-  if(IsZLike) return;
-  FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-  FillHist("NBJet"+Label, BJetColl.size(), weight, 10, 0., 10.);
-
-  if(BJetColl.size()<1) return; 
-  FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-  FillHist("NJet"+Label, JetColl.size(), weight, 10, 0., 10.);
-
-  if(JetColl.size()<2) return;
-  FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-  FillHist("M3l_PreSel"+Label, M3l, weight, 30, 0., 300.);
-  if(MOSSF1>0) FillHist("MOSSF1_PreSel", MOSSF1, weight, 30, 0., 300.);
-  if(MOSSF2>0) FillHist("MOSSF2_PreSel", MOSSF1, weight, 30, 0., 300.);
-
-
-  if     (IsMu3El0) FillHist("NPresel", 2., weight, 12, 0., 12.);
-  else if(IsMu2El1) FillHist("NPresel", 3., weight, 12, 0., 12.);
-  else if(IsMu1El2) FillHist("NPresel", 4., weight, 12, 0., 12.);
-  else if(IsMu0El3) FillHist("NPresel", 5., weight, 12, 0., 12.);
-
-  if(IsMu3El0 or IsMu2El1) FillHist("NPresel_Tot", 1., weight, 3, 0., 3.);
-
-}
-
-
-
-void KinVarSearch::AnalyzeTetraLepton(vector<Muon>& MuTColl, vector<Muon>& MuLColl, vector<Electron>& ElTColl, vector<Electron>& ElLColl,
-                                   vector<Jet>& JetColl, vector<Jet>& BJetColl, Particle& vMET, float weight, TString Label)
-{
-  int NElT = ElTColl.size(), NMuT=MuTColl.size(), NElL = ElLColl.size(), NMuL=MuLColl.size();
-  int it_cut=3;
-  if( (NElT+NMuT)!=4 ) return;
-  if( !(NElT==NElL && NMuT==NMuL) ) return;
-
-  bool PassTrigAccept=false;
-  if     ( NMuT>=2 && MuTColl.at(0).Pt()>20 && MuTColl.at(1).Pt()>10 ) PassTrigAccept=true;
-  else if( NElT>=2 && ElTColl.at(0).Pt()>25 && ElTColl.at(1).Pt()>15 ) PassTrigAccept=true;
-  else if( NElT>0 && NMuT>0 && ElTColl.at(0).Pt()>25 && MuTColl.at(0).Pt()>10 ) PassTrigAccept=true;
-  else if( NElT>0 && NMuT>0 && ElTColl.at(0).Pt()>15 && MuTColl.at(0).Pt()>25 ) PassTrigAccept=true;
-  if(!PassTrigAccept) return;
-  FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-
-  int SumQ_M = SumCharge(MuTColl);
-  int SumQ_E = SumCharge(ElTColl);
-  int SumQ_L = SumQ_M+SumQ_E;
-  if(SumQ_L!=0) return;
-  FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-  
-  vector<int> IdxMupColl, IdxMumColl, IdxElpColl, IdxElmColl;
-  for(unsigned int i=0; i<MuTColl.size(); i++){
-    if(MuTColl.at(i).Charge()>0){IdxMupColl.push_back(i);} 
-    else {IdxMumColl.push_back(i);}
-  }
-  for(unsigned int i=0; i<ElTColl.size(); i++){
-    if(ElTColl.at(i).Charge()>0){IdxElpColl.push_back(i);} 
-    else {IdxElmColl.push_back(i);}
-  }
-
-  bool IsZlike=false, IsQCDlike=false, IsZTo4l=false, FailMFilter=false, OSSF=false, SSSF=false, OddF=false;
-  for(unsigned int i=0; i<MuTColl.size(); i++){
-    for(unsigned int j=i+1; j<MuTColl.size(); j++){
-      float TmpM = (MuTColl.at(i)+MuTColl.at(j)).M();
-      if(TmpM<4) FailMFilter=true;
-    }
-  }
-  for(unsigned int it_p=0; it_p<IdxMupColl.size(); it_p++){
-    for(unsigned int it_m=0; it_m<IdxMumColl.size(); it_m++){
-      float TmpM = (MuTColl.at(IdxMupColl.at(it_p))+MuTColl.at(IdxMumColl.at(it_m))).M();
-      if(TmpM<12) IsQCDlike=true;
-      else if(fabs(TmpM-91.2)<10) IsZlike=true;
-    }
-  }
-  for(unsigned int it_p=0; it_p<IdxElpColl.size(); it_p++){
-    for(unsigned int it_m=0; it_m<IdxElmColl.size(); it_m++){
-      float TmpM = (ElTColl.at(IdxElpColl.at(it_p))+ElTColl.at(IdxElmColl.at(it_m))).M();
-      if(TmpM<12) IsQCDlike=true;
-      else if(fabs(TmpM-91.2)<10) IsZlike=true;
-    }
-  }
-  if(FailMFilter) FillHist("MOSSFType"+Label, 0., weight, 10, 0., 10.);
-  if(IsQCDlike)   FillHist("MOSSFType"+Label, 1., weight, 10, 0., 10.);
-  if(IsZlike)     FillHist("MOSSFType"+Label, 2., weight, 10, 0., 10.);
-  if(IsQCDlike) return;
-  FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-
-  float px4l=0, py4l=0, pz4l=0, E4l=0;
-  for(unsigned int it_e=0; it_e<ElTColl.size(); it_e++){
-    px4l+=ElTColl.at(it_e).Px(); py4l+=ElTColl.at(it_e).Py(); pz4l+=ElTColl.at(it_e).Pz(); E4l+=ElTColl.at(it_e).E();
-  }
-  for(unsigned int it_m=0; it_m<MuTColl.size(); it_m++){
-    px4l+=MuTColl.at(it_m).Px(); py4l+=MuTColl.at(it_m).Py(); pz4l+=MuTColl.at(it_m).Pz(); E4l+=MuTColl.at(it_m).E();
-  }
-  TLorentzVector V4l(px4l,py4l,pz4l,E4l);
-  float M4l = V4l.M();
-  cout<<M4l<<endl;
-
-  SSSF = (IdxMupColl.size()==2 and IdxElmColl.size()==2) or (IdxMumColl.size()==2 and IdxElpColl.size()==2);
-  OSSF = (IdxMupColl.size()==IdxMumColl.size()) and (IdxElpColl.size()==IdxElmColl.size());
-  OddF = NElT==1 or NMuT==1;
-  IsZTo4l = OSSF and fabs(M4l-91.2)<10;
-  if(IsZTo4l)   FillHist("MOSSFType"+Label, 3., weight, 10, 0., 10.);
-  
-  if     (OSSF and NElT==4) FillHist("Composition_4l"+Label, 0., weight, 10, 0., 10.);
-  else if(OSSF and NElT==2) FillHist("Composition_4l"+Label, 1., weight, 10, 0., 10.);
-  else if(OSSF and NElT==0) FillHist("Composition_4l"+Label, 2., weight, 10, 0., 10.);
-  else if(SSSF and NElT==2) FillHist("Composition_4l"+Label, 3., weight, 10, 0., 10.);
-  else if(OddF and NElT==1) FillHist("Composition_4l"+Label, 4., weight, 10, 0., 10.);
-  else if(OddF and NElT==3) FillHist("Composition_4l"+Label, 5., weight, 10, 0., 10.);
-  if(!IsZlike){
-    if     (OSSF and NElT==4) FillHist("Composition_4lNoZ2l"+Label, 0., weight, 10, 0., 10.);
-    else if(OSSF and NElT==2) FillHist("Composition_4lNoZ2l"+Label, 1., weight, 10, 0., 10.);
-    else if(OSSF and NElT==0) FillHist("Composition_4lNoZ2l"+Label, 2., weight, 10, 0., 10.);
-    else if(SSSF and NElT==2) FillHist("Composition_4lNoZ2l"+Label, 3., weight, 10, 0., 10.);
-    else if(OddF and NElT==1) FillHist("Composition_4lNoZ2l"+Label, 4., weight, 10, 0., 10.);
-    else if(OddF and NElT==3) FillHist("Composition_4lNoZ2l"+Label, 5., weight, 10, 0., 10.);
-    if(!IsZTo4l){
-      if     (OSSF and NElT==4) FillHist("Composition_4lNoZ2l4l"+Label, 0., weight, 10, 0., 10.);
-      else if(OSSF and NElT==2) FillHist("Composition_4lNoZ2l4l"+Label, 1., weight, 10, 0., 10.);
-      else if(OSSF and NElT==0) FillHist("Composition_4lNoZ2l4l"+Label, 2., weight, 10, 0., 10.);
-      else if(SSSF and NElT==2) FillHist("Composition_4lNoZ2l4l"+Label, 3., weight, 10, 0., 10.);
-      else if(OddF and NElT==1) FillHist("Composition_4lNoZ2l4l"+Label, 4., weight, 10, 0., 10.);
-      else if(OddF and NElT==3) FillHist("Composition_4lNoZ2l4l"+Label, 5., weight, 10, 0., 10.);
-    }
-  }
-  
-
-  if(BJetColl.size()==0) return;
-  FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-  if     (OSSF and NElT==4) FillHist("Composition_4l1b"+Label, 0., weight, 10, 0., 10.);
-  else if(OSSF and NElT==2) FillHist("Composition_4l1b"+Label, 1., weight, 10, 0., 10.);
-  else if(OSSF and NElT==0) FillHist("Composition_4l1b"+Label, 2., weight, 10, 0., 10.);
-  else if(SSSF and NElT==2) FillHist("Composition_4l1b"+Label, 3., weight, 10, 0., 10.);
-  else if(OddF and NElT==1) FillHist("Composition_4l1b"+Label, 4., weight, 10, 0., 10.);
-  else if(OddF and NElT==3) FillHist("Composition_4l1b"+Label, 5., weight, 10, 0., 10.);
-  if(!IsZlike){
-    if     (OSSF and NElT==4) FillHist("Composition_4l1bNoZ2l"+Label, 0., weight, 10, 0., 10.);
-    else if(OSSF and NElT==2) FillHist("Composition_4l1bNoZ2l"+Label, 1., weight, 10, 0., 10.);
-    else if(OSSF and NElT==0) FillHist("Composition_4l1bNoZ2l"+Label, 2., weight, 10, 0., 10.);
-    else if(SSSF and NElT==2) FillHist("Composition_4l1bNoZ2l"+Label, 3., weight, 10, 0., 10.);
-    else if(OddF and NElT==1) FillHist("Composition_4l1bNoZ2l"+Label, 4., weight, 10, 0., 10.);
-    else if(OddF and NElT==3) FillHist("Composition_4l1bNoZ2l"+Label, 5., weight, 10, 0., 10.);
-    if(!IsZTo4l){
-      if     (OSSF and NElT==4) FillHist("Composition_4l1bNoZ2l4l"+Label, 0., weight, 10, 0., 10.);
-      else if(OSSF and NElT==2) FillHist("Composition_4l1bNoZ2l4l"+Label, 1., weight, 10, 0., 10.);
-      else if(OSSF and NElT==0) FillHist("Composition_4l1bNoZ2l4l"+Label, 2., weight, 10, 0., 10.);
-      else if(SSSF and NElT==2) FillHist("Composition_4l1bNoZ2l4l"+Label, 3., weight, 10, 0., 10.);
-      else if(OddF and NElT==1) FillHist("Composition_4l1bNoZ2l4l"+Label, 4., weight, 10, 0., 10.);
-      else if(OddF and NElT==3) FillHist("Composition_4l1bNoZ2l4l"+Label, 5., weight, 10, 0., 10.);
-    }
-  }
-
-
-  if(JetColl.size()<2) return;
-  FillHist("CutFlow"+Label, it_cut, weight, 20, 0., 20.); it_cut++;
-  if     (OSSF and NElT==4) FillHist("Composition_4l1b2j"+Label, 0., weight, 10, 0., 10.);
-  else if(OSSF and NElT==2) FillHist("Composition_4l1b2j"+Label, 1., weight, 10, 0., 10.);
-  else if(OSSF and NElT==0) FillHist("Composition_4l1b2j"+Label, 2., weight, 10, 0., 10.);
-  else if(SSSF and NElT==2) FillHist("Composition_4l1b2j"+Label, 3., weight, 10, 0., 10.);
-  else if(OddF and NElT==1) FillHist("Composition_4l1b2j"+Label, 4., weight, 10, 0., 10.);
-  else if(OddF and NElT==3) FillHist("Composition_4l1b2j"+Label, 5., weight, 10, 0., 10.);
-  if(!IsZlike){
-    if     (OSSF and NElT==4) FillHist("NPresel"+Label, 6., weight, 12, 0., 12.);
-    else if(OSSF and NElT==2) FillHist("NPresel"+Label, 7., weight, 12, 0., 12.);
-    else if(OSSF and NElT==0) FillHist("NPresel"+Label, 8., weight, 12, 0., 12.);
-    else if(SSSF and NElT==2) FillHist("NPresel"+Label, 9., weight, 12, 0., 12.);
-    else if(OddF and NElT==1) FillHist("NPresel"+Label, 10., weight, 12, 0., 12.);
-    else if(OddF and NElT==3) FillHist("NPresel"+Label, 11., weight, 12, 0., 12.);
-    if(NElT<3) FillHist("NPresel_Tot", 2., weight, 3, 0., 3.);
-
-    if     (OSSF and NElT==4) FillHist("Composition_4l1b2jNoZ2l"+Label, 0., weight, 10, 0., 10.);
-    else if(OSSF and NElT==2) FillHist("Composition_4l1b2jNoZ2l"+Label, 1., weight, 10, 0., 10.);
-    else if(OSSF and NElT==0) FillHist("Composition_4l1b2jNoZ2l"+Label, 2., weight, 10, 0., 10.);
-    else if(SSSF and NElT==2) FillHist("Composition_4l1b2jNoZ2l"+Label, 3., weight, 10, 0., 10.);
-    else if(OddF and NElT==1) FillHist("Composition_4l1b2jNoZ2l"+Label, 4., weight, 10, 0., 10.);
-    else if(OddF and NElT==3) FillHist("Composition_4l1b2jNoZ2l"+Label, 5., weight, 10, 0., 10.);
-    if(!IsZTo4l){
-      if     (OSSF and NElT==4) FillHist("Composition_4l1b2jNoZ2l4l"+Label, 0., weight, 10, 0., 10.);
-      else if(OSSF and NElT==2) FillHist("Composition_4l1b2jNoZ2l4l"+Label, 1., weight, 10, 0., 10.);
-      else if(OSSF and NElT==0) FillHist("Composition_4l1b2jNoZ2l4l"+Label, 2., weight, 10, 0., 10.);
-      else if(SSSF and NElT==2) FillHist("Composition_4l1b2jNoZ2l4l"+Label, 3., weight, 10, 0., 10.);
-      else if(OddF and NElT==1) FillHist("Composition_4l1b2jNoZ2l4l"+Label, 4., weight, 10, 0., 10.);
-      else if(OddF and NElT==3) FillHist("Composition_4l1b2jNoZ2l4l"+Label, 5., weight, 10, 0., 10.);
-    }
-  }
-
-}
-
 
 
 
 void KinVarSearch::executeEventFromParameter(AnalyzerParameter param){
+}
 
-  if(!PassMETFilter()) return;
 
-  Event ev = GetEvent();
+void KinVarSearch::InitializeTreeVars(){
+
+  Nj=-1, Nb=-1;
+  Ptl1=-1, Ptl2=-1, Ptj1=-1, Ptj2=-1, Ptj3=-1, Ptb1=-1, Ptb2=-1, MET=-1, HT=-1, MET2HT=-1;
+  dEtall=-1, dRll=-1, dRjj12=-1, dRjj23=-1, dRjj13=-1;
+  dRlj11=-1, dRlj12=-1, dRlj13=-1, dRlj21=-1, dRlj22=-1, dRlj23=-1;
+  dRlb11=-1, dRlb21=-1;
+  MSSSF=-1, Mbl11=-1, Mbl12=-1, Mbl21=-1, Mbl22=-1, Mlj11=-1, Mlj12=-1, Mlj13=-1, Mlj21=-1, Mlj22=-1, Mlj23=-1;
+  MTvl1=-1, MTvl2=-1, Mllj1=-1, Mllj2=-1, Mllj3=-1, Mllj4=-1, Mllb1=-1, Mllb2=-1;
+  Mlljj12=-1, Mlljj13=-1, Mlljj14=-1, Mlljj23=-1, Mlljj24=-1, Mlljj34=-1;
+  Mljj112=-1, Mljj113=-1, Mljj114=-1, Mljj123=-1, Mljj124=-1, Mljj134=-1;
+  Mljj212=-1, Mljj213=-1, Mljj214=-1, Mljj223=-1, Mljj224=-1, Mljj234=-1;
+  Mjj12=-1, Mjj13=-1, Mjj14=-1, Mjj23=-1, Mjj24=-1, Mjj34=-1;
+  MllW_2jL=-1, MllW_1jL=-1, MllW1_H=-1, MllW2_H=-1, MjjW1=-1, MjjW2=-1;
+  Ml1W_2jL=-1, Ml1W_1jL=-1, Ml2W_2jL=-1, Ml2W_1jL=-1, Ml1W1_H=-1, Ml1W2_H=-1, Ml2W1_H=-1, Ml2W2_H=-1;
+  w_tot=-1;
 
 }
+
+
 
 KinVarSearch::KinVarSearch(){
 
+  tree_mm = new TTree("Tree_mm", "Tree_mm");
+  tree_ee = new TTree("Tree_ee", "Tree_ee");
+
 }
+
 
 KinVarSearch::~KinVarSearch(){
 
+  delete tree_mm;
+  delete tree_ee;
+
 }
 
 
+void KinVarSearch::WriteHist(){
+
+  outfile->cd();
+  tree_mm->Write();
+  tree_ee->Write();
+  outfile->cd();
+
+}

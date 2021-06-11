@@ -178,7 +178,7 @@ bool Muon::PassID(TString ID) const {
   if(ID=="POGIDTIsoM") return isPOGTight() && RelIso()<0.2;
   if(ID=="POGIDTIsoVVL") return isPOGTight() && RelIso()<0.4;
 
-  cout << "[Electron::PassID] No id : " << ID << endl;
+  cout << "[Muon::PassID] No id : " << ID << endl;
   exit(EXIT_FAILURE);
 
   return false;

@@ -1,26 +1,33 @@
 #!/bin/bash
 
 ########################################################################
-declare -a List_runModes=("runBkdMC")
+#declare -a List_runModes=("runBkdMC")
 #declare -a List_runModes=("runSigMC")
-#declare -a List_runModes=("runData")
+#declare -a List_runModes=("runFake")
+declare -a List_runModes=("runData")
 #declare -a List_runModes=("runBkdMC" "runData")
+#declare -a List_runModes=("runData" "runFake")
+#declare -a List_runModes=("runBkdMC" "runData" "runFake")
+#declare -a List_runModes=("runBkdMC" "runData" "runSigMC")
 
 ########################################################################
 ## RUN PARAMETERS
 
-AnalysisCode="SkimTree_SS2lOR3l" #SkimTree_SS2lOR3l / SkimRateCheck 
-FinalState="SS2lOR3l" #"TrigInfo" #"SS2lOR3l" / "TrigInfo"
+AnalysisCode="MeasCFlipRate"
+FinalState="All2l"
 Skim="" #"SkimTree_SS2lOR3l"
 Year="2017"
-RunningMode="" #MuMuMu / ElMuMu / TetraLep / SS2l
+RunningMode="OS2l,CFMCClos" #"OS2l,MDists" #"OS2l,CFMCClos" #"OS2l,MCCFRate"
+ 
 
 NJobs=""
 Memory=""
-NJobMax="70"
+NJobMax="80"
 NEvtMax="100000"
 NSkipEvt=""
 ReductionFactor="" #"10"
+SpecificList=""
+SpecificDir="CFMCClos/Test/PTCorr_DownScp970Res2p5" #"CFMCClos" #"MDists" #"CFClos"
 runDebug="False"
 
 # Options:
@@ -68,17 +75,23 @@ do
   elif [[ ${runMode} == "runSigMC" ]]; then CategoryLabel="SigMC";
   else echo "Inappropriate runData/runBkdMC/runFake/runSigMC settings."; exit 1; fi 
 
-  OutputDir="${SKFlatOutputDir}/${SKFlatV}/${AnalysisCode}/${Year}/${StateLabel}/${CategoryLabel}"
+  OutputDir="${SKFlatOutputDir}/${SKFlatV}/${AnalysisCode}/${Year}/${StateLabel}/${SpecificDir}/${CategoryLabel}"
+  if   [[ ${RunningMode} == *"ConvRun"* ]]; then OutputDir+="/ConvRun";
+  elif [[ ${RunningMode} == *"FlipRun"* ]]; then OutputDir+="/FlipRun";
+  else :; fi
   mkdir -pv ${OutputDir}
   
   
   #OPTION SETTING
-  List="${AnalysisCode}_${CategoryLabel}_${Year}"
-  if [[ ${runDebug} == "True" ]]; then List="Debug_${CategoryLabel}_${Year}";
-  elif [[ ${runMode} == "runData" || ${runMode} == "runFake" ]]; then List="${AnalysisCode}_${CategoryLabel}_${Year}_${StateLabel}"; 
-  else :; fi
+  if [[ -z ${SpecificList} ]]; then
+    List="${AnalysisCode}_${CategoryLabel}_${Year}";
+    if [[ ${runDebug} == "True" ]]; then List="Debug_${CategoryLabel}_${Year}";
+    elif [[ ${runMode} == "runData" || ${runMode} == "runFake" ]]; then List="${AnalysisCode}_Data_${Year}_${StateLabel}"; 
+    else :; fi
+  fi
 
   NSample=$( python GetJobConfig.py ${List} )
+  #echo "python GetJobConfig.py ${List}"
   if [[ ${NSample} == "Error"* ]]; then echo "Sample List wrong for ${runMode}, skip."; continue; fi
 
   for (( it_s=0; it_s<${NSample}; it_s++ ))
@@ -93,7 +106,10 @@ do
     if [[ ${NJobs} -gt 0 ]]; then :; 
     elif [[ ${NJobs} == "-" ]]; then NJobs=20; 
     else echo "NJob Config invalid for ${SampleName} in ${CategoryLabel} mode"; continue; fi
-    if [[ ( ${runDebug} == "False" ) && ( -z ${ReductionFactor} ) ]]; then (( NJobs *= 2 )); fi
+    if [[ ( ${runDebug} == "False" ) ]]; then (( NJobs *= 2 )); fi
+    #if [[ ( ${runDebug} == "False" ) && ( -z ${ReductionFactor} ) ]]; then (( NJobs *= 2 )); fi
+
+    if [[ ${runMode} == "runFake" && ${it_s} -eq 0 ]]; then RunningMode+=",FakeRun"; fi
 
     Option+=" -i ${SampleName}" 
     Option+=" -n ${NJobs}" 
@@ -109,7 +125,7 @@ do
     echo "SKFlat.py ${Option}" >> CommandHist.txt
 
     if [[ ${runDebug} == "True" ]]; then 
-      sleep 5s
+      sleep 4s
       DirName=$( ls -rt ${SKFlatRunlogDir} | tail -1 ) 
       if [[ ${DirName} == "www"* ]]; then DirName= $( ls -rt ${SKFlatRunlogDir} | tail -2 | head -1 ); fi
       PeriodLabel=""

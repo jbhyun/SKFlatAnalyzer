@@ -2242,12 +2242,12 @@ float AnalyzerCore::GetKFactor(){
 
   float weight = 1.;
 
-  if(MCSample.Contains("WZTo3LNu_powheg") or MCSample.Contains("WZ_pythia")){
+  if(MCSample.Contains("WZTo3LNu_powheg") or MCSample.Contains("WZ_pythia") or MCSample.Contains("WZTo2L2Q")){
     //Physics Letters B 761 (2016) 197 
     //http://dx.doi.org/10.1016/j.physletb.2016.08.017 
     weight = 1.109;
   }
-  else if(MCSample.Contains("ZZTo4L_powheg") or MCSample.Contains("ZZTo2L2Nu_powheg") or MCSample.Contains("ZZTo2L2Q_powheg")
+  else if(MCSample.Contains("ZZTo4L_powheg") or MCSample.Contains("ZZTo2L2Nu") or MCSample.Contains("ZZTo2L2Q")
        or MCSample.Contains("ZZ_pythia")){
     // Physics Letters B 735 (2014) 311-313
     // https://doi.org/10.1016/j.physletb.2014.06.056
@@ -2909,4 +2909,69 @@ float AnalyzerCore::GetvPz(Lepton& Lep, Particle& vMET, TString Option){
   else RecoPz = abs(RecoPzv1)<abs(RecoPzv2)? RecoPzv1:RecoPzv2;
 
   return RecoPz;
+}
+
+
+vector<Jet> AnalyzerCore::SelectJets(vector<Jet>& JetColl, vector<Muon>& MuColl, vector<Electron>& ElColl, TString id, double ptmin, double fetamax, TString Option){
+
+  int SystDir=0; bool SystJES=false, SystJER=false;
+  if((!IsDATA) && Option.Contains("Syst")){
+    if     (Option.Contains("Up"))   SystDir= 1;
+    else if(Option.Contains("Down")) SystDir=-1;
+    if     (Option.Contains("JES"))  SystJES=true;
+    if     (Option.Contains("JER"))  SystJER=true;
+  }
+  bool LepVeto = Option.Contains("LVeto");
+  vector<Jet> OutColl;
+  for(unsigned int ij=0; ij<JetColl.size(); ij++){
+    if(SystJES) JetColl.at(ij) *= JetColl.at(ij).EnShift(SystDir);
+    if(SystJER) JetColl.at(ij) *= JetColl.at(ij).ResShift(SystDir);
+    if( !(JetColl.at(ij).Pt()>ptmin) ) continue;
+    if( !(fabs(JetColl.at(ij).Eta())<fetamax) ) continue; 
+    if( !(JetColl.at(ij).PassID(id)) ) continue;
+    if(LepVeto){
+      bool MatchL=false;
+      for(unsigned int im=0; im<MuColl.size() && (!MatchL); im++){
+        if(JetColl.at(ij).DeltaR(MuColl.at(im))<0.4){ MatchL=true; break; }
+      }
+      for(unsigned int ie=0; ie<ElColl.size() && (!MatchL); ie++){
+        if(JetColl.at(ij).DeltaR(ElColl.at(ie))<0.4){ MatchL=true; break; }
+      }
+      if(MatchL) continue;
+    }
+    OutColl.push_back( JetColl.at(ij) );
+  }
+
+  return OutColl;
+}
+
+
+TLorentzVector AnalyzerCore::GetvMET(TString METType, TString Option){
+
+  bool IsType1   = METType.Contains("T1");
+  bool IsxyCorr  = METType.Contains("xyCorr");
+  bool ApplySyst = (!IsDATA) && Option.Contains("Syst");
+  int IdxSyst = 0, SystDir = Option.Contains("Up")? 1:Option.Contains("Down")? -1:0;
+  if(ApplySyst){
+    if     (Option.Contains("JES")  && SystDir>0 ) IdxSyst=2;
+    else if(Option.Contains("JES")  && SystDir<0 ) IdxSyst=3;
+    else if(Option.Contains("JER")  && SystDir>0 ) IdxSyst=0;
+    else if(Option.Contains("JER")  && SystDir<0 ) IdxSyst=1;
+    else if(Option.Contains("Uncl") && SystDir>0 ) IdxSyst=10;
+    else if(Option.Contains("Uncl") && SystDir<0 ) IdxSyst=11;
+  }
+  
+  TLorentzVector vMET;
+  if(IsType1){
+    if(!ApplySyst){
+      if(IsxyCorr) vMET.SetPtEtaPhiM(pfMET_Type1_PhiCor_pt, 0., pfMET_Type1_PhiCor_phi, 0.); 
+      else         vMET.SetPtEtaPhiM(pfMET_Type1_pt, 0., pfMET_Type1_phi, 0.); 
+    }
+    else{
+      if(IsxyCorr) vMET.SetPtEtaPhiM(pfMET_Type1_PhiCor_pt_shifts->at(IdxSyst), 0., pfMET_Type1_PhiCor_phi_shifts->at(IdxSyst), 0.); 
+      else         vMET.SetPtEtaPhiM(pfMET_Type1_pt_shifts->at(IdxSyst), 0., pfMET_Type1_phi_shifts->at(IdxSyst), 0.); 
+    }
+  }
+
+  return vMET;
 }

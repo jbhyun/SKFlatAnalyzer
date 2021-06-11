@@ -103,7 +103,7 @@ public:
   //==== https://twiki.cern.ch/twiki/bin/viewauth/CMS/BTagSFMethods
 
   //==== 1a) Event reweighting using scale factors and MC b-tagging efficiencies
-  double GetBTaggingReweight_1a(const vector<Jet>& jets, JetTagging::Parameters jtp, string Syst="central");
+  double GetBTaggingReweight_1a(const vector<Jet>& jets, JetTagging::Parameters jtp, TString SystStr="central");
   //==== 1d) Event reweighting using discriminator-dependent scale factors
   double GetBTaggingReweight_1d(const vector<Jet>& jets, JetTagging::Parameters jtp, string Syst="central");
 

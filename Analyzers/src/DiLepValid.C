@@ -201,6 +201,16 @@ void DiLepValid::AnalyzeDiMuon(std::vector<Muon>& MuTColl, std::vector<Muon>& Mu
   FillHist("EtaMu2"+Label, MuTColl.at(1).Eta(), weight, 20, -5., 5.);
   FillHist("NJet"  +Label, JetColl.size(), weight, 10, 0., 10.);
   FillHist("NBJet" +Label, BJetColl.size(), weight, 10, 0., 10.);
+  FillHist("MET"   +Label, vMET.Pt(), weight, 40, 0., 200.);
+
+  float HT=0; for(unsigned int itj=0; itj<JetColl.size(); itj++){ HT+=JetColl.at(itj).Pt(); }
+  float ST=HT+vMET.Pt()+MuTColl.at(0).Pt()+MuTColl.at(1).Pt();
+  float MET2ST=pow(vMET.Pt(),2.)/ST;
+  float MET2HT=HT==0? 0.:pow(vMET.Pt(),2.)/HT;
+  FillHist("ST"+Label, ST, weight, 60, 0., 300.);
+  FillHist("HT"+Label, HT, weight, 40, 0., 200.);
+  FillHist("MET2ST"+Label, MET2ST, weight, 40, 0., 200.);
+  FillHist("MET2HT"+Label, MET2HT, weight, 40, 0., 200.);
 
 } 
 
@@ -228,6 +238,7 @@ void DiLepValid::AnalyzeDiElectron(std::vector<Muon>& MuTColl, std::vector<Muon>
   FillHist("EtaEl2"+Label, ElTColl.at(1).Eta(), weight, 20, -5., 5.);
   FillHist("NJet"  +Label, JetColl.size(), weight, 10, 0., 10.);
   FillHist("NBJet" +Label, BJetColl.size(), weight, 10, 0., 10.);
+  FillHist("MET"   +Label, vMET.Pt(), weight, 40, 0., 200.);
 
 }
 
@@ -265,6 +276,15 @@ void DiLepValid::AnalyzeElectronMuon(std::vector<Muon>& MuTColl, std::vector<Muo
   FillHist("NJet"  +Label, JetColl.size(), weight, 10, 0., 10.);
   FillHist("NBJet" +Label, BJetColl.size(), weight, 10, 0., 10.);
   FillHist("dRElMu"+Label, MuTColl.at(0).DeltaR(ElTColl.at(0)), weight, 50, 0., 5.);
+
+  float HT=0; for(unsigned int itj=0; itj<JetColl.size(); itj++){ HT+=JetColl.at(itj).Pt(); }
+  float ST=HT+vMET.Pt()+MuTColl.at(0).Pt()+ElTColl.at(0).Pt();
+  float MET2ST=pow(vMET.Pt(),2.)/ST;
+  float MET2HT=pow(vMET.Pt(),2.)/HT;
+  FillHist("ST"+Label, ST, weight, 48, 0., 1200.);
+  FillHist("HT"+Label, HT, weight, 32, 0., 800.);
+  FillHist("MET2ST"+Label, MET2ST, weight, 12, 0., 120.);
+  FillHist("MET2HT"+Label, MET2HT, weight, 30, 0., 300.);
 
 }
 

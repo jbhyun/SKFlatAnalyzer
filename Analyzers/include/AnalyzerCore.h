@@ -29,6 +29,10 @@
 #include "GEScaleSyst.h"
 #include "PDFReweight.h"
 
+#include "TMVA/Tools.h"
+#include "TMVA/Reader.h"
+#include "TMVA/MethodCuts.h"
+
 #define M_Z 91.1876
 #define M_W 80.379
 
@@ -255,10 +259,12 @@ public:
 
 
   //Jihwan Bhyun Modification/////////////////////////
-  std::vector<Jet> SelBJets    (std::vector<Jet>& jetColl, JetTagging::Parameters jtp);
-  std::vector<Jet> SelLightJets(std::vector<Jet>& jetColl, JetTagging::Parameters jtp);
-  std::vector<int> GetSFBJetIdx(std::vector<Jet>& jetColl, JetTagging::Parameters jtp);
-  std::vector<int> GetSFLJetIdx(std::vector<Jet>& jetColl, JetTagging::Parameters jtp);
+  vector<Jet> SelectJets(vector<Jet>& JetColl, vector<Muon>& MuColl, vector<Electron>& ElColl, TString id, double ptmin, double fetamax, TString Option="");
+  vector<Jet> SelBJets    (std::vector<Jet>& jetColl, JetTagging::Parameters jtp);
+  vector<Jet> SelLightJets(std::vector<Jet>& jetColl, JetTagging::Parameters jtp);
+  vector<int> GetSFBJetIdx(std::vector<Jet>& jetColl, JetTagging::Parameters jtp);
+  vector<int> GetSFLJetIdx(std::vector<Jet>& jetColl, JetTagging::Parameters jtp);
+  TLorentzVector GetvMET(TString METType="T1xyCorr", TString Option="");
   float GetvPz(Lepton& Lep, Particle& vMET, TString Option="");
   float GetMuonSF(std::vector<Muon>& muonColl, TString SFKey, TString Option="");
   float GetElectronSF(std::vector<Electron>& electronColl, TString SFKey, TString Option="");

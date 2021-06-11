@@ -23,13 +23,19 @@ if not "SKFlat_WD" in os.environ:
 #               "TT_TTobNMu_LepTop3L_LO_MN20", "TT_TTobNMu_LepTop3L_LO_MN50", "TT_TTobNMu_LepTop3L_LO_MN100",
 #               "TT_TTobNMu_HadTop3L_LO_MN20", "TT_TTobNMu_HadTop3L_LO_MN50", "TT_TTobNMu_HadTop3L_LO_MN100",
 #               "TT_TTobNMu_4L_LO_MN20", "TT_TTobNMu_4L_LO_MN50", "TT_TTobNMu_4L_LO_MN100"]
+
+
 Arr_MCSample =[
+  "SingleTop_tW_antitop_NoFullyHad", "SingleTop_tW_top_NoFullyHad", "SingleTop_sch_Lep", "SingleTop_tch_antitop_Incl", "SingleTop_tch_top_Incl",
+]
+
+#Arr_MCSample =[
 #"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN100","TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN100",
-"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN20" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN20" ,
-"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN30" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN30" ,
+#"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN20" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN20" ,
+#"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN30" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN30" ,
 #"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN40" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN40" ,
 #"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN50" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN50" ,
-"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN60" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN60" ,
+#"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN60" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN60" ,
 #"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN70" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN70" ,
 #"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN75" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN75" ,
 #"TTbarTypeIHeavyN-Mu_HadTop3L_MLM_MN85" ,"TTbarTypeIHeavyN-Mu_LepTop3L_MLM_MN85" ,
@@ -64,7 +70,7 @@ Arr_MCSample =[
 #"TTbarTypeIHeavyN-El_2L_MLM_MN75" ,"TTbarTypeIHeavyN-El_4L_MLM_MN75" ,
 #"TTbarTypeIHeavyN-El_2L_MLM_MN85" ,"TTbarTypeIHeavyN-El_4L_MLM_MN85" ,
 #"TTbarTypeIHeavyN-El_2L_MLM_MN90" ,"TTbarTypeIHeavyN-El_4L_MLM_MN90" ,
-]
+#]
 
 
 
